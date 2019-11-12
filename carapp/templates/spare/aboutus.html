@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>ABOUT US</title>
+
+</head>
+<style>
+    @keyframes slidy {
+0% { left: 0%; }
+20% { left: 0%; }
+25% { left: -100%; }
+45% { left: -100%; }
+50% { left: -200%; }
+70% { left: -200%; }
+75% { left: -300%; }
+95% { left: -300%; }
+100% { left: -400%; }
+}
+
+body { margin: 0; } 
+div#slider { overflow: hidden; }
+div#slider figure img { width: 20%; float: left; }
+div#slider figure { 
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  text-align: left;
+  font-size: 0;
+  animation: 30s slidy infinite; 
+}
+.contact ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .contact li {
+        float: left;
+        border-right: 1px solid #bbb;
+    }
+
+    .contact li {
+        border-right: none;
+    }
+
+    .contact li a {
+        display: block;
+        color: #949494;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .contact li a:hover {
+        background-color: orangered;
+    }
+    @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.wrap {
+    position: absolute;
+    margin-left: 900px;
+    top: 0;
+    left: 0;
+
+    bottom: 0;
+    width: 300px;
+    height: 50px;
+}
+
+.wrap .search {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: orangered;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+    box-shadow: 0 0 25px 0 yellow;
+}
+
+.wrap .search:hover {
+    cursor: pointer;
+}
+
+.wrap .search::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: 22px;
+    right: 0;
+    bottom: 0;
+    left: 22px;
+    width: 12px;
+    height: 2px;
+    background: white;
+    transform: rotate(45deg);
+    transition: all .5s;
+}
+
+.wrap .search::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: -5px;
+    right: 0;
+    bottom: 0;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: all .5s;
+}
+
+.wrap input {
+    font-family: 'Inconsolata', monospace;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: white;
+    color: white;
+    text-shadow: 0 0 10px rgb(51, 45, 47);
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+}
+
+.wrap input:hover {
+    cursor: pointer;
+}
+
+.wrap input:focus {
+    width: 200px;
+    opacity: 1;
+    cursor: text;
+}
+
+.wrap input:focus~.search {
+    right: -250px;
+    background: #151515;
+    z-index: 6;
+}
+
+.wrap input:focus~.search::before {
+    top: 0;
+    left: 0;
+    width: 25px;
+}
+
+.wrap input:focus~.search::after {
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    border: none;
+    background: white;
+    border-radius: 0%;
+    transform: rotate(-45deg);
+}
+
+.wrap input::placeholder {
+    color: #949494;
+    opacity: 0.5;
+    font-weight: bolder;
+}
+.dropdown>.dropdown-menu {
+        top: 300%;
+        transition: 0.3s all ease-in-out;
+    }
+
+    .dropdown:hover>.dropdown-menu {
+        display: block;
+        top: 100%;
+    }
+
+    .dropdown>.dropdown-toggle:active {
+        /*Without this, clicking will make it sticky*/
+        pointer-events: none;
+    }
+
+
+</style>
+<body>
+        <div class="contact">
+                <ul>
+                    <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
+      
+                    <li><a href="#contact"><i class="fa fa-envelope"></i> info@themevessel.com</a></li>
+                    <li></li> <i class="fa fa-phone"
+                        style="font-size:15px;margin-left:520px;color:#949494;margin-top:20px;"></i>
+                    <i class="fa fa-envelope" style="font-size:15px;margin-left:10px;color:#949494"></i>
+                    <i class="fa fa-google" style="font-size:15px;margin-left:10px;color:#949494"></i>
+                    <i class="fa fa-linkedin" style="font-size:15px;margin-left:10px;color:#949494"></i>
+                    <i class="fa fa-pinterest" style="font-size:15px;margin-left:10px;color:#949494"></i>
+      
+      
+                    <li style="float:right"><a href="{% url 'login' %}"
+                            style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a></li>
+                       
+                       
+                    <li style="float:right"><a href="{% url 'register' %}"
+                            style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">register</a>
+                    </li>
+                </ul>
+            </div>
+            <nav class="navbar navbar-expand-sm navbar-light bg-faded" style="color:#706F6F;text-transform:uppercase">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content"
+                    aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+      
+                <!-- Brand -->
+                <a class="navbar-brand" href="#" style="color:#706F6F;font-size:45px;">
+                    <img
+                        src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png"><b><span
+                            style="color:orangered">kan</span>ika</b>
+                </a>
+      
+                <!-- Links -->
+                <!-- <div class="collapse navbar-collapse" id="nav-content" style="margin-left:350px;">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="container">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        style="color:#706F6F">
+                                        PAGES
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                                        <a class="dropdown-item" href="#">Log in</a>
+                                        <a class="dropdown-item" href="#">sign up</a>
+                                        <a class="dropdown-item" href="#">sign out</a>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <!-- Search -->
+                            <div class="wrap">
+                                <input type="text" placeholder="Search...">
+                                <div class="search"></div>
+                            </div>
+      
+                        </li>
+                    </ul>
+      
+      
+      
+            </nav>
+<header >
+<h1>about us</h1>
+<p><a href="{% url 'homePage' %}" style="color:white;text-decoration:none;">home > about us </a></p>
+</header>
+
+<div class="container">
+    <div class="row" style="padding-top:100px;">
+        <div class="col-md-6">
+                <div id="slider">
+                        <figure>
+                        <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/grid/car-3.jpg" alt>
+                        <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/grid/car-3.jpg" alt>
+                        <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/grid/car-2.jpg" alt>
+                        <img src="ankor-wat.jpg" alt>
+                        <img src="austin-fireworks.jpg" alt>
+                        </figure>
+                        </div>
+            <!-- <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/grid/car-3.jpg" class="img-fluid" style="width:500px;padding-top:30px;"> -->
+
+        </div>
+        <div class="col-md-6">
+            <h1 style="border-bottom:1px solid #FBFBFB;text-align:center;font-family:'Lato', sans-serif;text-transform:uppercase;margin-bottom:30px;border-bottom:1px solid orangered">about us</h1>
+            <p>Lorem ipsum dolor sit amet, 
+                consectetur adipisicing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
+                accusantium natus error sit voluptatem accusantium</p>
+                <button class="btn btn-warning" style="margin-left:103px;">contact us</button>
+        </div>
+        
+    </div>
+    
+            <h1 style="text-align:center"> OUR AGENT</h2>
+            <br>
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac
+                 tortor at tellus feugiat congue quis ut nunc..</p>
+    
+    <div class="row" >
+        
+        <div class="col-sm-4">
+          <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/team/team-1.jpg" class="img-responsive"width="300">  
+          <p>Micke wake</p>
+        </div>
+        <div class="col-sm-4">
+                <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/team/team-2.jpg"class="img-responsive"width="300">  
+                <p>Lauren daigle</p>
+              </div>
+              <div class="col-sm-4">
+                    <img src="http://storage.googleapis.com/themevessel-products/auto-car/img/team/team-3.jpg"class="img-responsive"width="300"> 
+                    <p>Anicky yawe</p> 
+                  </div>
+    </div>
+    <br><br>
+    <h2 style="text-align:center">WE ARE THE BEST</h2>
+    <p style="text-align:center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Aenean ac tortor at tellus feugiat congue quis ut nunc..</p>
+        <br><br><br><br>
+        <div class="row">
+       
+                <div class="col-sm-3">
+                <img src="/static/images/tick.png"class="img-responsive"width="50"style="margin-bottom:20px;margin-left:30px;">  
+                    <h5>HIGHLY SECURED</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+                </div>
+                <div class="col-sm-3">
+                        <img src="/static/images/hand.png"class="img-responsive"width="50"style="margin-bottom:20px;margin-left:30px;">  
+                        <h5>TRUSTED AGENTS</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+                    </div>
+                    <div class="col-sm-3">
+                            <img src="/static/images/car.png"class="img-responsive"width="30"style="margin-bottom:20px;margin-left:30px;">  
+                            <h5>GET AN OFFER</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+                        </div>
+                        <div class="col-sm-3">
+                                <img src="/static/images/tick.png"class="img-responsive"width="50"style="margin-bottom:20px;margin-left:30px;">  
+                                <h5>24/7 CUSTOMER SUPPORT</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+                            </div>
+            </div>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-3">
+    <button class="btn btn-warning">READ MORE</button>
+</div>
+</div>
+</div>
+    
+</body>
+<style>
+    header{
+        background-image: url('https://cdn.pixabay.com/photo/2017/03/05/15/29/aston-2118857_960_720.jpg');
+        height:400px;
+        background-size: cover;
+        opacity:0.6
+        /* background-position:  */
+    }
+
+    header h1{
+        color:white;
+        font-size:54px;
+        text-transform: uppercase;
+        text-align: center;
+        padding-top:150px;
+    }
+    header p{
+        color:white;
+        text-align:center;
+        font-size:32px;
+        text-transform: capitalize;
+    }
+    h5{
+        color: darkgoldenrod;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

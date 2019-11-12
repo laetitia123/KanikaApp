@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+<div style="padding:10px;background-image: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX5449815.jpg);background-repeat: no-repeat;background-size: cover">
+
+  <div class="text-center w-50 rounded border border-primary bg-white mx-auto" style="margin-top: 50px">
+    <p class="border border-secondary bg-secondary text-white">Update Profile</p>
+    <form  action="{% url 'update_profile' %}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-secondary" value="Update">
+    </form>
+  </div>
+
+</div>
+
+
+
+{% endblock %}
