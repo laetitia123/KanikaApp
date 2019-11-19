@@ -3,6 +3,16 @@ from .forms import RegisterForm,ProfileForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect
 from .models import SpareParts,CarCategory,Cart,User,Profile
+from .forms import CartAddProductForm
+
+
+
+
+# def cart_detail(request):
+#     cart = Cart(request)
+#     for item in cart:
+#         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
+#     return render(request, 'cart/detail.html', {'cart': cart})
 
 
 # Create your views here.
@@ -74,23 +84,46 @@ def carDetails(request,carId):
 def cart(request):
     sparePart=Cart.objects.all()[0]
     context={
-        'sparePs':sparePart,
+        'spareParts':sparePart,
     }
     return render (request,'order.html',context)
 
 def addToCart(request,spareId):
     spareParts=Cart.objects.all()[0]
-    sparePart=SpareParts.objects.get(id=spareId)
-    if not spareParts in spareParts.sparePart.all():
-        spareParts.sparePart.add(sparePart)
+    spa=SpareParts.objects.get(id=spareId)
+    if not spa in spareParts.sparePart.all():
+        spareParts.sparePart.add(spa )
     else:
-        spareParts.sparePart.remove(sparePart)
+        spareParts.sparePart.remove(spa )
+    # return httpResponseRedirect(reverse("cart"))
     newTotal=0
     for spareP in spareParts.sparePart.all():
-        newTotal+=spareP.price
-        spareParts.total=newTotal
+        newTotal += spareP.price
+        spareParts.total = newTotal
         spareParts.save()
     return redirect('cart')
+
+# def addToCart(request,slug):
+#     spareParts=Cart.objects.all()[0]
+#     try:
+
+#        sparePart=SpareParts.objects.get(slug=slug)
+#     except SpareParts.DoesNotExist:
+#         pass
+#     except:
+#         pass
+#     if not spareParts in spareParts.spareParts.all():
+#       spareParts.spareParts.add(sparePart)
+#     else:
+#        cart.sparePart.remove(sparePart)
+#     # return httpResponseRedirect(reverse("cart"))
+#     newTotal=0.00
+#     for spareP in cart.sparePart.all():
+#         newTotal+=spareP.price
+#         spareParts.total=newTotal
+#         spareParts.save() 
+#     return redirect('cart')
+
 
 def delete(request, cartId):
     cart = Cart.objects.get(sparePart__id=cartId)

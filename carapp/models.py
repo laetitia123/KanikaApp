@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+ 
+ 
 # Create your models here.
 
 
@@ -54,6 +55,7 @@ class SpareParts(models.Model):
     ImagePart=models.ImageField(upload_to='spareparts/')
     Phone=models.IntegerField()
     carCat = models.ManyToManyField(CarCategory)
+   
     
 
     def __str__(self):
@@ -62,11 +64,11 @@ class SpareParts(models.Model):
 
 class Cart(models.Model):
     sparePart=models.ManyToManyField(SpareParts,null=True,blank=True)
-    total=models.IntegerField(default=0)
+    total=models.DecimalField(max_digits=100,decimal_places=2,default=0)
     active=models.BooleanField(default=True)
     
-    # def __str__(self):
-    #     return self.id
+    def __unicode__(self): 
+        return "cart id: %s"%(self.id)
 
 class Profile(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
