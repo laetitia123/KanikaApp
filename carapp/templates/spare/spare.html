@@ -1,3 +1,10 @@
+<!-- {%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block title %} Login Here {% endblock %} -->
+{% load crispy_forms_tags %}
+
+
+<!-- {% block content %} -->
 <!doctype html>
 <html lang="en">
 
@@ -19,11 +26,12 @@
         background-attachment: fixed;
         background-size: cover;
         height: 500px;
+        opacity:0.7;
 
     }
 
     #three {
-        background-image: url("https://www.frooition.com/blog/wp-content/uploads/2018/10/iStock-927781468.jpg");
+        /* background-image: url("https://www.frooition.com/blog/wp-content/uploads/2018/10/iStock-927781468.jpg"); */
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -734,7 +742,9 @@ titleAnimation { 0% {
 
                 <li style="float:right"><a href="{% url 'login' %}"
                         style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a></li>
-                   
+                 
+                  
+                 
                    
                 <li style="float:right"><a href="{% url 'register' %}"
                         style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">register</a>
@@ -1104,3 +1114,4 @@ titleAnimation { 0% {
 </body>
 
 </html>
+<!-- {% endblock %} -->

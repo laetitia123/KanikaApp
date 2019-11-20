@@ -3,8 +3,44 @@ from .forms import RegisterForm,ProfileForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect
 from .models import SpareParts,CarCategory,Cart,User,Profile
-from .forms import CartAddProductForm
+# from __future__ import unicode_literals
+from .forms import *
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,logout
+from django.shortcuts import render,redirect
+from .models import *
+from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import CarMerch
+from .serializer import MerchSerializer
+from rest_framework import status
+from .permissions import IsAdminOrReadOnly
 
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = CarMerch.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+        
+    def post(self, request, format=None):
+        serializers = MerchSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    permission_classes = (IsAdminOrReadOnly,)
+        
+# from .forms import CustomAuthenticationForm
+# from bootstrap_modal_forms.generic import BSModalLoginView
+# from django.urls import reverse_lazy
+
+# class CustomLoginView(BSModalLoginView):
+#     authentication_form = CustomAuthenticationForm
+#     template_name = 'examples/login.html'
+#     success_message = 'Success: You were successfully logged in.'
+#     extra_context = dict(success_url=reverse_lazy('index'))
 
 
 
@@ -49,7 +85,7 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect('spareparts:login')
+        return redirect('login')
     else:
         form = RegisterForm()
     return render(response, "registration/register.html", {"form":form})
@@ -60,7 +96,7 @@ def login_view(request):
         if form.is_valid():
             user=form.get_user()
             login(request,user)
-            return redirect('spareparts:welcome')
+            return redirect('homePage')
     else:
         form=AuthenticationForm()
     return render(request, 'registration/login.html',{"form":form})
@@ -68,7 +104,7 @@ def login_view(request):
 def logout_view(request):
     if request.method=="POST":
         logout(request)
-    return redirect('spareparts:login')
+    return redirect('login')
 
 
 

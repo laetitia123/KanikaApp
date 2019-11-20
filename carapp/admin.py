@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models import SpareParts,CarCategory,Cart
+from .models import SpareParts,CarCategory,Cart,CarMerch
 
 # Register your models here.
 
 admin.site.register(SpareParts)
 admin.site.register(CarCategory)
 admin.site.register(Cart)
+admin.site.register(CarMerch)
 # from django.contrib import admin
 
 # from .models import Item, OrderItem, Order, Payment, Coupon, Refund, Address, UserProfile

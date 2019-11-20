@@ -4,6 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
 <div>
     <!-- <div class="row"> -->
     <!-- Empty div -->
@@ -13,10 +14,10 @@
     <p> Password or Username is incorrect </p>
     {% endif %}
 
-    <div class="row" style="padding:20px;background-image: url(https://i.pinimg.com/originals/23/b6/e7/23b6e77579244e66a0082797732fcbfd.jpg);background-repeat: no-repeat;background-size: cover">
+     <div class="row" style="padding:20px;background-image: url(https://i.pinimg.com/originals/23/b6/e7/23b6e77579244e66a0082797732fcbfd.jpg);background-repeat: no-repeat;background-size: cover">
 
         <div class="col-md-4"></div>
-        <div class="col-md-4" style="background-color: rgba(0,0,0,0.7)">
+        <div class="col-md-4" style="background-color: rgba(0,0,0,0.7);width:300px;">
 
             <h3 class="text-center" style="font-family: serif;color: rgba(224, 224, 230, 0.9)">Log In</h3>
             <form method="POST" class="form-group" action="{% url 'login' %}" style="height:400px; color:white">
@@ -28,10 +29,7 @@
 
         </div>
 
-    </div>
-
-
-    <!-- empty div -->
+    </div> 
 </div>
 
 {% endblock %}
