@@ -820,9 +820,10 @@ titleAnimation { 0% {
                                     <li class="active"><a href="#category">Categories</a></li>
                                     <li><a href="#">HONDA</a></li>
                                     <li><a href="#">TOYOTA</a></li>
-                                    <li><a href="#">VOLOVO</a></li>
-                                    <li><a href="#">TOYOTA</a></li>
-                                    <li><a href="#">HONDA</a></li>
+                                    <li><a href="#">MAHINDRA</a></li>
+                                    <li><a href="#">VOLVO</a></li>
+                                    <li><a href="#">SUZUKI</a></li>
+                                    <li><a href="#">HYUNDAI</a></li>
                                 </ul>
                             </nav>
                         </aside>
@@ -892,13 +893,11 @@ titleAnimation { 0% {
         </div>
         <h2 style="color: black;">FEATURED CATEGORIES</h2>
         <div class="row" id="category">
-            {% for category in categories %}
-            <div class="col-md-4" style="margin-bottom: 20px;">
-                <a class="thumbnail" href="{% url 'carDetails' category.id%}">
-                    <img class="img-responsive" src="{{category.categoryImage.url}}" alt="" height="300px"
+            {% for sparePart in spareParts %}
+            <div class="col-md-4" style="margin-bottom: 20px">
+                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px"
                         width="300px">
-                </a>
-                <p>{{category.categoryName.carId}}</p>
+                <p>{{sparePart.categoryPart}}</p>
             </div>
             {% endfor%}
 

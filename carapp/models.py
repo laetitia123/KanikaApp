@@ -35,7 +35,7 @@ class SpareParts(models.Model):
         ('Hoods','Hoods'),
         ('Window','Window'),
         ('Door','Door'),
-        ('Tire','Tire'),
+        ('Tyres','Tyres'),
         ('Petrol tank','Petrol tank'),
         ('Roof','Roof'),
         ('Steering wheel','Steering wheel'),
@@ -53,6 +53,20 @@ class SpareParts(models.Model):
     locationPart=models.CharField(max_length=40,choices=locationChoose)
     ImagePart=models.ImageField(upload_to='spareparts/')
     Phone=models.IntegerField()
+    categoryName=(
+        ('Toyota','Toyota'),
+        ('Cross country','Cross country'),
+        ('Vox wagen','Vox wagen'),
+        ('Suzuki','Suzuki'),
+        ('Mahindra','Mahindra'),
+        ('Honda','Honda'),
+        ('Hyunda','Hyunda'),
+        ('Volvo','Volvo'),
+        ('Daihatsu','Daihatsu'),
+        
+    )
+    categoryPart=models.CharField(max_length=40,choices=categoryName)
+    categoryImage=models.ImageField(upload_to='category/')
     carCat = models.ManyToManyField(CarCategory)
     
 

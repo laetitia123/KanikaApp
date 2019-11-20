@@ -22,4 +22,4 @@ class ProfileForm(forms.ModelForm):
 class sparepartForm(forms.ModelForm):
     class Meta:
         model=SpareParts
-        fields=['namePart','price','locationPart','ImagePart','Phone']
+        fields=['namePart','price','locationPart','ImagePart','Phone','categoryPart','categoryImage']
