@@ -10,6 +10,7 @@ urlpatterns = [
  
     url(r'^about/$',views.aboutus,name='about'),
     url(r'^contact/$',views.contactus,name='contact'),
+    url(r'^upload/$',views.upload,name='upload'),
     url(r'^$',views.homePage,name='homePage'),
     url(r'register/',views.register,name = 'register'),
     url(r'login/',views.login_view,name='login'),
@@ -20,8 +21,13 @@ urlpatterns = [
     url(r'^addToCart/(\d+)/$', views.addToCart, name="addToCart"),
     url(r'profile/(\d+)', views.profile_view, name = 'profile'),
     url(r'update_profile/', views.update_profile, name = 'update_profile'),
+<<<<<<< HEAD
     url(r'^api/merch/$', views.MerchList.as_view()),
     # url(r'^api-token-auth/', obtain_auth_token),
+=======
+    url(r'category/(\d+)',views.filter_By_category, name='category'),
+    url(r'^category/$',views.all_category, name='all_category')
+>>>>>>> a4f5b2867abf55119040331a815fa99eefd38d36
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
-from .forms import RegisterForm,ProfileForm
+from .forms import RegisterForm,ProfileForm,sparepartForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect
+from django.contrib.auth import login,logout
 from .models import SpareParts,CarCategory,Cart,User,Profile
+<<<<<<< HEAD
 # from __future__ import unicode_literals
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm
@@ -49,6 +51,9 @@ class MerchList(APIView):
 #     for item in cart:
 #         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
 #     return render(request, 'cart/detail.html', {'cart': cart})
+=======
+from django.contrib.auth.decorators import login_required
+>>>>>>> a4f5b2867abf55119040331a815fa99eefd38d36
 
 
 # Create your views here.
@@ -200,3 +205,27 @@ def update_profile(request):
        else:
            form=ProfileForm()
    return render(request,'profile_form.html',{"form":form})
+
+@login_required(login_url='login/')
+def upload(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = sparepartForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.namePart = current_user
+            post.save()
+        return redirect('homePage')
+
+    else:
+        form = sparepartForm()
+    return render(request, 'upload.html', {"form": form})
+
+def filter_By_category(request,category_id):
+    category=CarCategory.objects.get(id=category_id)
+    spareparts = SpareParts.objects.filter(carCat=category)
+    return render (request,"spare/spare.html", {"spareparts":spareparts})
+
+def all_category(request):
+    category=CarCategory.objects.all()
+    return render (request,"homepage.html", {"categories":categorys})
