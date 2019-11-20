@@ -80,3 +80,9 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+        
+# creating models of API    
+class CarMerch(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    price = models.DecimalField(decimal_places=2, max_digits=20)

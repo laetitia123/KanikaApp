@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'bootstrap4'
+    'bootstrap4',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -81,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'parts',
-        'USER': 'wecode',
-        'PASSWORD':'cool',
+        'USER': 'media',
+        'PASSWORD':'media12',
     }
 }
 
