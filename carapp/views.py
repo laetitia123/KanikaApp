@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
-from .forms import RegisterForm,ProfileForm
+from .forms import RegisterForm,ProfileForm,sparepartForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect
+from django.contrib.auth import login,logout
 from .models import SpareParts,CarCategory,Cart,User,Profile
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -39,7 +41,7 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect('spareparts:login')
+        return redirect('login')
     else:
         form = RegisterForm()
     return render(response, "registration/register.html", {"form":form})
@@ -50,7 +52,7 @@ def login_view(request):
         if form.is_valid():
             user=form.get_user()
             login(request,user)
-            return redirect('spareparts:welcome')
+            return redirect('homePage')
     else:
         form=AuthenticationForm()
     return render(request, 'registration/login.html',{"form":form})
@@ -58,7 +60,7 @@ def login_view(request):
 def logout_view(request):
     if request.method=="POST":
         logout(request)
-    return redirect('spareparts:login')
+    return redirect('login')
 
 
 
@@ -131,3 +133,18 @@ def update_profile(request):
        else:
            form=ProfileForm()
    return render(request,'profile_form.html',{"form":form})
+
+@login_required(login_url='login/')
+def upload(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = sparepartForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.namePart = current_user
+            post.save()
+        return redirect('homePage')
+
+    else:
+        form = sparepartForm()
+    return render(request, 'upload.html', {"form": form})
