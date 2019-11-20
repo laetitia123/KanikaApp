@@ -3,7 +3,14 @@ from .forms import RegisterForm,ProfileForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect
 from .models import SpareParts,CarCategory,Cart,User,Profile
-
+from django.contrib.auth import login,logout
+from django.shortcuts import render,redirect
+from .models import *
+from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import  CarMerch
+from .serializer import MerchSerializer
 
 # Create your views here.
 
@@ -39,7 +46,7 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect('spareparts:login')
+        return redirect('login')
     else:
         form = RegisterForm()
     return render(response, "registration/register.html", {"form":form})
@@ -50,7 +57,7 @@ def login_view(request):
         if form.is_valid():
             user=form.get_user()
             login(request,user)
-            return redirect('spareparts:welcome')
+            return redirect('homePage')
     else:
         form=AuthenticationForm()
     return render(request, 'registration/login.html',{"form":form})
@@ -58,7 +65,7 @@ def login_view(request):
 def logout_view(request):
     if request.method=="POST":
         logout(request)
-    return redirect('spareparts:login')
+    return redirect('login')
 
 
 
@@ -131,3 +138,21 @@ def update_profile(request):
        else:
            form=ProfileForm()
    return render(request,'profile_form.html',{"form":form})
+
+#........API views function----------
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = CarMerch.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+    
+    
+    
+# --------------------------map function-----------
+def default_map(request):
+    # TODO: move this token to Django settings from an environment variable
+    # found in the Mapbox account settings and getting started instructions
+    # see https://www.mapbox.com/account/ under the "Access tokens" section
+    mapbox_access_token = 'pk.eyJ1IjoibWVkaWF0cmljZSIsImEiOiJjazMydzFnbW8wbWJjM25vMmIyaGVpb2dmIn0.iQ5LI4Rq3YM8xibnmAEuaw'
+    return render(request, 'default.html', 
+                  { 'mapbox_access_token': mapbox_access_token })
