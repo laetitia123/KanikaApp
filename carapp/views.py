@@ -148,3 +148,12 @@ def upload(request):
     else:
         form = sparepartForm()
     return render(request, 'upload.html', {"form": form})
+
+def filter_By_category(request,category_id):
+    category=CarCategory.objects.get(id=category_id)
+    spareparts = SpareParts.objects.filter(carCat=category)
+    return render (request,"spare/spare.html", {"spareparts":spareparts})
+
+def all_category(request):
+    category=CarCategory.objects.all()
+    return render (request,"homepage.html", {"categories":categorys})

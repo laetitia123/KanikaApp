@@ -818,12 +818,14 @@ titleAnimation { 0% {
                             <nav class="nav">
                                 <ul>
                                     <li class="active"><a href="#category">Categories</a></li>
-                                    <li><a href="#">HONDA</a></li>
-                                    <li><a href="#">TOYOTA</a></li>
+                                    {% for category in categories%}
+                                    <li><a href="{% url 'category' category.id%}">{{category.categoryPart}}</a></li>
+                                    {% endfor%}
+                                    <!-- <li><a href="#">TOYOTA</a></li>
                                     <li><a href="#">MAHINDRA</a></li>
                                     <li><a href="#">VOLVO</a></li>
-                                    <li><a href="#">SUZUKI</a></li>
-                                    <li><a href="#">HYUNDAI</a></li>
+                                    <li><a href="">SUZUKI</a></li>
+                                    <li><a href="#">HYUNDAI</a></li> -->
                                 </ul>
                             </nav>
                         </aside>
@@ -833,7 +835,7 @@ titleAnimation { 0% {
                 <div class="col-sm-9">
                     <h2>FEATURED SPARE PARTS</h2>
                     <div class="row">
-                        {% for sparePart in spareParts %}
+                        {% for sparePart in spareparts %}
                         <div class="col-sm-4">
                             <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
                             <br><br>

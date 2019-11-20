@@ -24,7 +24,10 @@ class CarCategory(models.Model):
         return self.categoryPart
 
 
-
+    # @classmethod
+    # def filter_By_category(cls, id):
+    #     locate = CarCategory.objects.get(pk = id)
+    #     return locate
 
 class SpareParts(models.Model):
     nameChoose=(('Head lights','Head lights'),
@@ -65,6 +68,7 @@ class SpareParts(models.Model):
         ('Daihatsu','Daihatsu'),
         
     )
+    
     categoryPart=models.CharField(max_length=40,choices=categoryName)
     categoryImage=models.ImageField(upload_to='category/')
     carCat = models.ManyToManyField(CarCategory)
