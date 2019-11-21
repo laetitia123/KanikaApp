@@ -141,7 +141,7 @@ def upload(request):
         form = sparepartForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.namePart = current_user
+            post.nameChoose = current_user
             post.save()
         return redirect('homePage')
 
@@ -157,3 +157,7 @@ def filter_By_category(request,category_id):
 def all_category(request):
     category=CarCategory.objects.all()
     return render (request,"homepage.html", {"categories":categorys})
+
+def shareholder(request):
+    spareParts=SpareParts.objects.all()
+    return render(request,'spare/shareholder.html',{'spareParts':spareParts})
