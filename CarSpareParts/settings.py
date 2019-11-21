@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'CarSpareParts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'parts',
-        'USER': 'media',
-        'PASSWORD':'media12',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'parts',
+#         'USER': 'media',
+#         'PASSWORD':'media12',
+#     }
+# }
 
 
 # Password validation
