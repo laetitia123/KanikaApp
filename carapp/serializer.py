@@ -8,7 +8,7 @@ class MerchSerializer(serializers.ModelSerializer):
 class SpareSerializer(serializers.ModelSerializer):
     class Meta:
         model = SpareParts
-        fields = (' nameChoose', 'namePart', 'price','locationChoose',' ImagePar',' Phone','carCat')
+        fields = ('namePart', 'price','ImagePart','Phone','categoryPart','categoryImage','locationPart')
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

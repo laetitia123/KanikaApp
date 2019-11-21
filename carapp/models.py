@@ -47,7 +47,7 @@ class SpareParts(models.Model):
                   ('Engine', 'Engine'),
 
                   )
-    namePart = models.CharField(max_length=40, choices=nameChoose)
+    namePart= models.CharField(max_length=40, choices=nameChoose)
     price = models.IntegerField()
     locationChoose = (
         ('Gatsata', 'Gatsata'),
@@ -82,7 +82,7 @@ class SpareParts(models.Model):
 class Cart(models.Model):
     sparePart = models.ManyToManyField(SpareParts, null=True, blank=True)
     total = models.DecimalField(max_digits=100, decimal_places=2, default=0)
-    active = models.BooleanField(default=True)
+    actives = models.BooleanField(default=True)
 
     def __unicode__(self):
         return "cart id: %s" % (self.id)

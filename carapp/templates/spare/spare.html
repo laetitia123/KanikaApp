@@ -26,12 +26,22 @@
         background-attachment: fixed;
         background-size: cover;
         height: 500px;
-        opacity:0.7;
+        font-family: 'McLaren', cursive;
+   
 
+    }
+    #back{
+        margin-top:60px;
+        background-color:black;
+        opacity:0.7;
+        margin-left:200px;
+        width:1000px;
+        height:300px;
+        color:white;
     }
 
     #three {
-        /* background-image: url("https://www.frooition.com/blog/wp-content/uploads/2018/10/iStock-927781468.jpg"); */
+        background-image: url("https://i.pinimg.com/originals/23/b6/e7/23b6e77579244e66a0082797732fcbfd.jpg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -42,19 +52,24 @@
     h2 {
         text-align: center;
         color: black;
-        padding-top: 90px;
+        padding-top: 40px;
     }
 
     #par {
+        margin-top:20px;
         text-align: center;
-        color: rgba(242, 246, 246, 0.75);
+        color: white;
         font-family: 'McLaren', cursive;
+        line-height: 0,5em;
+        word-spacing:2px;
 
     }
 
     #para {
         text-align: center;
-        color: black;
+        /* color: black; */
+        line-height: 0,5Sem;
+        word-spacing: 2px;
 
 
     }
@@ -318,6 +333,7 @@
 
 
     .slideshow {
+        
         list-style: none;
         z-index: 1;
     }
@@ -421,59 +437,6 @@
             opacity: 0;
         }
     }
-
-    /* @-webkit-keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-}
-}
-
-@-moz-keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-}
-}
-
-@keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-} */
 
 
     .slideshow p:nth-child(1) span {
@@ -863,27 +826,7 @@ titleAnimation { 0% {
 
 
                     </div>
-                    <!-- <div class="row">
-                    <div class="col-sm-4">
-                        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_product_img10.jpg" class="img-thumbnail" style="width:300px;">
-                        <br><br>
-                        <p>R FILTER REPLACEMENT FILTER AUDI A6 (4F) FR</p>
-                        <button class="btn btn-secondary">$123</button><button class="btn btn-outline-warning"><i class="fa fa-shopping-cart "></i>Add to Cart</button>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_product_img19.jpg" class="img-thumbnail"style="width:300px;">
-                        <br><br>
-                        <p>R FILTER REPLACEMENT FILTER AUDI A6 (4F) FR</p>
-                        <button class="btn btn-secondary">$123</button><button class="btn btn-outline-warning"><i class="fa fa-shopping-cart "></i>Add to Cart</button>>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_product_img09.jpg" class="img-thumbnail" style="width:300px;">
-                        <br><br>
-                        <p>R FILTER REPLACEMENT FILTER AUDI A6 (4F) FR</p>
-                        <button class="btn btn-secondary">$123</button><button class="btn btn-outline-warning"><i class="fa fa-shopping-cart "></i>Add to Cart</button>
-                    </div>
                     
-                  </div> -->
                 </div>
 
 
@@ -898,12 +841,14 @@ titleAnimation { 0% {
         </h1>
         <div class="row">
             <div class="col-md-12" id="one">
-                <h2>BEST PLACE TO FIND CAR's MATERIALS</h2>
-                <p id="par"><b>Spare parts are parts that you can buy separately to replace old or broken parts in a
+                <div id="back">
+                <h2 style="color:white;margin-top:-100ppx;">BEST PLACE TO FIND CAR'S MATERIALS</h2>
+                <p id="par">Spare parts are parts that you can buy separately to replace old or broken parts in a
                         piece of equipment.<br>They are usually parts that are designed to be easily removed or
-                        fitted.<br> In the future the machines will need spare parts and maintenance.</b></p>
-                <button type="button" class="btn btn-success" id="two">Read more</button>
+                        fitted.<br> In the future the machines will need spare parts and maintenance.</p>
+                <!-- <button type="button" class="btn btn-success" id="two">Read more</button> -->
             </div>
+        </div>
 
         </div>
         <h2 style="color: black;">FEATURED CATEGORIES</h2>
@@ -917,29 +862,7 @@ titleAnimation { 0% {
             {% endfor%}
 
         </div><br><br>
-        <!-- <div class="row">
-
-            <div class="col-md-4">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive"
-                        src="https://www.bentleymotors.com/content/dam/bentley/Master/homepage%20carousel/New%20Flying%20Spur%20emotive%20studio%201920x1080%20v2.jpg/_jcr_content/renditions/New%20Flying%20Spur%20emotive%20studio%20test%20image%201024x576.jpg.image_file.700.394.file/New%20Flying%20Spur%20emotive%20studio%20test%20image%201024x576.jpg"
-                        alt="" height="200">
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive"
-                        src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        alt="" height="200">
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive"
-                        src="https://www.ucsusa.org/sites/default/files/styles/large/public/images/vehicles-cars-how-autonomous-vehicles-work.jpg?itok=ymwukzNV"
-                        alt="" height="200">
-                </a>
-            </div> -->
+        
     </div>
     &nbsp;&nbsp;
     <div class="row">
@@ -970,44 +893,8 @@ titleAnimation { 0% {
                         <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
             </div>
             {% endfor%}
-        <!-- <div class="col-md-4">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="http://rusautonews.com/wp-content/uploads/2018/04/spare-parts-for-cars-800x500_c.jpg" alt=""
-                    height="250">
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="https://image.shutterstock.com/image-photo/range-spare-parts-cars-isolated-600w-214605874.jpg"
-                    alt="" height="250">
-            </a>
-        </div> -->
-    </div><br>
-    <!-- <div class="row">
 
-        <div class="col-md-4">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="https://www.carparts4less.co.uk/catalogimages/categories/102x136/75_cp2_06.png?v=1" alt=""
-                    height="350">
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="https://thumbs.dreamstime.com/z/lots-auto-spare-parts-21737549.jpg"
-                    alt="" height="300">
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="https://i5.walmartimages.com/asr/3915403a-aa56-4666-8793-da64510b17d0_1.14823445d7e85eaed8d56feb6ac63347.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
-                    alt="" height="350">
-            </a>
-        </div>
-    </div> -->
+    </div><br>
     &nbsp;&nbsp;&nbsp;
     <!-- footer -->
 
@@ -1021,6 +908,7 @@ titleAnimation { 0% {
                             <h5 class="widget-title">COMPANY NAME<span></span></h5>
                             <p>About the company, little discription will goes here.. </p>
                         </div>
+                        <a class="nav-link" href="http://127.0.0.1:8000/default"><img src="https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png" height="50" alt="map icon"> Google Map</a>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-3">

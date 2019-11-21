@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import CarMerch
-from .serializer import MerchSerializer
+from .serializer import *
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
 
@@ -35,11 +35,11 @@ class MerchList(APIView):
 class SpareList(APIView):
     def get(self, request, format=None):
         all_spares =SpareParts.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
+        serializers =SpareSerializer(all_spares, many=True)
         return Response(serializers.data)
         
     def post(self, request, format=None):
-        serializers = MerchSerializer(data=request.data)
+        serializers = SpareSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
@@ -239,3 +239,20 @@ def filter_By_category(request,category_id):
 def all_category(request):
     category=CarCategory.objects.all()
     return render (request,"homepage.html", {"categories":categorys})
+# #........API views function----------
+# class MerchList(APIView):
+#     def get(self, request, format=None):
+#         all_merch = CarMerch.objects.all()
+#         serializers = MerchSerializer(all_merch, many=True)
+#         return Response(serializers.data)
+    
+    
+    
+# --------------------------map function-----------
+def default_map(request):
+    # TODO: move this token to Django settings from an environment variable
+    # found in the Mapbox account settings and getting started instructions
+    # see https://www.mapbox.com/account/ under the "Access tokens" section
+    mapbox_access_token = 'pk.eyJ1IjoibWVkaWF0cmljZSIsImEiOiJjazMydzFnbW8wbWJjM25vMmIyaGVpb2dmIn0.iQ5LI4Rq3YM8xibnmAEuaw'
+    return render(request, 'default.html', 
+                  { 'mapbox_access_token': mapbox_access_token })
