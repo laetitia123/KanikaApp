@@ -39,7 +39,7 @@ class SpareParts(models.Model):
         ('Petrol tank','Petrol tank'),
         ('Roof','Roof'),
         ('Steering wheel','Steering wheel'),
-        ('Engine','Engine'),
+        ('radiator','radiator'),
         
     )
     namePart=models.CharField(max_length=40,choices=nameChoose)
@@ -80,3 +80,28 @@ class Profile(models.Model):
 
     def save_profile(self):
         self.save()
+
+    @classmethod
+    def get_profile(cls):
+        profile = Profile.objects.all()
+        return profile
+
+class partner(models.Model):
+
+    image =models.ImageField(upload_to='uploads/',blank=True,null=True)
+    sparePart=models.ManyToManyField(SpareParts,null=True,blank=True)
+
+    @classmethod
+    def get_images(cls):
+        image=partner.objects.all()
+        return image
+
+    @classmethod
+    def get_image_by_id(cls,id):
+        image=partner.objects.filter(id=partner.id)
+        return image
+
+
+# class User(models.Model):
+#     pic=ImageField(upload_to="profiless")
+    
