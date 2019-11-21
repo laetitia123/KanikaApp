@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
-from .forms import RegisterForm,ProfileForm
+# from .forms import RegisterForm,ProfileForm,ShareholderForm
+from .forms import RegisterForm,ProfileForm,sparepartForm
 from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth import login,logout
 from django.shortcuts import render,redirect
+from django.contrib.auth import login,logout
 from .models import SpareParts,CarCategory,Cart,User,Profile
 from django.contrib.auth import login,logout
 from django.shortcuts import render,redirect
@@ -12,7 +15,6 @@ from rest_framework.views import APIView
 from .models import  CarMerch
 from .serializer import MerchSerializer
 
-# Create your views here.
 
 def aboutus(request):
     # categories=CarCategory.objects.all()
@@ -140,11 +142,11 @@ def update_profile(request):
    return render(request,'profile_form.html',{"form":form})
 
 #........API views function----------
-class MerchList(APIView):
-    def get(self, request, format=None):
-        all_merch = CarMerch.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
-        return Response(serializers.data)
+# class MerchList(APIView):
+#     def get(self, request, format=None):
+#         all_merch = CarMerch.objects.all()
+#         serializers = MerchSerializer(all_merch, many=True)
+#         return Response(serializers.data)
     
     
     
@@ -156,3 +158,41 @@ def default_map(request):
     mapbox_access_token = 'pk.eyJ1IjoibWVkaWF0cmljZSIsImEiOiJjazMydzFnbW8wbWJjM25vMmIyaGVpb2dmIn0.iQ5LI4Rq3YM8xibnmAEuaw'
     return render(request, 'default.html', 
                   { 'mapbox_access_token': mapbox_access_token })
+@login_required(login_url='login/')
+def upload(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = sparepartForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.namePart = current_user
+            post.save()
+        return redirect('homePage')
+
+    else:
+        form = sparepartForm()
+    return render(request, 'upload.html', {"form": form})
+
+def filter_By_category(request,category_id):
+    category=CarCategory.objects.filter(id=category_id)
+    spareparts = SpareParts.objects.filter(carCat=category)
+    return render (request,"spare/spare.html", {"spareparts":spareparts})
+
+def all_category(request):
+    category=CarCategory.objects.all()
+    return render (request,"homepage.html", {"categories":categorys})
+
+
+
+def search_results(request):
+    if 'categoryName' in request.GET and request.GET['categoryName']:
+        search_term = request.GET.get("categoryName")
+        searched_category = SpareParts.search_by_categoryname(search_term).all()
+        
+        message = f'{search_term}'
+        
+        return render(request,'search.html',{"message":message,"category":searched_category})
+    
+    else:
+        message = "You haven't searched for any term"
+        return render(request,'search.html',{"message":message,"category":searched_category})

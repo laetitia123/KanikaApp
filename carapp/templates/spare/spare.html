@@ -681,8 +681,8 @@
 
                 <li style="float:right"><a href="{% url 'login' %}"
                         style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a></li>
-                   
-                   
+
+
                 <li style="float:right"><a href="{% url 'register' %}"
                         style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">register</a>
                 </li>
@@ -709,6 +709,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">HOME</a>
                     </li>
+
                     <li class="nav-item">
                         <div class="container">
                             <div class="dropdown">
@@ -724,16 +725,25 @@
                                     <a class="dropdown-item" href="#">sign out</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'upload' %}">UPLOAD</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
                     </li>
                     <li class="nav-item">
                         <!-- Search -->
                         <div class="wrap">
-                            <input type="text" placeholder="Search...">
+                            <form class="form-inline md-form form-md active-pink active-pink-2 mt-2"
+                                action="{% url 'search_results' %}">
+                                <input class="form-control form-control-md ml-3 w-75" type="text"
+                                    placeholder="Search..." name="categoryName">
+                            </form>
                             <div class="search"></div>
                         </div>
 
                     </li>
+
+
                 </ul>
 
 
@@ -743,10 +753,19 @@
         <div class="container_fluid">
 
             <div class="slideshow">
-                <strong>  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white;font-family: Georgia, 'Times New Roman', Times, serif">your inqery we do</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white">BEST PLACE TO FIND CAR's MATERIALS</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">The human body is the only machine <br>without spare parts.</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white"> BEST PLACE TO FIND CAR's MATERIALS</span> </p>
+                <strong>
+                    <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white;font-family: Georgia, 'Times New Roman', Times, serif">your
+                            inqery we do</span> </p>
+                    <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white">BEST
+                            PLACE TO FIND CAR's MATERIALS</span> </p>
+                    <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">The
+                            human body is the only machine <br>without spare parts.</span> </p>
+                    <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">
+                            BEST PLACE TO FIND CAR's MATERIALS</span> </p>
                 </strong>
             </div>
         </div>
@@ -762,11 +781,14 @@
                             <nav class="nav">
                                 <ul>
                                     <li class="active"><a href="#category">Categories</a></li>
-                                    <li><a href="#">HONDA</a></li>
+                                    {% for category in categories%}
+                                    <li><a href="{% url 'category' category.id%}">{{category.categoryPart}}</a></li>
+                                    {% endfor%}
                                     <li><a href="#">TOYOTA</a></li>
-                                    <li><a href="#">VOLOVO</a></li>
-                                    <li><a href="#">TOYOTA</a></li>
-                                    <li><a href="#">HONDA</a></li>
+                                    <li><a href="#">MAHINDRA</a></li>
+                                    <li><a href="#">VOLVO</a></li>
+                                    <li><a href="">SUZUKI</a></li>
+                                    <li><a href="#">HYUNDAI</a></li>
                                 </ul>
                             </nav>
                         </aside>
@@ -776,7 +798,7 @@
                 <div class="col-sm-9">
                     <h2>FEATURED SPARE PARTS</h2>
                     <div class="row">
-                        {% for sparePart in spareParts %}
+                        {% for sparePart in spareparts %}
                         <div class="col-sm-4">
                             <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
                             <br><br>
@@ -791,7 +813,7 @@
 
 
                     </div>
-                    
+
                 </div>
 
 
@@ -816,18 +838,15 @@
         </div>
         <h2 style="color: black;">FEATURED CATEGORIES</h2>
         <div class="row" id="category">
-            {% for category in categories %}
-            <div class="col-md-4" style="margin-bottom: 20px;">
-                <a class="thumbnail" href="{% url 'carDetails' category.id%}">
-                    <img class="img-responsive" src="{{category.categoryImage.url}}" alt="" height="300px"
-                        width="300px">
-                </a>
-                <p>{{category.categoryName.carId}}</p>
+            {% for sparePart in spareParts %}
+            <div class="col-md-4" style="margin-bottom: 20px">
+                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px" width="300px">
+                <p>{{sparePart.categoryPart}}</p>
             </div>
             {% endfor%}
 
         </div><br><br>
-        
+
     </div>
     &nbsp;&nbsp;
     <div class="row">
@@ -845,19 +864,19 @@
     <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2>
     <div class="row">
 
-        
-            {% for carCat in carCats %}
-            <div class="col-sm-4">
-                <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
-                <br><br>
-                <p>{{carCat.namePart}}</p>
-                <p>Location:{{carCat.locationPart}}</p>
-                <p>Contact us:{{carCat.Phone}}</p>
-                <button class="btn btn-secondary">${{carCat.price}}</button>
-                <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
-                        <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
-            </div>
-            {% endfor%}
+
+        {% for carCat in carCats %}
+        <div class="col-sm-4">
+            <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <br><br>
+            <p>{{carCat.namePart}}</p>
+            <p>Location:{{carCat.locationPart}}</p>
+            <p>Contact us:{{carCat.Phone}}</p>
+            <button class="btn btn-secondary">${{carCat.price}}</button>
+            <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
+                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+        </div>
+        {% endfor%}
 
     </div><br>
     &nbsp;&nbsp;&nbsp;
