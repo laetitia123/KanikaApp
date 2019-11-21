@@ -778,18 +778,32 @@ titleAnimation { 0% {
                                     <a class="dropdown-item" href="#">sign out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'index' %}">Upload</a>
+                        <a class="nav-link" href="{% url 'upload' %}">UPLOAD</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item"> -->
                         <!-- Search -->
-                        <div class="wrap">
-                            <input type="text" placeholder="Search...">
-                            <div class="search"></div>
-                        </div>
+                        <!-- <div class="wrap">
+                                <form   class="navbar-form" role="search" action="{% url 'search_results' %}">
+                                    <div class="input-group">  
+                            <input type="text" placeholder="Search..."name="ImagePart">
+                            
+                            <div class="search">
+                                </div>
 
+                            </div>
+                            </form>
+                    </div> -->
+
+                    <!-- </li> -->
+                    <li class="nav-search">
+                            <form class="form-inline md-form form-md active-pink active-pink-2 mt-2" action="{% url 'search_results' %}">
+                              <i class="fas fa-search" aria-hidden="true"></i>
+                              <input class="form-control form-control-md ml-3 w-75" type="text" style="color: black;font-weight:bold" placeholder="Search" aria-label="Search"
+                                name="categoryName">
+                            </form>
                     </li>
                 </ul>
 
@@ -819,11 +833,14 @@ titleAnimation { 0% {
                             <nav class="nav">
                                 <ul>
                                     <li class="active"><a href="#category">Categories</a></li>
-                                    <li><a href="#">HONDA</a></li>
-                                    <li><a href="#">TOYOTA</a></li>
-                                    <li><a href="#">VOLOVO</a></li>
-                                    <li><a href="#">TOYOTA</a></li>
-                                    <li><a href="#">HONDA</a></li>
+                                    {% for category in categories%}
+                                    <li><a href="{% url 'category' category.id%}">{{category.categoryPart}}</a></li>
+                                    {% endfor%}
+                                    <!-- <li><a href="#">TOYOTA</a></li>
+                                    <li><a href="#">MAHINDRA</a></li>
+                                    <li><a href="#">VOLVO</a></li>
+                                    <li><a href="">SUZUKI</a></li>
+                                    <li><a href="#">HYUNDAI</a></li> -->
                                 </ul>
                             </nav>
                         </aside>
@@ -833,7 +850,7 @@ titleAnimation { 0% {
                 <div class="col-sm-9">
                     <h2>FEATURED SPARE PARTS</h2>
                     <div class="row">
-                        {% for sparePart in spareParts %}
+                        {% for sparePart in spareparts %}
                         <div class="col-sm-4">
                             <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
                             <br><br>
@@ -893,13 +910,11 @@ titleAnimation { 0% {
         </div>
         <h2 style="color: black;">FEATURED CATEGORIES</h2>
         <div class="row" id="category">
-            {% for category in categories %}
-            <div class="col-md-4" style="margin-bottom: 20px;">
-                <a class="thumbnail" href="{% url 'carDetails' category.id%}">
-                    <img class="img-responsive" src="{{category.categoryImage.url}}" alt="" height="300px"
+            {% for sparePart in spareParts %}
+            <div class="col-md-4" style="margin-bottom: 20px">
+                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px"
                         width="300px">
-                </a>
-                <p>{{category.categoryName.carId}}</p>
+                <p>{{sparePart.categoryPart}}</p>
             </div>
             {% endfor%}
 

@@ -24,7 +24,10 @@ class CarCategory(models.Model):
         return self.categoryPart
 
 
-
+    # @classmethod
+    # def filter_By_category(cls, id):
+    #     locate = CarCategory.objects.get(pk = id)
+    #     return locate
 
 class SpareParts(models.Model):
     nameChoose=(('Head lights','Head lights'),
@@ -35,7 +38,7 @@ class SpareParts(models.Model):
         ('Hoods','Hoods'),
         ('Window','Window'),
         ('Door','Door'),
-        ('Tire','Tire'),
+        ('Tyres','Tyres'),
         ('Petrol tank','Petrol tank'),
         ('Roof','Roof'),
         ('Steering wheel','Steering wheel'),
@@ -53,12 +56,31 @@ class SpareParts(models.Model):
     locationPart=models.CharField(max_length=40,choices=locationChoose)
     ImagePart=models.ImageField(upload_to='spareparts/')
     Phone=models.IntegerField()
+    categoryName=(
+        ('Toyota','Toyota'),
+        ('Cross country','Cross country'),
+        ('Vox wagen','Vox wagen'),
+        ('Suzuki','Suzuki'),
+        ('Mahindra','Mahindra'),
+        ('Honda','Honda'),
+        ('Hyunda','Hyunda'),
+        ('Volvo','Volvo'),
+        ('Daihatsu','Daihatsu'),
+        
+    )
+    
+    categoryPart=models.CharField(max_length=40,choices=categoryName)
+    categoryImage=models.ImageField(upload_to='category/')
     carCat = models.ManyToManyField(CarCategory)
     
 
     def __str__(self):
         return self.namePart
 
+    @classmethod
+    def search_by_categoryname(cls,search_term):
+        name = cls.objects.filter(categoryPart__icontains = search_term)
+        return name
 
 class Cart(models.Model):
     sparePart=models.ManyToManyField(SpareParts,null=True,blank=True)

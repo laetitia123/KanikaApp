@@ -1,20 +1,12 @@
 from __future__ import unicode_literals
-from .forms import RegisterForm,ProfileForm,ShareholderForm
+# from .forms import RegisterForm,ProfileForm,ShareholderForm
+from .forms import RegisterForm,ProfileForm,sparepartForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login,logout
+# from django.contrib.auth import login,logout
 from django.shortcuts import render,redirect
-from .models import SpareParts,CarCategory,Cart,User,Profile,partner
+from django.contrib.auth import login,logout
+from .models import SpareParts,CarCategory,Cart,User,Profile
 from django.contrib.auth.decorators import login_required
-
-from django.http import HttpResponse,Http404
-
-
-def index(request):
-     return render(request,'new.html')
-def upload(request):
-    print("Request Handling......")
-    return render(request,'new.html')
-
 
 
 
@@ -143,5 +135,41 @@ def update_profile(request):
            form=ProfileForm()
    return render(request,'profile_form.html',{"form":form})
 
+@login_required(login_url='login/')
+def upload(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = sparepartForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.namePart = current_user
+            post.save()
+        return redirect('homePage')
+
+    else:
+        form = sparepartForm()
+    return render(request, 'upload.html', {"form": form})
+
+def filter_By_category(request,category_id):
+    category=CarCategory.objects.get(id=category_id)
+    spareparts = SpareParts.objects.filter(carCat=category)
+    return render (request,"spare/spare.html", {"spareparts":spareparts})
+
+def all_category(request):
+    category=CarCategory.objects.all()
+    return render (request,"homepage.html", {"categories":categorys})
 
 
+
+def search_results(request):
+    if 'categoryName' in request.GET and request.GET['categoryName']:
+        search_term = request.GET.get("categoryName")
+        searched_category = SpareParts.search_by_categoryname(search_term).all()
+        
+        message = f'{search_term}'
+        
+        return render(request,'search.html',{"message":message,"category":searched_category})
+    
+    else:
+        message = "You haven't searched for any term"
+        return render(request,'search.html',{"message":message,"category":searched_category})
