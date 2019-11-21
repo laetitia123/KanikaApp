@@ -223,7 +223,7 @@ def upload(request):
         form = sparepartForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.namePart = current_user
+            post.nameChoose = current_user
             post.save()
         return redirect('homePage')
 
@@ -256,3 +256,7 @@ def default_map(request):
     mapbox_access_token = 'pk.eyJ1IjoibWVkaWF0cmljZSIsImEiOiJjazMydzFnbW8wbWJjM25vMmIyaGVpb2dmIn0.iQ5LI4Rq3YM8xibnmAEuaw'
     return render(request, 'default.html', 
                   { 'mapbox_access_token': mapbox_access_token })
+
+def shareholder(request):
+    spareParts=SpareParts.objects.all()
+    return render(request,'spare/shareholder.html',{'spareParts':spareParts})
