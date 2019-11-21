@@ -4,7 +4,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,logout
 from .models import SpareParts,CarCategory,Cart,User,Profile
-<<<<<<< HEAD
 # from __future__ import unicode_literals
 from .forms import *
 from django.contrib.auth.forms import AuthenticationForm
@@ -32,7 +31,20 @@ class MerchList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-    permission_classes = (IsAdminOrReadOnly,)
+    # permission_classes = (IsAdminOrReadOnly,)
+class SpareList(APIView):
+    def get(self, request, format=None):
+        all_spares =SpareParts.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+        
+    def post(self, request, format=None):
+        serializers = MerchSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # permission_classes = (IsAdminOrReadOnly,)
         
 # from .forms import CustomAuthenticationForm
 # from bootstrap_modal_forms.generic import BSModalLoginView
@@ -51,9 +63,7 @@ class MerchList(APIView):
 #     for item in cart:
 #         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
 #     return render(request, 'cart/detail.html', {'cart': cart})
-=======
 from django.contrib.auth.decorators import login_required
->>>>>>> a4f5b2867abf55119040331a815fa99eefd38d36
 
 
 # Create your views here.

@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 from .models import Profile
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
@@ -12,9 +11,7 @@ PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 26)]
 class CartAddProductForm(forms.Form):
     quantity = forms.TypedChoiceField(choices=PRODUCT_QUANTITY_CHOICES, coerce=int)
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
-=======
 from .models import Profile,SpareParts
->>>>>>> a4f5b2867abf55119040331a815fa99eefd38d36
 
 class RegisterForm(UserCreationForm):
     # email=forms.EmailField()
@@ -36,10 +33,7 @@ class ProfileForm(forms.ModelForm):
        model=Profile
        exclude=['likes']
 
-<<<<<<< HEAD
-=======
 class sparepartForm(forms.ModelForm):
     class Meta:
         model=SpareParts
         fields=['namePart','price','locationPart','ImagePart','Phone','categoryPart','categoryImage']
->>>>>>> a4f5b2867abf55119040331a815fa99eefd38d36

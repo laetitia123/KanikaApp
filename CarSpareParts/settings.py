@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 }
 
@@ -90,8 +91,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'parts',
-        'USER': 'niemerance',
-        'PASSWORD':'12345',
+        'USER': 'wecode',
+        'PASSWORD':'cool',
     }
 }
 
