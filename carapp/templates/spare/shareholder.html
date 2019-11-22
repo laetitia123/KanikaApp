@@ -3,8 +3,9 @@
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -28,7 +29,7 @@
     }
 
     #three {
-        background-image: url("https://www.frooition.com/blog/wp-content/uploads/2018/10/iStock-927781468.jpg");
+        background-image: url("/static/images/images2.jpeg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -510,7 +511,7 @@ titleAnimation { 0% {
 
     .wrap {
         position: absolute;
-        margin-left: 900px;
+        padding-left: 900px;
         top: 0;
         left: 0;
 
@@ -720,7 +721,7 @@ titleAnimation { 0% {
 
         background-image: linear-gradient(to right, #5e42a6, #b74e91);
     }
-
+/* style for shareholder */
 
 
     .table>tbody>tr>td,
@@ -785,7 +786,7 @@ titleAnimation { 0% {
 </style>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluide">
         <div class="contact">
             <ul>
                 <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
@@ -815,59 +816,67 @@ titleAnimation { 0% {
 
 
         <nav class="navbar navbar-expand-sm navbar-light bg-faded" style="color:#706F6F;text-transform:uppercase">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content"
-                aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Brand -->
-            <a class="navbar-brand" href="#" style="color:#706F6F;font-size:45px;">
-                <img
-                    src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png"><b><span
-                        style="color:orangered">kan</span>ika</b>
-            </a>
-
-            <!-- Links -->
-            <div class="collapse navbar-collapse" id="nav-content" style="margin-left:350px;">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="container">
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    style="color:#706F6F">
-                                    PAGES
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
-                                    <a class="dropdown-item" href="#">Log in</a>
-                                    <a class="dropdown-item" href="#">sign up</a>
-                                    <a class="dropdown-item" href="#">sign out</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Search -->
-                        <div class="wrap">
-                            <input type="text" placeholder="Search...">
-                            <div class="search"></div>
-                        </div>
-
-                    </li>
-                    
-                </ul>
-
-
-
-        </nav>
-
-
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content"
+                    aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <!-- Brand -->
+                <a class="navbar-brand" href="#" style="color:#706F6F;font-size:45px;">
+                    <img
+                        src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png"><b><span
+                            style="color:orangered">kan</span>ika</b>
+                </a>
+    
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="nav-content" style="margin-left:300px;">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" href="{% url 'homePage' %}">HOME</a> -->
+                            <p><a href="{% url 'homePage' %}" style="color:#706F6F;text-decoration:none;">BACK > HOME </a></p>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <div class="container">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        style="color:#706F6F">
+                                        PAGES
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                                        <a class="dropdown-item" href="#">Log in</a>
+                                        <a class="dropdown-item" href="#">sign up</a>
+                                        <a class="dropdown-item" href="#">sign out</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shareholder' %}"style="margin-left:-900px;">DASHBOARD</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}"style="margin-left:-800px;">CONTACT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Search -->
+                            <div class="wrap">
+                                <input type="text" placeholder="Search...">
+                                <div class="search"></div>
+                            </div>
+    
+                        </li>
+                    </ul>
+    
+                
+    
+            </nav>
     </div>
+<hr>
+
+   
     <div class="container">
     
-        <h2>List of Spareparts</h2>
-        <table id="cart" class="table table-hover table-condensed">
+        <h2>LIST OF SPARE PARTS</h2>
+        <table id="cart" class="table table-hover table-condensed" style="margin-top:50px;">
             <thead>
                 <tr>
                     <th style="width:20%">Sparepart</th>
@@ -1012,7 +1021,7 @@ titleAnimation { 0% {
         </div>
     </footer>
 
-    </div>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

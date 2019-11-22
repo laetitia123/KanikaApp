@@ -14,12 +14,9 @@ class CartAddProductForm(forms.Form):
 from .models import Profile,SpareParts
 
 class RegisterForm(UserCreationForm):
-<<<<<<< HEAD
     # email=forms.EmailField()
 
-=======
     email=forms.EmailField()
->>>>>>> 5ee037e2a3ae74c051f6d00c52130c3ca88a2b76
     class Meta:
         model=User
         fields=['username','email','password1','password2']

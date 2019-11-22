@@ -5,12 +5,14 @@
 
 
 <!-- {% block content %} -->
-<!doctype html>
+{% load static%}
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -41,12 +43,33 @@
     }
 
     #three {
-        background-image: url("https://i.pinimg.com/originals/23/b6/e7/23b6e77579244e66a0082797732fcbfd.jpg");
+        background-image: url("/static/images/image3.jpeg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
         height: 500px;
+        color:white;
 
+    }
+    #white{
+        background-color:black;
+        opacity:0.6;
+        height: 500px;
+        position:relative;
+
+        /* margin-top:-40px; */
+
+    }
+    #carte{
+        background-color:darkorange;
+        margin-top:80px;
+        margin-left:600px;
+        border-radius:20%;
+        position:absolute;
+        width:600px;
+        height:350px;
+        color:black;
+        
     }
 
     h2 {
@@ -62,6 +85,8 @@
         font-family: 'McLaren', cursive;
         line-height: 0,5em;
         word-spacing:2px;
+        background-color:black;
+        opacity:0,7;
 
     }
 
@@ -70,6 +95,7 @@
         /* color: black; */
         line-height: 0,5Sem;
         word-spacing: 2px;
+        font-family: 'McLaren', cursive;
 
 
     }
@@ -82,8 +108,9 @@
 
     #four {
         border-radius: 20px 20px;
-        background-color: black;
-        margin-left: 550px;
+        background-color:darkorange;
+        margin-left:150px;
+        color:black;
     }
 
     .me {
@@ -102,6 +129,7 @@
     footer .main-footer {
         padding: 20px 0;
         background: #252525;
+        font-family: 'McLaren', cursive;
     }
 
     footer ul {
@@ -113,6 +141,7 @@
     .footer-copyright {
         background: #222;
         padding: 5px 0;
+        font-family: 'McLaren', cursive;
     }
 
     .footer-copyright .logo {
@@ -630,9 +659,9 @@
 
     .sidebar {
 
-        width: 300px;
+        width: 310px;
         ;
-        height: 600px;
+        height: 1000px;
         ;
         background: grey;
         font-size: 0.65em;
@@ -681,6 +710,7 @@
         content: '';
         position: absolute;
         width: 100%;
+        margin-left:-44px;
         height: 0.2em;
         background: black;
 
@@ -689,14 +719,14 @@
 </style>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluide">
         <div class="contact">
             <ul>
                 <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
 
                 <li><a href="#contact"><i class="fa fa-envelope"></i> info@themevessel.com</a></li>
                 <li></li> <i class="fa fa-phone"
-                    style="font-size:15px;margin-left:520px;color:#949494;margin-top:20px;"></i>
+                    style="font-size:15px;margin-left:500px;color:#949494;margin-top:20px;"></i>
                 <i class="fa fa-envelope" style="font-size:15px;margin-left:10px;color:#949494"></i>
                 <i class="fa fa-google" style="font-size:15px;margin-left:10px;color:#949494"></i>
                 <i class="fa fa-linkedin" style="font-size:15px;margin-left:10px;color:#949494"></i>
@@ -704,7 +734,8 @@
 
 
                 <li style="float:right"><a href="{% url 'login' %}"
-                        style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a></li>
+                        style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a>
+                    </li>
                  
                   
                  
@@ -730,7 +761,7 @@
             </a>
 
             <!-- Links -->
-            <div class="collapse navbar-collapse" id="nav-content" style="margin-left:350px;">
+            <div class="collapse navbar-collapse" id="nav-content" style="margin-left:300px;">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">HOME</a>
@@ -781,16 +812,19 @@
         </div>
 
 
+
+
         <!-- div for spare parts -->
-        <div class=container-fluid style="background-color: #FBFBFB;">
+
+        <div class=container-fluide style="background-color: #FBFBFB;">
             <div class="row" style="padding-top:800px;">
 
                 <div class="col-md-3">
                     <main class="main">
-                        <aside class="sidebar">
+                        <aside class="sidebar"style="margin-top:-150px;font-size:15px;">
                             <nav class="nav">
                                 <ul>
-                                    <li class="active"><a href="#category">Categories</a></li>
+                                    <b><li class="active" style="margin-left:34px;"><a href="#category">Categories</a></li></b>
                                     {% for category in categories%}
                                     <li><a href="{% url 'category' category.id%}">{{category.categoryPart}}</a></li>
                                     {% endfor%}
@@ -805,9 +839,9 @@
 
                 </div>
 
-                <div class="col-sm-9">
+                <div class="col-sm-9" style="margin-top:-150px;font-family: 'McLaren', cursive;">
                     <h2>FEATURED SPARE PARTS</h2>
-                    <div class="row">
+                    <div class="row" style="margin-top:40px;" >
                         {% for sparePart in spareParts %}
                         <div class="col-sm-4">
                             <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
@@ -816,7 +850,7 @@
                             <p>Location:{{sparePart.locationPart}}</p>
                             <p>Contact us:{{sparePart.Phone}}</p>
                             <button class="btn btn-secondary">${{sparePart.price}}</button>
-                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning">
+                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-warning">
                                     <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
                                  
                                         <!-- <input type="submit" value="add to cart" class="btn btn-primary"> -->
@@ -852,6 +886,7 @@
 
         </div>
         <h2 style="color: black;">FEATURED CATEGORIES</h2>
+        <div class="container">
         <div class="row" id="category">
             {% for sparePart in spareParts %}
             <div class="col-md-4" style="margin-bottom: 20px">
@@ -861,12 +896,17 @@
             </div>
             {% endfor%}
 
-        </div><br><br>
+        </div>
+        </div>
+        <br><br>
         
     </div>
     &nbsp;&nbsp;
     <div class="row">
+        
         <div class="col-md-12" id="three">
+                <div id="white">
+                    <div id="carte">
             <h2 style="color: black;"><b>MATERIALS</b></h2>
             <p id="para"><b>You should take your vehicle to a service center if something seems to be off, but it
                     helps tremendously if you know something about car maintenance yourself.<br> It helps if you
@@ -875,9 +915,10 @@
                     technician about how to adequately maintain your vehicle.</b></p>
             <button type="button" class="btn btn-success" id="four">Read more</button>
         </div>
-
+</div>
     </div>
-    <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2>
+</div>
+    <!-- <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2> -->
     <div class="row">
 
         
@@ -895,6 +936,45 @@
             {% endfor%}
 
     </div><br>
+<!-- contact us start from here -->
+    <section id="contact">
+            <div class="section-content">
+                <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
+                <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+            </div>
+            <div class="contact-section">
+            <div class="container">
+                <form>
+                    <div class="col-md-6 form-line">
+                          <div class="form-group">
+                              <label for="exampleInputUsername">Your name</label>
+                            <input type="text" class="form-control" id="" placeholder=" Enter Name">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail">Email Address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail" placeholder=" Enter Email id">
+                          </div>	
+                          <div class="form-group">
+                            <label for="telephone">Mobile No.</label>
+                            <input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit mobile no.">
+                          </div>
+                      </div>
+                      <div class="col-md-6"style='border-right: 1px solid #B29999;
+                      height: 100px;'>
+                            <div class="form-group">
+                                <label for ="description"> Message</label>
+                                 <textarea  class="form-control" id="description" placeholder="Enter Your Message"></textarea>
+                            </div>
+                            <div>
+  
+                                <button type="button" class="btn btn-warning submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                            </div>
+                            
+                      </div>
+                  </form>
+              </div>
+</section>
+
     &nbsp;&nbsp;&nbsp;
     <!-- footer -->
 
@@ -905,45 +985,65 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget subscribe no-box">
-                            <h5 class="widget-title">COMPANY NAME<span></span></h5>
-                            <p>About the company, little discription will goes here.. </p>
+                            <h5 class="widget-title">KANIKA SYSTEM<span></span></h5>
+                            <p style="font-family:'McLaren', cursive; ">kanika  has been operating for 1Mounth in the automotive<br>
+                                 aftermarket with a strong international vocation and distributes<br> 
+                                quality spare parts in over 70 countries worldwide</p>
                         </div>
-                        <a class="nav-link" href="http://127.0.0.1:8000/default"><img src="https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png" height="50" alt="map icon"> Google Map</a>
+                        <a class="nav-link" href="http://127.0.0.1:8000/default"><img src="https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png" height="50" alt="map icon"style="color:white;"> Google Map</a>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget no-box">
-                            <h5 class="widget-title">Quick Links<span></span></h5>
+                            <h5 class="widget-title">CATEGORIES<span></span></h5>
                             <ul class="thumbnail-widget">
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Get Started</a></div>
+                                    <div class="thumb-content"><a href="#.">Honda</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Spare parts</a></div>
+                                    <div class="thumb-content"><a href="#.">Toyota</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Success Stories</a></div>
+                                    <div class="thumb-content"><a href="#.">Suzuki</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Event/Tickets</a></div>
+                                    <div class="thumb-content"><a href="#.">Dayihatsu</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Cars Parts</a></div>
+                                    <div class="thumb-content"><a href="#.">volvo</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Heavy dirty parts</a></div>
+                                    <div class="thumb-content"><a href="#.">Hyundai</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Tires</a></div>
+                                    <div class="thumb-content"><a href="#.">Vox wagen</a></div>
                                 </li>
+                                <li>
+                                        <div class="thumb-content"><a href="#.">Cross country</a></div>
+                                    </li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget no-box">
-                            <h5 class="widget-title">Get Started<span></span></h5>
-                            <p>Get access to the spare parts of cars.</p>
+                            <h5 class="widget-title">INFORMATION<span></span></h5>
+                            <ul class="thumbnail-widget">
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">About US</a></div>
+                                    </li>
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">Contact Us</a></div>
+                                    </li>
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">categoris</a></div>
+                                    </li>
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">Spareparts</a></div>
+                                    </li>
+                                   
+                                </ul>
+
 
                         </div>
                     </div>
@@ -951,9 +1051,9 @@
                     <div class="col-xs-12 col-sm-6 col-md-3">
 
                         <div class="widget no-box">
-                            <h5 class="widget-title">Contact Us<span></span></h5>
+                            <h5 class="widget-title">CONTACT US</h5><span></span></h5>
 
-                            <p><a href="moringa@gmail.com" title="glorythemes">moringa@gmail.com</a></p>
+                            <p><a href="uwizelaetitia@gmail.com" title="glorythemes">Email Us</a></p>
                             <ul class="social-footer2">
                                 <li class=""><a title="youtube" target="_blank" href="https://www.youtube.com/"><img
                                             alt="youtube" width="30" height="30"
@@ -978,16 +1078,18 @@
                 </div>
             </div>
         </div>
+     
 
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>Copyright Company Name © 2019. All rights reserved.</p>
+                        <p >Copyright Kanika System© 2019. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </div>
+      
     </footer>
 
     </div>

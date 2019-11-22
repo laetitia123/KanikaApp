@@ -1,251 +1,14 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Document</title>
 </head>
-<style>
 
-    /*Contact sectiom*/
-.content-header{
-  font-family: 'Oleo Script', cursive;
-  color:#fcc500;
-  font-size: 45px;
-}
-
-.section-content{
-  text-align: center; 
-
-}
-#contact{
-    
-    font-family: 'Teko', sans-serif;
-  padding-top: 60px;
-  width: 100%;
-  width: 100vw;
-  height: 550px;
-  background: #3a6186; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color : #fff;    
-}
-.contact-section{
-  padding-top: 40px;
-}
-.contact-section .col-md-6{
-  width: 50%;
-}
-
-.form-line{
-  border-right: 1px solid #B29999;
-}
-.form-group{
-  margin-top: 10px;
-}
-label{
-  font-size: 1.3em;
-  line-height: 1em;
-  font-weight: normal;
-}
-.form-control{
-  font-size: 1.3em;
-  color: #080808;
-}
-textarea.form-control {
-    height: 135px;
-   /* margin-top: px;*/
-}
-.submit{
-  font-size: 1.1em;
-  float: right;
-  width: 150px;
-  background-color: transparent;
-  color: #fff;
-
-}
-/* ............................nav.............................
- */
-
- .contact ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
-
-    .contact li {
-        float: left;
-        border-right: 1px solid #bbb;
-    }
-
-    .contact li {
-        border-right: none;
-    }
-
-    .contact li a {
-        display: block;
-        color: #949494;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    .contact li a:hover {
-        background-color: orangered;
-    }
-    @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-.wrap {
-    position: absolute;
-    margin-left: 900px;
-    top: 0;
-    left: 0;
-
-    bottom: 0;
-    width: 300px;
-    height: 50px;
-}
-
-.wrap .search {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background: orangered;
-    border-radius: 50%;
-    transition: all 1s;
-    z-index: 4;
-    box-shadow: 0 0 25px 0 yellow;
-}
-
-.wrap .search:hover {
-    cursor: pointer;
-}
-
-.wrap .search::before {
-    content: "";
-    position: absolute;
-    margin: auto;
-    top: 22px;
-    right: 0;
-    bottom: 0;
-    left: 22px;
-    width: 12px;
-    height: 2px;
-    background: white;
-    transform: rotate(45deg);
-    transition: all .5s;
-}
-
-.wrap .search::after {
-    content: "";
-    position: absolute;
-    margin: auto;
-    top: -5px;
-    right: 0;
-    bottom: 0;
-    left: -5px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 2px solid white;
-    transition: all .5s;
-}
-
-.wrap input {
-    font-family: 'Inconsolata', monospace;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    outline: none;
-    border: none;
-    background: white;
-    color: white;
-    text-shadow: 0 0 10px rgb(51, 45, 47);
-    padding: 0 80px 0 20px;
-    border-radius: 30px;
-    box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
-    transition: all 1s;
-    opacity: 0;
-    z-index: 5;
-    font-weight: bolder;
-    letter-spacing: 0.1em;
-}
-
-.wrap input:hover {
-    cursor: pointer;
-}
-
-.wrap input:focus {
-    width: 200px;
-    opacity: 1;
-    cursor: text;
-}
-
-.wrap input:focus~.search {
-    right: -250px;
-    background: #151515;
-    z-index: 6;
-}
-
-.wrap input:focus~.search::before {
-    top: 0;
-    left: 0;
-    width: 25px;
-}
-
-.wrap input:focus~.search::after {
-    top: 0;
-    left: 0;
-    width: 25px;
-    height: 2px;
-    border: none;
-    background: white;
-    border-radius: 0%;
-    transform: rotate(-45deg);
-}
-
-.wrap input::placeholder {
-    color: #949494;
-    opacity: 0.5;
-    font-weight: bolder;
-}
-.dropdown>.dropdown-menu {
-        top: 300%;
-        transition: 0.3s all ease-in-out;
-    }
-
-    .dropdown:hover>.dropdown-menu {
-        display: block;
-        top: 100%;
-    }
-
-    .dropdown>.dropdown-toggle:active {
-        /*Without this, clicking will make it sticky*/
-        pointer-events: none;
-    }
-
-
-</style>
 <body>
     
 
@@ -293,29 +56,6 @@ textarea.form-control {
                       style="color:orangered">kan</span>ika</b>
           </a>
 
-          <!-- Links -->
-          <!-- <div class="collapse navbar-collapse" id="nav-content" style="margin-left:350px;">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">HOME</a>
-                  </li>
-                  <li class="nav-item">
-                      <div class="container">
-                          <div class="dropdown">
-                              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                  style="color:#706F6F">
-                                  PAGES
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
-                                  <a class="dropdown-item" href="#">Log in</a>
-                                  <a class="dropdown-item" href="#">sign up</a>
-                                  <a class="dropdown-item" href="#">sign out</a>
-                  </li> -->
-                  <!-- <li class="nav-item">
-                      <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
-                  </li> -->
                   <li class="nav-item">
                       <!-- Search -->
                       <div class="wrap">
@@ -364,7 +104,7 @@ textarea.form-control {
                       </div>
                   </form>
               </div>
-          </section>
+</section>
         </div>              
 
                     </body>

@@ -26,8 +26,8 @@ urlpatterns = [
     url(r'^api-token-auth/', obtain_auth_token),
     url(r'category/(\d+)',views.filter_By_category, name='category'),
     url(r'^category/$',views.all_category, name='all_category'),
-    url(r'', views.default_map, name="default"),
     url(r'^shareholder/$',views.shareholder, name='shareholder'),
+    url(r'default/', views.default_map, name="default"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
