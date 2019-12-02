@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^contact/$',views.contactus,name='contact'),
     url(r'^upload/$',views.upload,name='upload'),
     url(r'^$',views.homePage,name='homePage'),
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^upload/$',views.upload,name='upload'),
     url(r'register/',views.register,name = 'register'),
     url(r'login/',views.login_view,name='login'),
     # url(r'CustomLoginView/',views.CustomLoginView,name='CustomLoginView'),
@@ -27,6 +29,11 @@ urlpatterns = [
     url(r'category/(\d+)',views.filter_By_category, name='category'),
     url(r'^category/$',views.all_category, name='all_category'),
     url(r'^shareholder/$',views.shareholder, name='shareholder'),
+    
+    # url(r'^api/merch/$', views.MerchList.as_view()),
+    url(r'category/(\d+)',views.filter_By_category, name='category'),
+    url(r'^category/$',views.all_category, name='all_category'),
+    # url(r'', views.default_map, name="default"),
     url(r'default/', views.default_map, name="default"),
 ]
 if settings.DEBUG:

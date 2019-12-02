@@ -25,10 +25,10 @@ class CarCategory(models.Model):
     def __str__(self):
         return self.categoryPart
 
-    # @classmethod
-    # def filter_By_category(cls, id):
-    #     locate = CarCategory.objects.get(pk = id)
-    #     return locate
+    #  @classmethod
+    # def filter_by_location(cls, id):
+    #    image= Image.objects.filter(location_id=id)
+    #    return image
 
 
 class SpareParts(models.Model):
@@ -45,6 +45,7 @@ class SpareParts(models.Model):
                   ('Roof', 'Roof'),
                   ('Steering wheel', 'Steering wheel'),
                   ('Engine', 'Engine'),
+                  ('wheel tyres','wheel tyres'),
 
                   )
     namePart= models.CharField(max_length=40, choices=nameChoose)
@@ -74,10 +75,15 @@ class SpareParts(models.Model):
     categoryPart = models.CharField(max_length=40, choices=categoryName)
     categoryImage = models.ImageField(upload_to='category/')
     carCat = models.ManyToManyField(CarCategory)
+    
 
     def __str__(self):
         return self.namePart
 
+    @classmethod
+    def search_by_categoryname(cls,search_term):
+        name = cls.objects.filter(categoryPart__icontains = search_term)
+        return name
 
 class Cart(models.Model):
     sparePart = models.ManyToManyField(SpareParts, null=True, blank=True)
@@ -164,3 +170,31 @@ class CarMerch(AbstractBaseUser, models.Model):
             return self.username
 
             
+        
+
+
+class partner(models.Model):
+
+    image =models.ImageField(upload_to='uploads/',blank=True,null=True)
+    sparePart=models.ManyToManyField(SpareParts,null=True,blank=True)
+    CarCategory=models.ManyToManyField(CarCategory,null=True,blank=True)
+
+    @classmethod
+    def get_images(cls):
+        image=partner.objects.all()
+        return image
+
+    @classmethod
+    def get_image_by_id(cls,id):
+        image=partner.objects.filter(id=partner.id)
+        return image
+
+    @classmethod
+    def filter_By_category(cls, id):
+        locate = CarCategory.objects.filter(location_id=id)
+        return locate
+
+
+# class User(models.Model):
+#     pic=ImageField(upload_to="profiless")
+    

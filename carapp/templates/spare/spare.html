@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
     <title>SPARE PARTS</title>
 </head>
 <style>
@@ -82,11 +84,12 @@
         margin-top:20px;
         text-align: center;
         color: white;
-        font-family: 'McLaren', cursive;
-        line-height: 0,5em;
-        word-spacing:2px;
+        font-family: 'Baskervville', serif;
+        line-height: 1,5em;
+        word-spacing:3px;
         background-color:black;
         opacity:0,7;
+        font-size:18px;
 
     }
 
@@ -248,9 +251,9 @@
         color: #ff8d1e;
     }
 
-    .widget li a:hover {
+    /* .widget li a:hover {
         color: #4b92dc;
-    }
+    } */
 
     .widget-title {
         margin-bottom: 20px;
@@ -468,17 +471,17 @@
     }
 
 
-    .slideshow p:nth-child(1) span {
+    /* .slideshow p:nth-child(1) span {
         background-image: url('https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-    }
+    } */
 
-    .slideshow p:nth-child(2) span {
+    .slideshow  {
         background-image: url('https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_home_slider-2.jpg');
-        -webkit-animation-delay: 6s;
-        -moz-animation-delay: 6s;
-        animation-delay: 6s;
+       height:700px;
+       /* background-size: cover; */
+       background-repeat: no-repeat;
     }
-
+/* 
     .slideshow p:nth-child(3) span {
         background-image: url('https://images.unsplash.com/photo-1514316703755-dca7d7d9d882?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
         -webkit-animation-delay: 12s;
@@ -492,7 +495,7 @@
         -webkit-animation-delay: 18s;
         -moz-animation-delay: 18s;
         animation-delay: 18s;
-    }
+    } */
 
     @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
 
@@ -654,7 +657,7 @@
     }
 
     .contact li a:hover {
-        background-color: orangered;
+        background-color:black;
     }
 
     .sidebar {
@@ -702,9 +705,9 @@
         opacity: 0.2;
     }
 
-    .nav ul li:not(.active):hover a {
+    /* .nav ul li:not(.active):hover a {
         color: rgba(255, 255, 255, 0.75);
-    }
+    } */
 
     .nav ul li::after {
         content: '';
@@ -715,6 +718,27 @@
         background: black;
 
         background-image: linear-gradient(to right, #5e42a6, #b74e91);
+    }
+   
+
+    .col-sm-2 a{
+        color: black;
+        text-decoration:none;
+        font-family: 'Baskervville', serif;
+        text-transform: capitalize;
+        font-size:20px;
+        word-spacing: 13px;
+        
+    }
+    .col-sm-2 :hover{
+    border-bottom:2px solid rgba(185, 71, 5, 0.7);
+  
+    
+    }
+    #shadow{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     }
 </style>
 
@@ -757,7 +781,7 @@
             <a class="navbar-brand" href="#" style="color:#706F6F;font-size:45px;">
                 <img
                     src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png"><b><span
-                        style="color:orangered">kan</span>ika</b>
+                        style="color:#ff6666">kan</span>ika</b>
             </a>
 
             <!-- Links -->
@@ -766,6 +790,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">HOME</a>
                     </li>
+
                     <li class="nav-item">
                         <div class="container">
                             <div class="dropdown">
@@ -776,9 +801,9 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
-                                    <a class="dropdown-item" href="#">Log in</a>
-                                    <a class="dropdown-item" href="#">sign up</a>
-                                    <a class="dropdown-item" href="#">sign out</a>
+                                    <a class="dropdown-item" href="/login">Log in</a>
+                                    <a class="dropdown-item" href="/register">sign up</a>
+                                    <a class="dropdown-item" href="/logout">Log out</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'shareholder' %}">DASHBOARD</a>
@@ -788,12 +813,18 @@
                     </li>
                     <li class="nav-item">
                         <!-- Search -->
-                        <div class="wrap">
-                            <input type="text" placeholder="Search...">
+                        <!-- <div class="wrap">
+                            <form class="form-inline md-form form-md active-pink active-pink-2 mt-2"
+                                action="{% url 'search_results' %}">
+                                <input class="form-control form-control-md ml-3 w-75" type="text"
+                                    placeholder="Search..." name="categoryName">
+                            </form>
                             <div class="search"></div>
-                        </div>
+                        </div> -->
 
                     </li>
+
+
                 </ul>
 
 
@@ -803,11 +834,29 @@
         <div class="container_fluid">
 
             <div class="slideshow">
-                <strong>  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white;font-family: Georgia, 'Times New Roman', Times, serif">your inqery we do</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white">BEST PLACE TO FIND CAR's MATERIALS</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">The human body is the only machine <br>without spare parts.</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white"> BEST PLACE TO FIND CAR's MATERIALS</span> </p>
-                </strong>
+                <!-- <strong> -->
+                    <!-- <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white;font-family: Georgia, 'Times New Roman', Times, serif">your
+                            inqery we Deriver</span> </p>
+                    <p> <span -->
+                            <!-- style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white">BEST
+                            PLACE TO FIND CAR's SPARE PARTS</span> </p>
+                    <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">The
+                            human body is the only machine <br>without spare parts.</span> </p>
+                     <p> <span -->
+                            <p style="color:black;text-align:center;padding-top:200px;text-transform:uppercase;font-size:54px;color:white;font-family: 'Baskervville', serif;">
+                            BEST PLACE TO FIND CAR'S SPARE PARTS</span> </p>
+
+                            <div class=>
+                                    <form class="form-inline md-form form-md active-pink active-pink-2 mt-2"
+                                        action="{% url 'search_results' %}" style="margin-left: 300px;padding-top:80px;width: 800px;">
+                                        <input class="form-control form-control-md ml-3 w-75" type="text"
+                                            placeholder="What Sparepart are you looking for ?" name="categoryName" style="border-radius: 50px; padding-left: 100px;height:60px; font-size: 25px">
+                                    </form>
+                                    <div class="search"></div>
+                                </div>
+                <!-- </strong>  -->
             </div>
         </div>
 
@@ -816,11 +865,14 @@
 
         <!-- div for spare parts -->
 
-        <div class=container-fluide style="background-color: #FBFBFB;">
-            <div class="row" style="padding-top:800px;">
+        <div class=container style="background-color: #FBFBFB;">
+            <div class="row" >
 
-                <div class="col-md-3">
-                    <main class="main">
+                <div class="col-md-3"></div>
+
+                    <!-- <main class="main">
+
+
                         <aside class="sidebar"style="margin-top:-150px;font-size:15px;">
                             <nav class="nav">
                                 <ul>
@@ -828,40 +880,54 @@
                                     {% for category in categories%}
                                     <li><a href="{% url 'category' category.id%}">{{category.categoryPart}}</a></li>
                                     {% endfor%}
-                                    <!-- <li><a href="#">TOYOTA</a></li>
+                                    <li><a href="#">TOYOTA</a></li>
                                     <li><a href="#">MAHINDRA</a></li>
                                     <li><a href="#">VOLVO</a></li>
                                     <li><a href="">SUZUKI</a></li>
-                                    <li><a href="#">HYUNDAI</a></li> -->
+                                    <li><a href="#">HYUNDAI</a></li>
                                 </ul>
                             </nav>
-                        </aside>
+                        </aside> -->
 
                 </div>
-
-                <div class="col-sm-9" style="margin-top:-150px;font-family: 'McLaren', cursive;">
-                    <h2>FEATURED SPARE PARTS</h2>
-                    <div class="row" style="margin-top:40px;" >
-                        {% for sparePart in spareParts %}
-                        <div class="col-sm-4">
-                            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+                
+<div class="row">
+                <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                    <h2>FEATURED SPARE PARTS</h2><br></br>
+                    <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                            <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
+                            <div class="col-sm-2"><a href="/category/2/">Mahindra</a></div>
+                            <div class="col-sm-2"><a href="#">Volvo</a></div>
+                            <div class="col-sm-2"><a href="/cate">Suzuki</a></div>
+                            <div class="col-sm-2"><a href="#">Hyundai</a></div>
+                            <div class="col-sm-2"><a href="#">Honda</a></div>
+                           
+                        </div>
+                    <div class="row" style="margin-top:40px;padding-bottom:40px;" >
+                        {% for sparePart in spareparts %}
+                        <div class="col-sm-3" style="margin-top:20px;">
+                            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px;">
                             <br><br>
-                            <p>{{sparePart.namePart}}</p>
+                            
+                           <p>Name:{{sparePart.namePart}}</p>
                             <p>Location:{{sparePart.locationPart}}</p>
+                            <p> Posted By:{{user.username}}</p>
                             <p>Contact us:{{sparePart.Phone}}</p>
                             <button class="btn btn-secondary">${{sparePart.price}}</button>
-                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-warning">
+                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-warning"style="background-color: rgba(185, 71, 5, 0.7)">
                                     <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
                                  
-                                        <!-- <input type="submit" value="add to cart" class="btn btn-primary"> -->
-                                    <!-- </form> -->
+                                       
                         </div>
                         {% endfor%}
 
 
                     </div>
-                    
+
                 </div>
+                
+                
+</div>
 
 
 
@@ -876,7 +942,7 @@
         <div class="row">
             <div class="col-md-12" id="one">
                 <div id="back">
-                <h2 style="color:white;margin-top:-100ppx;">BEST PLACE TO FIND CAR'S MATERIALS</h2>
+                <h2 style="color:white;margin-top:-100ppx;font-family: 'Baskervville', serif;">BEST PLACE TO FIND CAR'S MATERIALS</h2>
                 <p id="par">Spare parts are parts that you can buy separately to replace old or broken parts in a
                         piece of equipment.<br>They are usually parts that are designed to be easily removed or
                         fitted.<br> In the future the machines will need spare parts and maintenance.</p>
@@ -885,14 +951,15 @@
         </div>
 
         </div>
-        <h2 style="color: black;">FEATURED CATEGORIES</h2>
+        <h2 style="color: black;margin-bottom:50px;font-family: 'Baskervville', serif;">FEATURED CAR'S CATEGORIES</h2>
         <div class="container">
         <div class="row" id="category">
-            {% for sparePart in spareParts %}
-            <div class="col-md-4" style="margin-bottom: 20px">
-                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px"
-                        width="300px">
-                <p>{{sparePart.categoryPart}}</p>
+            {% for sparePart in spareparts %}
+            
+            <div class="col-md-4" id="shadow" style="margin-bottom: 20px;text-align:center;font-family: 'Baskervville', serif; color: rgba(110, 110, 101, 0.9);">
+                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px" width="350px">
+              <b> <p>{{sparePart.categoryPart}}</p></b> 
+                
             </div>
             {% endfor%}
 
@@ -907,7 +974,7 @@
         <div class="col-md-12" id="three">
                 <div id="white">
                     <div id="carte">
-            <h2 style="color: black;"><b>MATERIALS</b></h2>
+            <h2 style="color: black;font-family: 'Baskervville', serif;"><b>MATERIALS</b></h2>
             <p id="para"><b>You should take your vehicle to a service center if something seems to be off, but it
                     helps tremendously if you know something about car maintenance yourself.<br> It helps if you
                     look at a car parts diagram, so you know where the most important parts in your vehicle are
@@ -921,30 +988,32 @@
     <!-- <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2> -->
     <div class="row">
 
-        
-            {% for carCat in carCats %}
-            <div class="col-sm-4">
-                <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
-                <br><br>
-                <p>{{carCat.namePart}}</p>
-                <p>Location:{{carCat.locationPart}}</p>
-                <p>Contact us:{{carCat.Phone}}</p>
-                <button class="btn btn-secondary">${{carCat.price}}</button>
-                <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
-                        <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
-            </div>
-            {% endfor%}
+
+        {% for carCat in carCats %}
+        <div class="col-sm-4">
+            <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <br><br>
+            <p>{{carCat.namePart}}</p>
+            <p>Location:{{carCat.locationPart}}</p>
+            <p>Contact us:{{carCat.Phone}}</p>
+            <button class="btn btn-secondary">${{carCat.price}}</button>
+            <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
+                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+        </div>
+        {% endfor%}
 
     </div><br>
 <!-- contact us start from here -->
     <section id="contact">
             <div class="section-content">
-                <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
-                <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+  
+                <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"  style="color: rgba(185, 71, 5, 0.7)"> Touch with us</span></h1>
+                <!-- <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3> -->
             </div>
             <div class="contact-section">
             <div class="container">
                 <form>
+                    <!-- <div class="row"> -->
                     <div class="col-md-6 form-line">
                           <div class="form-group">
                               <label for="exampleInputUsername">Your name</label>
@@ -967,7 +1036,7 @@
                             </div>
                             <div>
   
-                                <button type="button" class="btn btn-warning submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                                <button type="button" class="btn btn-warning submit" style="background-color: rgba(185, 71, 5, 0.7)"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
                             </div>
                             
                       </div>
@@ -985,14 +1054,13 @@
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget subscribe no-box">
-                            <h5 class="widget-title">KANIKA SYSTEM<span></span></h5>
+                            <h5 class="widget-title"><b style="color:darkorange">KANIKA </b>SYSTEM<span></span></h5>
                             <p style="font-family:'McLaren', cursive; ">kanika  has been operating for 1Mounth in the automotive<br>
                                  aftermarket with a strong international vocation and distributes<br> 
                                 quality spare parts in over 70 countries worldwide</p>
                         </div>
                         <a class="nav-link" href="http://127.0.0.1:8000/default"><img src="https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png" height="50" alt="map icon"style="color:white;"> Google Map</a>
                     </div>
-
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget no-box">
                             <h5 class="widget-title">CATEGORIES<span></span></h5>
