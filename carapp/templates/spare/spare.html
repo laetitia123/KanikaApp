@@ -1,15 +1,26 @@
-<!doctype html>
-<html lang="en">
+<!-- {%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block title %} Login Here {% endblock %} -->
+{% load crispy_forms_tags %}
 
+
+<!-- {% block content %} -->
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
     <title>SPARE PARTS</title>
 </head>
 <style>
@@ -19,34 +30,75 @@
         background-attachment: fixed;
         background-size: cover;
         height: 500px;
+        font-family: 'McLaren', cursive;
+   
 
+    }
+    #back{
+        margin-top:60px;
+        background-color:black;
+        opacity:0.7;
+        margin-left:200px;
+        width:1000px;
+        height:300px;
+        color:white;
     }
 
     #three {
-        background-image: url("https://www.frooition.com/blog/wp-content/uploads/2018/10/iStock-927781468.jpg");
+        background-image: url("/static/images/image3.jpeg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
         height: 500px;
+        color:white;
 
+    }
+    #white{
+        background-color:black;
+        opacity:0.6;
+        height: 500px;
+        position:relative;
+
+        /* margin-top:-40px; */
+
+    }
+    #carte{
+        background-color:darkorange;
+        margin-top:80px;
+        margin-left:600px;
+        border-radius:20%;
+        position:absolute;
+        width:600px;
+        height:350px;
+        color:black;
+        
     }
 
     h2 {
         text-align: center;
         color: black;
-        padding-top: 90px;
+        padding-top: 40px;
     }
 
     #par {
+        margin-top:20px;
         text-align: center;
-        color: rgba(242, 246, 246, 0.75);
-        font-family: 'McLaren', cursive;
+        color: white;
+        font-family: 'Baskervville', serif;
+        line-height: 1,5em;
+        word-spacing:3px;
+        background-color:black;
+        opacity:0,7;
+        font-size:18px;
 
     }
 
     #para {
         text-align: center;
-        color: black;
+        /* color: black; */
+        line-height: 0,5Sem;
+        word-spacing: 2px;
+        font-family: 'McLaren', cursive;
 
 
     }
@@ -59,8 +111,9 @@
 
     #four {
         border-radius: 20px 20px;
-        background-color: black;
-        margin-left: 550px;
+        background-color:darkorange;
+        margin-left:150px;
+        color:black;
     }
 
     .me {
@@ -79,6 +132,7 @@
     footer .main-footer {
         padding: 20px 0;
         background: #252525;
+        font-family: 'McLaren', cursive;
     }
 
     footer ul {
@@ -90,6 +144,7 @@
     .footer-copyright {
         background: #222;
         padding: 5px 0;
+        font-family: 'McLaren', cursive;
     }
 
     .footer-copyright .logo {
@@ -196,9 +251,9 @@
         color: #ff8d1e;
     }
 
-    .widget li a:hover {
+    /* .widget li a:hover {
         color: #4b92dc;
-    }
+    } */
 
     .widget-title {
         margin-bottom: 20px;
@@ -310,6 +365,7 @@
 
 
     .slideshow {
+        
         list-style: none;
         z-index: 1;
     }
@@ -414,71 +470,18 @@
         }
     }
 
-    /* @-webkit-keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-}
-}
 
-@-moz-keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-}
-}
+    /* .slideshow p:nth-child(1) span {
+        background-image: url('https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    } */
 
-@keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-} */
-
-
-    .slideshow p:nth-child(1) span {
-     background-image: url('https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    .slideshow  {
+        background-image: url('https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_home_slider-2.jpg');
+       height:700px;
+       /* background-size: cover; */
+       background-repeat: no-repeat;
     }
-
-    .slideshow p:nth-child(2) span {
-        background-image: url('https://images.pexels.com/photos/498692/pexels-photo-498692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-        -webkit-animation-delay: 6s;
-        -moz-animation-delay: 6s;
-        animation-delay: 6s;
-    }
-
+/* 
     .slideshow p:nth-child(3) span {
         background-image: url('http://i0.wp.com/assets.volvocars.com/de-ch/~/media/shared-assets/master/images/pages/accessories/contentcard_styling_1.jpg?strip=all');
         -webkit-animation-delay: 12s;
@@ -492,7 +495,7 @@ titleAnimation { 0% {
         -webkit-animation-delay: 18s;
         -moz-animation-delay: 18s;
         animation-delay: 18s;
-    }
+    } */
 
     @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
 
@@ -654,14 +657,14 @@ titleAnimation { 0% {
     }
 
     .contact li a:hover {
-        background-color: orangered;
+        background-color:black;
     }
 
     .sidebar {
 
-        width: 300px;
+        width: 310px;
         ;
-        height: 600px;
+        height: 1000px;
         ;
         background: grey;
         font-size: 0.65em;
@@ -702,30 +705,52 @@ titleAnimation { 0% {
         opacity: 0.2;
     }
 
-    .nav ul li:not(.active):hover a {
+    /* .nav ul li:not(.active):hover a {
         color: rgba(255, 255, 255, 0.75);
-    }
+    } */
 
     .nav ul li::after {
         content: '';
         position: absolute;
         width: 100%;
+        margin-left:-44px;
         height: 0.2em;
         background: black;
 
         background-image: linear-gradient(to right, #5e42a6, #b74e91);
     }
+   
+
+    .col-sm-2 a{
+        color: black;
+        text-decoration:none;
+        font-family: 'Baskervville', serif;
+        text-transform: capitalize;
+        font-size:20px;
+        word-spacing: 13px;
+        
+    }
+    .col-sm-2 :hover{
+    border-bottom:2px solid rgba(185, 71, 5, 0.7);
+  
+    
+    }
+    #shadow{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
 </style>
 
 <body>
-    <div class="container-fluid2">
+    <div class="container-fluide">
         <div class="contact">
             <ul>
                 <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
 
                 <li><a href="#contact"><i class="fa fa-envelope"></i> info@themevessel.com</a></li>
                 <li></li> <i class="fa fa-phone"
-                    style="font-size:15px;margin-left:520px;color:#949494;margin-top:20px;"></i>
+                    style="font-size:15px;margin-left:500px;color:#949494;margin-top:20px;"></i>
                 <i class="fa fa-envelope" style="font-size:15px;margin-left:10px;color:#949494"></i>
                 <i class="fa fa-google" style="font-size:15px;margin-left:10px;color:#949494"></i>
                 <i class="fa fa-linkedin" style="font-size:15px;margin-left:10px;color:#949494"></i>
@@ -733,8 +758,11 @@ titleAnimation { 0% {
 
 
                 <li style="float:right"><a href="{% url 'login' %}"
-                        style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a></li>
-                   
+                        style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a>
+                    </li>
+                 
+                  
+                 
                    
                 <li style="float:right"><a href="{% url 'register' %}"
                         style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">register</a>
@@ -753,16 +781,16 @@ titleAnimation { 0% {
             <a class="navbar-brand" href="#" style="color:#706F6F;font-size:45px;">
                 <img
                     src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png"><b><span
-                        style="color:orangered">kan</span>ika</b>
+                        style="color:#ff6666">kan</span>ika</b>
             </a>
 
             <!-- Links -->
-            <div class="collapse navbar-collapse" id="nav-content" style="margin-left:350px;">
+            <div class="collapse navbar-collapse" id="nav-content" style="margin-left:300px;">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">HOME</a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <div class="container">
                             <div class="dropdown">
@@ -773,38 +801,35 @@ titleAnimation { 0% {
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+<<<<<<< HEAD
                                     <a class="dropdown-item" href="register/">sign up</a>
                                     <a class="dropdown-item" href="login/">Log in</a> 
+=======
+                                    <a class="dropdown-item" href="/login">Log in</a>
+                                    <a class="dropdown-item" href="/register">sign up</a>
+>>>>>>> dc4b4fa0961934c233e66922bf3f655744b45f10
                                     <a class="dropdown-item" href="/logout">Log out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'upload' %}">UPLOAD</a>
+                        <a class="nav-link" href="{% url 'shareholder' %}">DASHBOARD</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
                     </li>
-                    <!-- <li class="nav-item"> -->
+                    <li class="nav-item">
                         <!-- Search -->
                         <!-- <div class="wrap">
-                                <form   class="navbar-form" role="search" action="{% url 'search_results' %}">
-                                    <div class="input-group">  
-                            <input type="text" placeholder="Search..."name="ImagePart">
-                            
-                            <div class="search">
-                                </div>
-
-                            </div>
+                            <form class="form-inline md-form form-md active-pink active-pink-2 mt-2"
+                                action="{% url 'search_results' %}">
+                                <input class="form-control form-control-md ml-3 w-75" type="text"
+                                    placeholder="Search..." name="categoryName">
                             </form>
-                    </div> -->
+                            <div class="search"></div>
+                        </div> -->
 
-                    <!-- </li> -->
-                    <li class="nav-search">
-                            <form class="form-inline md-form form-md active-pink active-pink-2 mt-2" action="{% url 'search_results' %}">
-                              <i class="fas fa-search" aria-hidden="true"></i>
-                              <input class="form-control form-control-md ml-3 w-75" type="text" style="color: black;font-weight:bold" placeholder="Search" aria-label="Search"
-                                name="categoryName">
-                            </form>
                     </li>
+
+
                 </ul>
 
 
@@ -814,79 +839,100 @@ titleAnimation { 0% {
         <div class="container_fluid">
 
             <div class="slideshow">
-                <strong>  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white;font-family: Georgia, 'Times New Roman', Times, serif">your inqery we do</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white">BEST PLACE TO FIND CAR's MATERIALS</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">The human body is the only machine <br>without spare parts.</span> </p>
-                  <p> <span style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white"> BEST PLACE TO FIND CAR's MATERIALS</span> </p>
-                </strong>
+                <!-- <strong> -->
+                    <!-- <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white;font-family: Georgia, 'Times New Roman', Times, serif">your
+                            inqery we Deriver</span> </p>
+                    <p> <span -->
+                            <!-- style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:45px;color:white">BEST
+                            PLACE TO FIND CAR's SPARE PARTS</span> </p>
+                    <p> <span
+                            style="color:black;text-align:center;padding-top:300px;text-transform:uppercase;font-size:54px;color:white">The
+                            human body is the only machine <br>without spare parts.</span> </p>
+                     <p> <span -->
+                            <p style="color:black;text-align:center;padding-top:200px;text-transform:uppercase;font-size:54px;color:white;font-family: 'Baskervville', serif;">
+                            BEST PLACE TO FIND CAR'S SPARE PARTS</span> </p>
+
+                            <div class=>
+                                    <form class="form-inline md-form form-md active-pink active-pink-2 mt-2"
+                                        action="{% url 'search_results' %}" style="margin-left: 300px;padding-top:80px;width: 800px;">
+                                        <input class="form-control form-control-md ml-3 w-75" type="text"
+                                            placeholder="What Sparepart are you looking for ?" name="categoryName" style="border-radius: 50px; padding-left: 100px;height:60px; font-size: 25px">
+                                    </form>
+                                    <div class="search"></div>
+                                </div>
+                <!-- </strong>  -->
             </div>
         </div>
 
 
-        <!-- div for spare parts -->
-        <div class=container-fluid style="background-color: #FBFBFB;">
-            <div class="row" style="padding-top:800px;">
 
-                <div class="col-md-3">
-                    <main class="main">
-                        <aside class="sidebar">
+
+        <!-- div for spare parts -->
+
+        <div class=container style="background-color: #FBFBFB;">
+            <div class="row" >
+
+                <div class="col-md-3"></div>
+
+                    <!-- <main class="main">
+
+
+                        <aside class="sidebar"style="margin-top:-150px;font-size:15px;">
                             <nav class="nav">
                                 <ul>
-                                    <li class="active"><a href="#category">Categories</a></li>
+                                    <b><li class="active" style="margin-left:34px;"><a href="#category">Categories</a></li></b>
                                     {% for category in categories%}
                                     <li><a href="{% url 'category' category.id%}">{{category.categoryPart}}</a></li>
                                     {% endfor%}
-                                    <!-- <li><a href="#">TOYOTA</a></li>
+                                    <li><a href="#">TOYOTA</a></li>
                                     <li><a href="#">MAHINDRA</a></li>
                                     <li><a href="#">VOLVO</a></li>
                                     <li><a href="">SUZUKI</a></li>
-                                    <li><a href="#">HYUNDAI</a></li> -->
+                                    <li><a href="#">HYUNDAI</a></li>
                                 </ul>
                             </nav>
-                        </aside>
+                        </aside> -->
 
                 </div>
-
-                <div class="col-sm-9">
-                    <h2>FEATURED SPARE PARTS</h2>
-                    <div class="row">
+                
+<div class="row">
+                <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                    <h2>FEATURED SPARE PARTS</h2><br></br>
+                    <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                            <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
+                            <div class="col-sm-2"><a href="/category/2/">Mahindra</a></div>
+                            <div class="col-sm-2"><a href="#">Volvo</a></div>
+                            <div class="col-sm-2"><a href="/cate">Suzuki</a></div>
+                            <div class="col-sm-2"><a href="#">Hyundai</a></div>
+                            <div class="col-sm-2"><a href="#">Honda</a></div>
+                           
+                        </div>
+                    <div class="row" style="margin-top:40px;padding-bottom:40px;" >
                         {% for sparePart in spareparts %}
-                        <div class="col-sm-4">
-                            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+                        <div class="col-sm-3" style="margin-top:20px;">
+                            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px;">
                             <br><br>
-                            <p>{{sparePart.namePart}}</p>
+                            
+                           <p>Name:{{sparePart.namePart}}</p>
                             <p>Location:{{sparePart.locationPart}}</p>
+                            <p> Posted By:{{user.username}}</p>
                             <p>Contact us:{{sparePart.Phone}}</p>
                             <button class="btn btn-secondary">${{sparePart.price}}</button>
-                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning">
+                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-warning"style="background-color: rgba(185, 71, 5, 0.7)">
                                     <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+                                 
+                                       
                         </div>
                         {% endfor%}
 
 
                     </div>
-                    <!-- <div class="row">
-                    <div class="col-sm-4">
-                        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_product_img10.jpg" class="img-thumbnail" style="width:300px;">
-                        <br><br>
-                        <p>R FILTER REPLACEMENT FILTER AUDI A6 (4F) FR</p>
-                        <button class="btn btn-secondary">$123</button><button class="btn btn-outline-warning"><i class="fa fa-shopping-cart "></i>Add to Cart</button>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_product_img19.jpg" class="img-thumbnail"style="width:300px;">
-                        <br><br>
-                        <p>R FILTER REPLACEMENT FILTER AUDI A6 (4F) FR</p>
-                        <button class="btn btn-secondary">$123</button><button class="btn btn-outline-warning"><i class="fa fa-shopping-cart "></i>Add to Cart</button>>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_product_img09.jpg" class="img-thumbnail" style="width:300px;">
-                        <br><br>
-                        <p>R FILTER REPLACEMENT FILTER AUDI A6 (4F) FR</p>
-                        <button class="btn btn-secondary">$123</button><button class="btn btn-outline-warning"><i class="fa fa-shopping-cart "></i>Add to Cart</button>
-                    </div>
-                    
-                  </div> -->
+
                 </div>
+                
+                
+</div>
 
 
 
@@ -900,53 +946,40 @@ titleAnimation { 0% {
         </h1>
         <div class="row">
             <div class="col-md-12" id="one">
-                <h2>BEST PLACE TO FIND CAR's MATERIALS</h2>
-                <p id="par"><b>Spare parts are parts that you can buy separately to replace old or broken parts in a
+                <div id="back">
+                <h2 style="color:white;margin-top:-100ppx;font-family: 'Baskervville', serif;">BEST PLACE TO FIND CAR'S MATERIALS</h2>
+                <p id="par">Spare parts are parts that you can buy separately to replace old or broken parts in a
                         piece of equipment.<br>They are usually parts that are designed to be easily removed or
-                        fitted.<br> In the future the machines will need spare parts and maintenance.</b></p>
-                <button type="button" class="btn btn-success" id="two">Read more</button>
+                        fitted.<br> In the future the machines will need spare parts and maintenance.</p>
+                <!-- <button type="button" class="btn btn-success" id="two">Read more</button> -->
             </div>
+        </div>
 
         </div>
-        <h2 style="color: black;">FEATURED CATEGORIES</h2>
+        <h2 style="color: black;margin-bottom:50px;font-family: 'Baskervville', serif;">FEATURED CAR'S CATEGORIES</h2>
+        <div class="container">
         <div class="row" id="category">
-            {% for sparePart in spareParts %}
-            <div class="col-md-4" style="margin-bottom: 20px">
-                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px"
-                        width="300px">
-                <p>{{sparePart.categoryPart}}</p>
+            {% for sparePart in spareparts %}
+            
+            <div class="col-md-4" id="shadow" style="margin-bottom: 20px;text-align:center;font-family: 'Baskervville', serif; color: rgba(110, 110, 101, 0.9);">
+                <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px" width="350px">
+              <b> <p>{{sparePart.categoryPart}}</p></b> 
+                
             </div>
             {% endfor%}
 
-        </div><br><br>
-        <!-- <div class="row">
-
-            <div class="col-md-4">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive"
-                        src="https://www.bentleymotors.com/content/dam/bentley/Master/homepage%20carousel/New%20Flying%20Spur%20emotive%20studio%201920x1080%20v2.jpg/_jcr_content/renditions/New%20Flying%20Spur%20emotive%20studio%20test%20image%201024x576.jpg.image_file.700.394.file/New%20Flying%20Spur%20emotive%20studio%20test%20image%201024x576.jpg"
-                        alt="" height="200">
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive"
-                        src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                        alt="" height="200">
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-                <a class="thumbnail" href="#">
-                    <img class="img-responsive"
-                        src="https://www.ucsusa.org/sites/default/files/styles/large/public/images/vehicles-cars-how-autonomous-vehicles-work.jpg?itok=ymwukzNV"
-                        alt="" height="200">
-                </a>
-            </div> -->
+        </div>
+        </div>
+        <br><br>
+        
     </div>
     &nbsp;&nbsp;
     <div class="row">
+        
         <div class="col-md-12" id="three">
-            <h2 style="color: black;"><b>MATERIALS</b></h2>
+                <div id="white">
+                    <div id="carte">
+            <h2 style="color: black;font-family: 'Baskervville', serif;"><b>MATERIALS</b></h2>
             <p id="para"><b>You should take your vehicle to a service center if something seems to be off, but it
                     helps tremendously if you know something about car maintenance yourself.<br> It helps if you
                     look at a car parts diagram, so you know where the most important parts in your vehicle are
@@ -954,62 +987,68 @@ titleAnimation { 0% {
                     technician about how to adequately maintain your vehicle.</b></p>
             <button type="button" class="btn btn-success" id="four">Read more</button>
         </div>
-
+</div>
     </div>
-    <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2>
+</div>
+    <!-- <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2> -->
     <div class="row">
 
-        
-            {% for carCat in carCats %}
-            <div class="col-sm-4">
-                <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
-                <br><br>
-                <p>{{carCat.namePart}}</p>
-                <p>Location:{{carCat.locationPart}}</p>
-                <p>Contact us:{{carCat.Phone}}</p>
-                <button class="btn btn-secondary">${{carCat.price}}</button>
-                <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
-                        <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
-            </div>
-            {% endfor%}
-        <!-- <div class="col-md-4">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="http://rusautonews.com/wp-content/uploads/2018/04/spare-parts-for-cars-800x500_c.jpg" alt=""
-                    height="250">
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="https://image.shutterstock.com/image-photo/range-spare-parts-cars-isolated-600w-214605874.jpg"
-                    alt="" height="250">
-            </a>
-        </div> -->
-    </div><br>
-    <!-- <div class="row">
 
-        <div class="col-md-4">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="https://www.carparts4less.co.uk/catalogimages/categories/102x136/75_cp2_06.png?v=1" alt=""
-                    height="350">
-            </a>
+        {% for carCat in carCats %}
+        <div class="col-sm-4">
+            <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <br><br>
+            <p>{{carCat.namePart}}</p>
+            <p>Location:{{carCat.locationPart}}</p>
+            <p>Contact us:{{carCat.Phone}}</p>
+            <button class="btn btn-secondary">${{carCat.price}}</button>
+            <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
+                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
         </div>
-        <div class="col-md-4">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="https://thumbs.dreamstime.com/z/lots-auto-spare-parts-21737549.jpg"
-                    alt="" height="300">
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive"
-                    src="https://i5.walmartimages.com/asr/3915403a-aa56-4666-8793-da64510b17d0_1.14823445d7e85eaed8d56feb6ac63347.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
-                    alt="" height="350">
-            </a>
-        </div>
-    </div> -->
+        {% endfor%}
+
+    </div><br>
+<!-- contact us start from here -->
+    <section id="contact">
+            <div class="section-content">
+  
+                <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"  style="color: rgba(185, 71, 5, 0.7)"> Touch with us</span></h1>
+                <!-- <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3> -->
+            </div>
+            <div class="contact-section">
+            <div class="container">
+                <form>
+                    <!-- <div class="row"> -->
+                    <div class="col-md-6 form-line">
+                          <div class="form-group">
+                              <label for="exampleInputUsername">Your name</label>
+                            <input type="text" class="form-control" id="" placeholder=" Enter Name">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail">Email Address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail" placeholder=" Enter Email id">
+                          </div>	
+                          <div class="form-group">
+                            <label for="telephone">Mobile No.</label>
+                            <input type="tel" class="form-control" id="telephone" placeholder=" Enter 10-digit mobile no.">
+                          </div>
+                      </div>
+                      <div class="col-md-6"style='border-right: 1px solid #B29999;
+                      height: 100px;'>
+                            <div class="form-group">
+                                <label for ="description"> Message</label>
+                                 <textarea  class="form-control" id="description" placeholder="Enter Your Message"></textarea>
+                            </div>
+                            <div>
+  
+                                <button type="button" class="btn btn-warning submit" style="background-color: rgba(185, 71, 5, 0.7)"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                            </div>
+                            
+                      </div>
+                  </form>
+              </div>
+</section>
+
     &nbsp;&nbsp;&nbsp;
     <!-- footer -->
 
@@ -1020,44 +1059,64 @@ titleAnimation { 0% {
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget subscribe no-box">
-                            <h5 class="widget-title">COMPANY NAME<span></span></h5>
-                            <p>About the company, little discription will goes here.. </p>
+                            <h5 class="widget-title"><b style="color:darkorange">KANIKA </b>SYSTEM<span></span></h5>
+                            <p style="font-family:'McLaren', cursive; ">kanika  has been operating for 1Mounth in the automotive<br>
+                                 aftermarket with a strong international vocation and distributes<br> 
+                                quality spare parts in over 70 countries worldwide</p>
                         </div>
+                        <a class="nav-link" href="http://127.0.0.1:8000/default"><img src="https://www.pngfind.com/pngs/m/114-1147878_location-poi-pin-marker-position-red-map-google.png" height="50" alt="map icon"style="color:white;"> Google Map</a>
                     </div>
-
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget no-box">
-                            <h5 class="widget-title">Quick Links<span></span></h5>
+                            <h5 class="widget-title">CATEGORIES<span></span></h5>
                             <ul class="thumbnail-widget">
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Get Started</a></div>
+                                    <div class="thumb-content"><a href="#.">Honda</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Spare parts</a></div>
+                                    <div class="thumb-content"><a href="#.">Toyota</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Success Stories</a></div>
+                                    <div class="thumb-content"><a href="#.">Suzuki</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Event/Tickets</a></div>
+                                    <div class="thumb-content"><a href="#.">Dayihatsu</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Cars Parts</a></div>
+                                    <div class="thumb-content"><a href="#.">volvo</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Heavy dirty parts</a></div>
+                                    <div class="thumb-content"><a href="#.">Hyundai</a></div>
                                 </li>
                                 <li>
-                                    <div class="thumb-content"><a href="#.">Tires</a></div>
+                                    <div class="thumb-content"><a href="#.">Vox wagen</a></div>
                                 </li>
+                                <li>
+                                        <div class="thumb-content"><a href="#.">Cross country</a></div>
+                                    </li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <div class="widget no-box">
-                            <h5 class="widget-title">Get Started<span></span></h5>
-                            <p>Get access to the spare parts of cars.</p>
+                            <h5 class="widget-title">INFORMATION<span></span></h5>
+                            <ul class="thumbnail-widget">
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">About US</a></div>
+                                    </li>
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">Contact Us</a></div>
+                                    </li>
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">categoris</a></div>
+                                    </li>
+                                    <li>
+                                        <div class="thumb-content"><a href="#.">Spareparts</a></div>
+                                    </li>
+                                   
+                                </ul>
+
 
                         </div>
                     </div>
@@ -1065,9 +1124,9 @@ titleAnimation { 0% {
                     <div class="col-xs-12 col-sm-6 col-md-3">
 
                         <div class="widget no-box">
-                            <h5 class="widget-title">Contact Us<span></span></h5>
+                            <h5 class="widget-title">CONTACT US</h5><span></span></h5>
 
-                            <p><a href="moringa@gmail.com" title="glorythemes">moringa@gmail.com</a></p>
+                            <p><a href="uwizelaetitia@gmail.com" title="glorythemes">Email Us</a></p>
                             <ul class="social-footer2">
                                 <li class=""><a title="youtube" target="_blank" href="https://www.youtube.com/"><img
                                             alt="youtube" width="30" height="30"
@@ -1092,16 +1151,18 @@ titleAnimation { 0% {
                 </div>
             </div>
         </div>
+     
 
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>Copyright Company Name © 2019. All rights reserved.</p>
+                        <p >Copyright Kanika System© 2019. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </div>
+      
     </footer>
 
     </div>
@@ -1120,3 +1181,4 @@ titleAnimation { 0% {
 </body>
 
 </html>
+<!-- {% endblock %} -->
