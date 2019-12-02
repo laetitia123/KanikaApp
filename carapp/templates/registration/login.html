@@ -2,8 +2,8 @@
 {% load bootstrap4 %}
 {% block title %} Login Here {% endblock %}
 {% load crispy_forms_tags %}
-
 {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
 <div>
     <!-- <div class="row"> -->
     <!-- Empty div -->
@@ -12,13 +12,10 @@
     {% if form.errors %}
     <p> Password or Username is incorrect </p>
     {% endif %}
-
-    <div class="row" style="padding:40px">
-
+    <div class="row" style="padding:40px;font-family: 'Philosopher', sans-serif">
         <div class="col-md-4"></div>
         <div class="col-md-4" style="box-shadow: 5px 5px 5px 5px #888888;">
-
-            <h3 class="text-center" style="font-family: serif;color: #ff6666">Log In</h3>
+            <h3 class="text-center" style="font-family: serif;color: #FF6666">Log In</h3>
             <img src="https://pbs.twimg.com/profile_images/284045874/sparepartslogo_400x400.jpg" height="120px" style="margin-left: 120px;margin-top: 30px">
             <form method="POST" class="form-group" action="{% url 'login' %}" style="height:400px; color:rgba(0, 0, 0, 0.7)">
                 {% csrf_token %}
@@ -26,13 +23,8 @@
                 <button type="submit" class="btn btn-secondary" style="border-radius: 50px;margin-left:110px;width:150px;background-color: rgba(0, 0, 0, 0.7)">Login</button>
                 <p style="color:rgba(14, 12, 12, 0.7)">Don't have an account? Create One <a href="register/"> Here</a></p>
             </form>
-
         </div>
-
     </div>
-
-
     <!-- empty div -->
 </div>
-
 {% endblock %}

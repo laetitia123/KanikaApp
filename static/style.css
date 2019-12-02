@@ -1,0 +1,70 @@
+/* <style> */
+
+    /*Contact sectiom*/
+    #contact{
+        height:400px;
+    }
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:#fcc500;
+  font-size: 45px;
+}
+
+.section-content{
+  text-align: center; 
+
+}
+#contact{
+    
+  /* font-family: 'Teko', sans-serif; */
+  padding-top:50px;
+  margin-top: -21px;
+  border-right: 1px solid #B29999;
+  height: 350px;
+  width: 100%;
+  width: 100vw;
+  height: 600px;
+  font-family: 'McLaren', cursive;
+  
+  background: #eceef0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #edeef0 ,white); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #e3e9ee , white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color :black    
+}
+.contact-section{
+  padding-top: 40px;
+  padding-left:200px;
+}
+.contact-section .col-md-6{
+  width: 50%;
+}
+
+.form-line{
+  border-right: 1px solid #B29999;
+  /* height: 300px; */
+ 
+}
+/* .contactform{
+    /* margin-left: 300px; */
+/* } */ */
+label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.form-control{
+  font-size: 1.3em;
+  color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+   /* margin-top: px;*/
+}
+.submit{
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
+  background-color: transparent;
+  color:orangered;
+
+}

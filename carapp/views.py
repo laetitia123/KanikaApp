@@ -1,13 +1,74 @@
 from __future__ import unicode_literals
+# from .forms import RegisterForm,ProfileForm,ShareholderForm
 from .forms import RegisterForm,ProfileForm,sparepartForm
 from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth import login,logout
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,logout
 from .models import SpareParts,CarCategory,Cart,User,Profile
+# from __future__ import unicode_literals
+from .forms import *
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,logout
+from django.shortcuts import render,redirect
+from .models import *
+from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import CarMerch
+from .serializer import *
+from rest_framework import status
+from .permissions import IsAdminOrReadOnly
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = CarMerch.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+        
+    def post(self, request, format=None):
+        serializers = MerchSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # permission_classes = (IsAdminOrReadOnly,)
+class SpareList(APIView):
+    def get(self, request, format=None):
+        all_spares =SpareParts.objects.all()
+        serializers =SpareSerializer(all_spares, many=True)
+        return Response(serializers.data)
+        
+    def post(self, request, format=None):
+        serializers = SpareSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # permission_classes = (IsAdminOrReadOnly,)
+        
+# from .forms import CustomAuthenticationForm
+# from bootstrap_modal_forms.generic import BSModalLoginView
+# from django.urls import reverse_lazy
+
+# class CustomLoginView(BSModalLoginView):
+#     authentication_form = CustomAuthenticationForm
+#     template_name = 'examples/login.html'
+#     success_message = 'Success: You were successfully logged in.'
+#     extra_context = dict(success_url=reverse_lazy('index'))
+
+
+
+# def cart_detail(request):
+#     cart = Cart(request)
+#     for item in cart:
+#         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
+#     return render(request, 'cart/detail.html', {'cart': cart})
+
+
+
 
 def aboutus(request):
     # categories=CarCategory.objects.all()
@@ -76,23 +137,46 @@ def carDetails(request,carId):
 def cart(request):
     sparePart=Cart.objects.all()[0]
     context={
-        'sparePs':sparePart,
+        'spareParts':sparePart,
     }
     return render (request,'order.html',context)
 
 def addToCart(request,spareId):
     spareParts=Cart.objects.all()[0]
-    sparePart=SpareParts.objects.get(id=spareId)
-    if not spareParts in spareParts.sparePart.all():
-        spareParts.sparePart.add(sparePart)
+    spa=SpareParts.objects.get(id=spareId)
+    if not spa in spareParts.sparePart.all():
+        spareParts.sparePart.add(spa )
     else:
-        spareParts.sparePart.remove(sparePart)
+        spareParts.sparePart.remove(spa )
+    # return httpResponseRedirect(reverse("cart"))
     newTotal=0
     for spareP in spareParts.sparePart.all():
-        newTotal+=spareP.price
-        spareParts.total=newTotal
+        newTotal += spareP.price
+        spareParts.total = newTotal
         spareParts.save()
     return redirect('cart')
+
+# def addToCart(request,slug):
+#     spareParts=Cart.objects.all()[0]
+#     try:
+
+#        sparePart=SpareParts.objects.get(slug=slug)
+#     except SpareParts.DoesNotExist:
+#         pass
+#     except:
+#         pass
+#     if not spareParts in spareParts.spareParts.all():
+#       spareParts.spareParts.add(sparePart)
+#     else:
+#        cart.sparePart.remove(sparePart)
+#     # return httpResponseRedirect(reverse("cart"))
+#     newTotal=0.00
+#     for spareP in cart.sparePart.all():
+#         newTotal+=spareP.price
+#         spareParts.total=newTotal
+#         spareParts.save() 
+#     return redirect('cart')
+
 
 def delete(request, cartId):
     cart = Cart.objects.get(sparePart__id=cartId)
@@ -134,6 +218,14 @@ def update_profile(request):
            form=ProfileForm()
    return render(request,'profile_form.html',{"form":form})
 
+#........API views function----------
+# class MerchList(APIView):
+#     def get(self, request, format=None):
+#         all_merch = CarMerch.objects.all()
+#         serializers = MerchSerializer(all_merch, many=True)
+#         return Response(serializers.data)
+    
+
 @login_required(login_url='login/')
 def upload(request):
     current_user = request.user
@@ -150,14 +242,53 @@ def upload(request):
     return render(request, 'upload.html', {"form": form})
 
 def filter_By_category(request,category_id):
-    category=CarCategory.objects.get(id=category_id)
-    spareparts = SpareParts.objects.filter(carCat=category)
+    category=CarCategory.objects.filter(id=category_id)
+    spareparts = SpareParts.objects.filter(id=category_id)
     return render (request,"spare/spare.html", {"spareparts":spareparts})
 
 def all_category(request):
     category=CarCategory.objects.all()
     return render (request,"homepage.html", {"categories":categorys})
 
+    
+    
+# --------------------------map function-----------
+def default_map(request):
+    # TODO: move this token to Django settings from an environment variable
+    # found in the Mapbox account settings and getting started instructions
+    # see https://www.mapbox.com/account/ under the "Access tokens" section
+    mapbox_access_token = 'pk.eyJ1IjoibWVkaWF0cmljZSIsImEiOiJjazMydzFnbW8wbWJjM25vMmIyaGVpb2dmIn0.iQ5LI4Rq3YM8xibnmAEuaw'
+    return render(request, 'default.html', 
+                  { 'mapbox_access_token': mapbox_access_token })
+
+
+@login_required(login_url='login/')
 def shareholder(request):
     spareParts=SpareParts.objects.all()
+    # spa=SpareParts.objects.get(id=spareId)
+    # if not spa in spareParts.sparePart.all():
+    #     spareParts.sparePart.add(spa )
+    # else:
+    #     spareParts.sparePart.remove(spa )
+    # # return httpResponseRedirect(reverse("cart"))
+   
+    # for sparepart in spareParts.sparePart.all():
+        
+    #     spareParts.save()
+    
     return render(request,'spare/shareholder.html',{'spareParts':spareParts})
+
+
+
+def search_results(request):
+    if 'categoryName' in request.GET and request.GET['categoryName']:
+        search_term = request.GET.get("categoryName")
+        searched_category = SpareParts.search_by_categoryname(search_term).all()
+        
+        # message = f'{search_term}'
+        
+        return render(request,'search.html',{"message":message,"category":searched_category})
+    
+    else:
+        message = "You haven't searched for any term"
+        return render(request,'search.html',{"message":message,"category":searched_category})
