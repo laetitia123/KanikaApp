@@ -13,17 +13,18 @@
     <p> Password or Username is incorrect </p>
     {% endif %}
 
-    <div class="row" style="padding:20px;background-image: url(https://i.pinimg.com/originals/23/b6/e7/23b6e77579244e66a0082797732fcbfd.jpg);background-repeat: no-repeat;background-size: cover">
+    <div class="row" style="padding:40px">
 
         <div class="col-md-4"></div>
-        <div class="col-md-4" style="background-color: rgba(0,0,0,0.7)">
+        <div class="col-md-4" style="box-shadow: 5px 5px 5px 5px #888888;">
 
-            <h3 class="text-center" style="font-family: serif;color: rgba(224, 224, 230, 0.9)">Log In</h3>
-            <form method="POST" class="form-group" action="{% url 'login' %}" style="height:400px; color:white">
+            <h3 class="text-center" style="font-family: serif;color: #ff6666">Log In</h3>
+            <img src="https://pbs.twimg.com/profile_images/284045874/sparepartslogo_400x400.jpg" height="120px" style="margin-left: 120px;margin-top: 30px">
+            <form method="POST" class="form-group" action="{% url 'login' %}" style="height:400px; color:rgba(0, 0, 0, 0.7)">
                 {% csrf_token %}
                 {{form|crispy}}
-                <button type="submit" class="btn btn-secondary">Login</button>
-                <p style="color:rgb(255,255,255,0.7)">Don't have an account? Create One <a href="register/"> Here</a></p>
+                <button type="submit" class="btn btn-secondary" style="border-radius: 50px;margin-left:110px;width:150px;background-color: rgba(0, 0, 0, 0.7)">Login</button>
+                <p style="color:rgba(14, 12, 12, 0.7)">Don't have an account? Create One <a href="register/"> Here</a></p>
             </form>
 
         </div>
