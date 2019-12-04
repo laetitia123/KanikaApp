@@ -875,6 +875,7 @@ titleAnimation { 0% {
 
    
     <div class="container">
+            
     
         <h2>LIST OF SPARE PARTS</h2>
         <table id="cart" class="table table-hover table-condensed" style="margin-top:50px;">
@@ -888,6 +889,18 @@ titleAnimation { 0% {
                     <th style="width:20%">UPDATE</th>
                 </tr>
             </thead>
+            <div class="container-fluid" style="margin-top:-300px; font-family: 'Libre Baskerville', serif; ">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h1 class="slogan" style="  font-size: 300%; color: rgb(0, 0, 0);">Welcome to dashboard!</h1>
+         
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    {% if shareholder %}
+                    {% if shareholder.approved == False %}
+                    <h2>{{message}}</h2>
+                    <p>If you want to register go to that page</p>
+                    <a href="{% url 'username_present'%}"> Create a business account</a>
+                    {% else %}
+                </div>
             {% for sparepart in spareParts %}
             <tbody>
 
@@ -912,21 +925,26 @@ titleAnimation { 0% {
                 </tr>
 
             </tbody>
+           
+            {% empty %}
+        <!-- <div class="row"> -->
+            <h2 class="text-center">There are no events yet!</h2>
+           
+        <!-- </div> -->
             {% endfor%}
-            <tfoot>
-
-                <tr class="visible-xs">
-                    <td class="text-center"><strong>Total 1.99</strong></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <!-- <td class="hidden-xs text-center"><strong>Total:{{sparePart.total}}</strong></td> -->
-                    <td><a href="{% url 'upload' %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a>
-                    </td>
+            <button> <a href="{% url 'upload' %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a></button>
+            
                     
-                </tr>
-            </tfoot>
+                 
+                <!-- </div> -->
+                {% endif %}
+                {% else %}
+                <h2>{{message}}</h2>
+                <p>If you want to register go to that page</p>
+                <a href="{% url 'username_present'%}"> Create a business account</a>
+                {% endif %}
+            <!-- </div> -->
+           
         </table>
     </div>
 

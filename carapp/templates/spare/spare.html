@@ -806,7 +806,7 @@
                                     <a class="dropdown-item" href="/logout">Log out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'shareholder' %}">DASHBOARD</a>
+                        <a class="nav-link" href="{% url 'shareholder'  %}">DASHBOARD</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
@@ -896,15 +896,14 @@
                     <h2>FEATURED SPARE PARTS</h2><br></br>
                     <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
                             <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
-                            <div class="col-sm-2"><a href="/category/2/">Mahindra</a></div>
+                            <div class="col-sm-2"><a href="#">Mahindra</a></div>
                             <div class="col-sm-2"><a href="#">Volvo</a></div>
-                            <div class="col-sm-2"><a href="/cate">Suzuki</a></div>
+                            <div class="col-sm-2"><a href="">Suzuki</a></div>
                             <div class="col-sm-2"><a href="#">Hyundai</a></div>
                             <div class="col-sm-2"><a href="#">Honda</a></div>
                            
-                        </div>
                     <div class="row" style="margin-top:40px;padding-bottom:40px;" >
-                        {% for sparePart in spareparts %}
+                        {% for sparePart in spareParts %}
                         <div class="col-sm-3" style="margin-top:20px;">
                             <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px;">
                             <br><br>
@@ -921,6 +920,7 @@
                         </div>
                         {% endfor%}
 
+                    </div>
 
                     </div>
 

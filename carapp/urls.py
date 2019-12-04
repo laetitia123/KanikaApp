@@ -27,12 +27,13 @@ urlpatterns = [
     url(r'^api/merch2/$', views.SpareList.as_view()),
     url(r'^api-token-auth/', obtain_auth_token),
     url(r'category/(\d+)',views.filter_By_category, name='category'),
-    url(r'^category/$',views.all_category, name='all_category'),
+    # url(r'^category/$',views.all_category, name='all_category'),
     url(r'^shareholder/$',views.shareholder, name='shareholder'),
+    url(r'^pareditprofile',views.username_present, name='username_present'),
     
     # url(r'^api/merch/$', views.MerchList.as_view()),
     url(r'category/(\d+)',views.filter_By_category, name='category'),
-    url(r'^category/$',views.all_category, name='all_category'),
+    
     # url(r'', views.default_map, name="default"),
     url(r'default/', views.default_map, name="default"),
 ]

@@ -246,9 +246,9 @@ def filter_By_category(request,category_id):
     spareparts = SpareParts.objects.filter(id=category_id)
     return render (request,"spare/spare.html", {"spareparts":spareparts})
 
-def all_category(request):
-    category=CarCategory.objects.all()
-    return render (request,"homepage.html", {"categories":categorys})
+# def all_category(request):
+#     category=CarCategory.objects.all()
+#     return render (request,"homepage.html", {"categories":category})
 
     
     
@@ -264,7 +264,32 @@ def default_map(request):
 
 @login_required(login_url='login/')
 def shareholder(request):
-    spareParts=SpareParts.objects.all()
+    current_user = request.user
+    shareholder = Partners.objects.filter(user = current_user).first()
+    print( shareholder)
+    print(current_user)
+    # spareParts = SpareParts.objects.filter(partner_name = shareholder).all()
+    spareParts = SpareParts.objects.all()
+    print(spareParts)
+
+ 
+
+
+    
+  
+    message=None
+    if shareholder is None:
+        message= "you are not registered as a partner"
+        print(message)
+        # redirect(username_present)
+        # if partner.approved == False:
+        #     redirect("username_present")
+    elif shareholder.approved == False:
+        message= "please check in 24 hours  "
+        print(message)
+    else:
+        message= "Welcome to Azapp Business View"
+  
     # spa=SpareParts.objects.get(id=spareId)
     # if not spa in spareParts.sparePart.all():
     #     spareParts.sparePart.add(spa )
@@ -276,8 +301,20 @@ def shareholder(request):
         
     #     spareParts.save()
     
-    return render(request,'spare/shareholder.html',{'spareParts':spareParts})
-
+    return render(request,'spare/shareholder.html',{'spareParts':spareParts,'current_user':current_user,'message':message,'shareholder':shareholder})
+def username_present(request):
+    user=request.user
+    # current_user = request.user
+    if request.method == 'POST':
+        form = UpdateParForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = user
+            post.save()
+            return redirect('shareholder')
+    else:
+        form = UpdateParForm()
+    return render (request, 'parteform.html', {"form":form})
 
 
 def search_results(request):
@@ -285,7 +322,7 @@ def search_results(request):
         search_term = request.GET.get("categoryName")
         searched_category = SpareParts.search_by_categoryname(search_term).all()
         
-        message = f'{search_term}'
+        # message = f'{search_term}'
         
         return render(request,'search.html',{"message":message,"category":searched_category})
     
