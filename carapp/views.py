@@ -227,19 +227,21 @@ def update_profile(request):
     
 
 @login_required(login_url='login/')
-def upload(request):
+def upload(request,partner_id):
+    shareholder=Partners.objects.filter(id=partner_id).first()
     current_user = request.user
     if request.method == 'POST':
         form = sparepartForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.nameChoose = current_user
+            post.partner_name = shareholder 
             post.save()
         return redirect('homePage')
 
     else:
         form = sparepartForm()
-    return render(request, 'upload.html', {"form": form})
+    return render(request, 'upload.html', {"form": form,"partner_id":partner_id})
 
 def filter_By_category(request,category_id):
     category=CarCategory.objects.filter(id=category_id)
@@ -268,15 +270,9 @@ def shareholder(request):
     shareholder = Partners.objects.filter(user = current_user).first()
     print( shareholder)
     print(current_user)
-    # spareParts = SpareParts.objects.filter(partner_name = shareholder).all()
-    spareParts = SpareParts.objects.all()
+    spareParts = SpareParts.objects.filter(partner_name = shareholder).all()
+    # spareParts = SpareParts.objects.all()
     print(spareParts)
-
- 
-
-
-    
-  
     message=None
     if shareholder is None:
         message= "you are not registered as a partner"

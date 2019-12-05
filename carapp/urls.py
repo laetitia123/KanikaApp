@@ -10,10 +10,10 @@ urlpatterns = [
  
     url(r'^about/$',views.aboutus,name='about'),
     url(r'^contact/$',views.contactus,name='contact'),
-    url(r'^upload/$',views.upload,name='upload'),
+   
     url(r'^$',views.homePage,name='homePage'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^upload/$',views.upload,name='upload'),
+    url(r'^upload/(\d+)',views.upload,name='upload'),
     url(r'register/',views.register,name = 'register'),
     url(r'login/',views.login_view,name='login'),
     # url(r'CustomLoginView/',views.CustomLoginView,name='CustomLoginView'),

@@ -839,17 +839,19 @@ titleAnimation { 0% {
                         
                         <li class="nav-item">
                             <div class="container">
-                                <div class="dropdown">
+                                <div class="dropdown" style="margin-top:14px;">
                                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                         style="color:#706F6F">
                                         PAGES
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
-                                        <a class="dropdown-item" href="#">Log in</a>
-                                        <a class="dropdown-item" href="#">sign up</a>
-                                        <a class="dropdown-item" href="#">sign out</a>
+                                            <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                                            <a class="dropdown-item" href="/login">Log in</a>
+                                            <a class="dropdown-item" href="/register">sign up</a>
+                                            <a class="dropdown-item" href="/logout">Log out</a>
+                                        </div>
+                                        </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'shareholder' %}"style="margin-left:-1000px;">DASHBOARD</a>
@@ -859,9 +861,9 @@ titleAnimation { 0% {
                         </li>
                         <li class="nav-item">
                             <!-- Search -->
-                            <div class="wrap">
+                            <!-- <div class="wrap">
                                 <input type="text" placeholder="Search...">
-                                <div class="search"></div>
+                                <div class="search"></div> -->
                             </div>
     
                         </li>
@@ -920,7 +922,7 @@ titleAnimation { 0% {
                     <td data-th="Category">{{sparepart.categoryPart}}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                        <a href="{% url 'shareholder'   %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                        <a href="{% url 'shareholder'%}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
                     </td>
                 </tr>
 
@@ -932,7 +934,7 @@ titleAnimation { 0% {
            
         <!-- </div> -->
             {% endfor%}
-            <button> <a href="{% url 'upload' %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a></button>
+            <button> <a href="{% url 'upload' shareholder.id %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a></button>
             
                     
                  

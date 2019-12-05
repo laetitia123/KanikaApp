@@ -8,7 +8,7 @@
 
   <div class="text-center w-50 rounded border border-primary bg-white mx-auto" style="margin-top: 50px">
     <p class="border border-secondary bg-secondary text-white">Upload A Sparepart</p>
-    <form  action="{%url 'upload' %}" method="post" enctype="multipart/form-data">
+    <form  action="{%url 'upload' partner_id %}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
 
         {% bootstrap_form form%}

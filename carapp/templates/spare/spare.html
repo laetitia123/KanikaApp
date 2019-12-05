@@ -1,6 +1,6 @@
-<!-- {%extends 'base.html'%}
-{% load bootstrap4 %}
-{% block title %} Login Here {% endblock %} -->
+<!-- {%extends 'base.html'%} -->
+<!-- {% load bootstrap4 %} -->
+<!-- {% block title %} Login Here {% endblock %}  -->
 {% load crispy_forms_tags %}
 
 
@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
-    <title>SPARE PARTS</title>
+    <title>
+        <img src="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png">
+        SPARE PARTS
+    </title>
 </head>
 <style>
     #one {
@@ -806,10 +809,10 @@
                                     <a class="dropdown-item" href="/logout">Log out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'shareholder'  %}">DASHBOARD</a>
+                        <a class="nav-link" href="{% url 'shareholder'  %}">SHAREHOLDER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
+                        <a class="nav-link" href="#contact">CONTACT US</a>
                     </li>
                     <li class="nav-item">
                         <!-- Search -->
@@ -954,7 +957,7 @@
         <h2 style="color: black;margin-bottom:50px;font-family: 'Baskervville', serif;">FEATURED CAR'S CATEGORIES</h2>
         <div class="container">
         <div class="row" id="category">
-            {% for sparePart in spareparts %}
+            {% for sparePart in spareParts %}
             
             <div class="col-md-4" id="shadow" style="margin-bottom: 20px;text-align:center;font-family: 'Baskervville', serif; color: rgba(110, 110, 101, 0.9);">
                 <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px" width="350px">
@@ -1013,7 +1016,7 @@
             <div class="contact-section">
             <div class="container">
                 <form>
-                    <!-- <div class="row"> -->
+                    <div class="row">
                     <div class="col-md-6 form-line">
                           <div class="form-group">
                               <label for="exampleInputUsername">Your name</label>
@@ -1040,6 +1043,7 @@
                             </div>
                             
                       </div>
+                    </div>
                   </form>
               </div>
 </section>
