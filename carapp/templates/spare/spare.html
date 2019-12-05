@@ -1,10 +1,7 @@
-<!-- {%extends 'base.html'%}
-{% load bootstrap4 %}
-{% block title %} Login Here {% endblock %} -->
+
 {% load crispy_forms_tags %}
 
 
-<!-- {% block content %} -->
 {% load static%}
 <!DOCTYPE html>
 <html lang="en">
@@ -470,71 +467,6 @@
         }
     }
 
-<<<<<<< HEAD
-    /* @-webkit-keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-}
-}
-
-@-moz-keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-}
-}
-
-@keyframes 
-titleAnimation { 0% {
- opacity: 0;
-}
- 12.5% {
- opacity: 1;
-}
- 25% {
- opacity: 1;
-}
- 37.5% {
- opacity: 0;
-}
- 100% {
- opacity: 0;
-} */
-
-
-    .slideshow p:nth-child(1) span {
-     background-image: url('https://images.pexels.com/photos/70912/pexels-photo-70912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-    }
-
-    .slideshow p:nth-child(2) span {
-        background-image: url('https://images.pexels.com/photos/498692/pexels-photo-498692.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-        -webkit-animation-delay: 6s;
-        -moz-animation-delay: 6s;
-        animation-delay: 6s;
-=======
 
     /* .slideshow p:nth-child(1) span {
         background-image: url('https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
@@ -545,7 +477,6 @@ titleAnimation { 0% {
        height:700px;
        /* background-size: cover; */
        background-repeat: no-repeat;
->>>>>>> dc4b4fa0961934c233e66922bf3f655744b45f10
     }
 /* 
     .slideshow p:nth-child(3) span {
@@ -809,6 +740,8 @@ titleAnimation { 0% {
 </style>
 
 <body>
+   
+
     <div class="container-fluide">
         <div class="contact">
             <ul>
@@ -867,13 +800,8 @@ titleAnimation { 0% {
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
-<<<<<<< HEAD
-                                    <a class="dropdown-item" href="register/">sign up</a>
-                                    <a class="dropdown-item" href="login/">Log in</a> 
-=======
                                     <a class="dropdown-item" href="/login">Log in</a>
                                     <a class="dropdown-item" href="/register">sign up</a>
->>>>>>> dc4b4fa0961934c233e66922bf3f655744b45f10
                                     <a class="dropdown-item" href="/logout">Log out</a>
                     </li>
                     <li class="nav-item">
@@ -964,37 +892,81 @@ titleAnimation { 0% {
                 
 <div class="row">
                 <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
-                    <h2>FEATURED SPARE PARTS</h2><br></br>
-                    <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                    <!-- <h2>FEATURED SPARE PARTS</h2><br></br> -->
+                    <!-- <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
                             <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
-                            <div class="col-sm-2"><a href="/category/2/">Mahindra</a></div>
-                            <div class="col-sm-2"><a href="#">Volvo</a></div>
-                            <div class="col-sm-2"><a href="/cate">Suzuki</a></div>
-                            <div class="col-sm-2"><a href="#">Hyundai</a></div>
-                            <div class="col-sm-2"><a href="#">Honda</a></div>
+                            <div class="col-sm-2"><a href="/category/2">Mahindra</a></div>
+                            <div class="col-sm-2"><a href="/category/3">Volvo</a></div>
+                            <div class="col-sm-2"><a href="/category/4">Suzuki</a></div>
+                            <div class="col-sm-2"><a href="/category/5">Hyundai</a></div>
+                            <div class="col-sm-2"><a href="/category/6/">Honda</a></div>
                            
-                        </div>
-                    <div class="row" style="margin-top:40px;padding-bottom:40px;" >
-                        {% for sparePart in spareparts %}
-                        <div class="col-sm-3" style="margin-top:20px;">
-                            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px;">
+                    </div> -->
+                    <!-- {% for category in categories %}
+            <div class="col-md-4" style="margin-bottom: 20px;">
+                <a class="thumbnail" href="{% url 'carDetails' category.id%}">
+                    <p>{{category.categoryPart}}</p>
+                </a>
+            </div>
+            {% endfor%} -->
+           
+            <h2>FEATURED SPARE PARTS</h2>
+            <div class="container">
+            <div class="row">
+            {% for category in categories %}
+            
+            <div class="col-sm-2" >
+                <a class="thumbnail" href="{% url 'carDetails' category.id%}">
+                    <p>{{category.categoryPart}}</p>
+                </a>
+            </div>
+                
+            {% endfor%}
+        </div>
+            </div>
+            <div class="row">
+
+                {% for sparePart in spareParts %}
+                <div class="col-sm-4">
+                    <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+                    <br><br>
+                    <p>{{sparePart.namePart}}</p>
+                    <p>Location:{{sparePart.locationPart}}</p>
+                    <p>Contact us:{{sparePart.Phone}}</p>
+                    <button class="btn btn-secondary">${{sparePart.price}}</button>
+                    <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning">
+                            <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+                </div>
+                {% endfor%}
+
+                
+            </div><br>
+            
+               
+                </div>
+</div>
+                <!-- <div class="row" style="margin-top:40px;padding-bottom:40px" >
+                        {% for carCats in spareParts %}
+                        <div class="col-sm-3" style="margin-top:20px ">
+                            <img src="{{carCats.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px">
                             <br><br>
                             
-                           <p>Name:{{sparePart.namePart}}</p>
-                            <p>Location:{{sparePart.locationPart}}</p>
+                           <p>Name:{{carCats.namePart}}</p>
+                            <p>Location:{{carCats.locationPart}}</p>
                             <p> Posted By:{{user.username}}</p>
-                            <p>Contact us:{{sparePart.Phone}}</p>
-                            <button class="btn btn-secondary">${{sparePart.price}}</button>
-                            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-warning"style="background-color: rgba(185, 71, 5, 0.7)">
+                            <p>Contact us:{{carCats.Phone}}</p>
+                            <button class="btn btn-secondary">${{carCats.price}}</button>
+                           
                                     <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
                                  
                                        
                         </div>
                         {% endfor%}
+                         -->
 
 
-                    </div>
-
+                    <!-- </div> -->
+<!-- 
                 </div>
                 
                 
@@ -1004,7 +976,7 @@ titleAnimation { 0% {
 
             </div>
 
-        </div>
+        </div> -->
 
 
         <h1>
@@ -1022,21 +994,33 @@ titleAnimation { 0% {
         </div>
 
         </div>
+        
         <h2 style="color: black;margin-bottom:50px;font-family: 'Baskervville', serif;">FEATURED CAR'S CATEGORIES</h2>
+        <br>
+        <br>
+        
         <div class="container">
         <div class="row" id="category">
-            {% for sparePart in spareparts %}
-            
+            {% for sparePart in spareParts %}
             <div class="col-md-4" id="shadow" style="margin-bottom: 20px;text-align:center;font-family: 'Baskervville', serif; color: rgba(110, 110, 101, 0.9);">
                 <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px" width="350px">
-              <b> <p>{{sparePart.categoryPart}}</p></b> 
+              <b> <p>{{sparePart.categoryPart}}</p></b>
+            </div>
+            {% endfor%}
+        </div>
+        </div>
+        <br><br>
+        <!-- <div class="row" id="category">
+            {% for category in categories %}
+            <div class="col-md-4" style="margin-bottom: 20px;">
+                
+                    <img class="img-responsive" src="{{category.categoryImage.url}}" alt="" height="300px"
+                        width="300px">
                 
             </div>
             {% endfor%}
 
-        </div>
-        </div>
-        <br><br>
+        </div><br><br> -->
         
     </div>
     &nbsp;&nbsp;
@@ -1057,23 +1041,7 @@ titleAnimation { 0% {
     </div>
 </div>
     <!-- <h2 style="color: black;">SPARE PARTS BY CATEGORY</h2> -->
-    <div class="row">
-
-
-        {% for carCat in carCats %}
-        <div class="col-sm-4">
-            <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
-            <br><br>
-            <p>{{carCat.namePart}}</p>
-            <p>Location:{{carCat.locationPart}}</p>
-            <p>Contact us:{{carCat.Phone}}</p>
-            <button class="btn btn-secondary">${{carCat.price}}</button>
-            <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
-                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
-        </div>
-        {% endfor%}
-
-    </div><br>
+    
 <!-- contact us start from here -->
     <section id="contact">
             <div class="section-content">
@@ -1186,13 +1154,12 @@ titleAnimation { 0% {
 
                         </div>
                     </div>
-
                     <div class="col-xs-12 col-sm-6 col-md-3">
 
                         <div class="widget no-box">
-                            <h5 class="widget-title">CONTACT US</h5><span></span></h5>
+                            <h5 class="widget-title">Contact Us<span></span></h5>
 
-                            <p><a href="uwizelaetitia@gmail.com" title="glorythemes">Email Us</a></p>
+                            <p><a href="moringa@gmail.com" title="glorythemes">moringa@gmail.com</a></p>
                             <ul class="social-footer2">
                                 <li class=""><a title="youtube" target="_blank" href="https://www.youtube.com/"><img
                                             alt="youtube" width="30" height="30"
@@ -1217,18 +1184,16 @@ titleAnimation { 0% {
                 </div>
             </div>
         </div>
-     
 
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p >Copyright Kanika System© 2019. All rights reserved.</p>
+                        <p>Copyright Company Name © 2019. All rights reserved.</p>
                     </div>
                 </div>
             </div>
         </div>
-      
     </footer>
 
     </div>
@@ -1247,4 +1212,15 @@ titleAnimation { 0% {
 </body>
 
 </html>
-<!-- {% endblock %} -->
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

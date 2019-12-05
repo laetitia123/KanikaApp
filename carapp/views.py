@@ -1,3 +1,9 @@
+# from django.shortcuts import render,redirect
+# from .models import SpareParts,CarCategory,Cart
+
+# Create your views here.
+
+
 from __future__ import unicode_literals
 # from .forms import RegisterForm,ProfileForm,ShareholderForm
 from .forms import RegisterForm,ProfileForm,sparepartForm
@@ -22,72 +28,6 @@ from .permissions import IsAdminOrReadOnly
 from django.contrib.auth.decorators import login_required
 
 
-class MerchList(APIView):
-    def get(self, request, format=None):
-        all_merch = CarMerch.objects.all()
-        serializers = MerchSerializer(all_merch, many=True)
-        return Response(serializers.data)
-        
-    def post(self, request, format=None):
-        serializers = MerchSerializer(data=request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-    # permission_classes = (IsAdminOrReadOnly,)
-class SpareList(APIView):
-    def get(self, request, format=None):
-        all_spares =SpareParts.objects.all()
-        serializers =SpareSerializer(all_spares, many=True)
-        return Response(serializers.data)
-        
-    def post(self, request, format=None):
-        serializers = SpareSerializer(data=request.data)
-        if serializers.is_valid():
-            serializers.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-    # permission_classes = (IsAdminOrReadOnly,)
-        
-# from .forms import CustomAuthenticationForm
-# from bootstrap_modal_forms.generic import BSModalLoginView
-# from django.urls import reverse_lazy
-
-# class CustomLoginView(BSModalLoginView):
-#     authentication_form = CustomAuthenticationForm
-#     template_name = 'examples/login.html'
-#     success_message = 'Success: You were successfully logged in.'
-#     extra_context = dict(success_url=reverse_lazy('index'))
-
-
-
-# def cart_detail(request):
-#     cart = Cart(request)
-#     for item in cart:
-#         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
-#     return render(request, 'cart/detail.html', {'cart': cart})
-
-
-
-
-def aboutus(request):
-    # categories=CarCategory.objects.all()
-    # spareParts=SpareParts.objects.all()
-    # context={
-    #     'categories':categories,
-    #     'spareParts':spareParts
-    # }
-    return render(request,'spare/aboutus.html')
-def contactus(request):
-    # categories=CarCategory.objects.all()
-    # spareParts=SpareParts.objects.all()
-    # context={
-    #     'categories':categories,
-    #     'spareParts':spareParts
-    # }
-    return render(request,'spare/contact.html')
-
-
 def homePage(request):
     categories=CarCategory.objects.all()
     spareParts=SpareParts.objects.all()
@@ -96,6 +36,53 @@ def homePage(request):
         'spareParts':spareParts
     }
     return render(request,'spare/spare.html',context)
+
+
+def carDetails(request,b):
+
+    # category=CarCategory.objects.get(id=carId)
+    # spareParts=SpareParts.objects.filter(carCat=category)
+    # context={
+    #     'carCats':spareParts
+    # }
+    # return render(request,'details.html',context)
+
+    if 'categoryName' in request.GET and request.GET['categoryName']:
+        a= request.GET.get("categoryName")
+        b = SpareParts.search_by_categoryname(a).all()
+        
+        # message = f'{a}'
+        
+        return render(request,'details.html',{"category":b})
+    
+    else:
+        message = "You haven't searched for any term"
+        return render(request,'details.html',{"message":message,"category":b})
+def cart(request):
+    sparePart=Cart.objects.all()[0]
+    context={
+        'sparePs':sparePart,
+    }
+    return render (request,'order.html',context)
+
+def addToCart(request,spareId):
+    spareParts=Cart.objects.all()[0]
+    sparePart=SpareParts.objects.get(id=spareId)
+    if not spareParts in spareParts.sparePart.all():
+        spareParts.sparePart.add(sparePart)
+    else:
+        spareParts.sparePart.remove(sparePart)
+    newTotal=0
+    for spareP in spareParts.sparePart.all():
+        newTotal+=spareP.price
+        spareParts.total=newTotal
+        spareParts.save()
+    return redirect('cart')
+
+def delete(request, cartId):
+    cart = Cart.objects.get(sparePart__id=cartId)
+    cart.delete()
+    return redirect('homePage')
 
 def register(response):
     if response.method == "POST":
@@ -106,83 +93,6 @@ def register(response):
     else:
         form = RegisterForm()
     return render(response, "registration/register.html", {"form":form})
-
-def login_view(request):
-    if request.method=="POST":
-        form=AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            user=form.get_user()
-            login(request,user)
-            return redirect('homePage')
-    else:
-        form=AuthenticationForm()
-    return render(request, 'registration/login.html',{"form":form})
-
-def logout_view(request):
-    if request.method=="POST":
-        logout(request)
-    return redirect('login')
-
-
-
-def carDetails(request,carId):
-    category=CarCategory.objects.get(id=carId)
-    spareParts=SpareParts.objects.filter(carCat=category)
-    context={
-        'carCats':spareParts
-    }
-    return render(request,'details.html',context)
-
-
-def cart(request):
-    sparePart=Cart.objects.all()[0]
-    context={
-        'spareParts':sparePart,
-    }
-    return render (request,'order.html',context)
-
-def addToCart(request,spareId):
-    spareParts=Cart.objects.all()[0]
-    spa=SpareParts.objects.get(id=spareId)
-    if not spa in spareParts.sparePart.all():
-        spareParts.sparePart.add(spa )
-    else:
-        spareParts.sparePart.remove(spa )
-    # return httpResponseRedirect(reverse("cart"))
-    newTotal=0
-    for spareP in spareParts.sparePart.all():
-        newTotal += spareP.price
-        spareParts.total = newTotal
-        spareParts.save()
-    return redirect('cart')
-
-# def addToCart(request,slug):
-#     spareParts=Cart.objects.all()[0]
-#     try:
-
-#        sparePart=SpareParts.objects.get(slug=slug)
-#     except SpareParts.DoesNotExist:
-#         pass
-#     except:
-#         pass
-#     if not spareParts in spareParts.spareParts.all():
-#       spareParts.spareParts.add(sparePart)
-#     else:
-#        cart.sparePart.remove(sparePart)
-#     # return httpResponseRedirect(reverse("cart"))
-#     newTotal=0.00
-#     for spareP in cart.sparePart.all():
-#         newTotal+=spareP.price
-#         spareParts.total=newTotal
-#         spareParts.save() 
-#     return redirect('cart')
-
-
-def delete(request, cartId):
-    cart = Cart.objects.get(sparePart__id=cartId)
-    cart.delete()
-    return redirect('homePage')
-
 
 def profile_view(request,user_id):
    current_user = request.user.username
@@ -218,13 +128,6 @@ def update_profile(request):
            form=ProfileForm()
    return render(request,'profile_form.html',{"form":form})
 
-#........API views function----------
-# class MerchList(APIView):
-#     def get(self, request, format=None):
-#         all_merch = CarMerch.objects.all()
-#         serializers = MerchSerializer(all_merch, many=True)
-#         return Response(serializers.data)
-    
 
 @login_required(login_url='login/')
 def upload(request):
@@ -251,7 +154,7 @@ def all_category(request):
     return render (request,"homepage.html", {"categories":categorys})
 
     
-    
+
 # --------------------------map function-----------
 def default_map(request):
     # TODO: move this token to Django settings from an environment variable
@@ -285,10 +188,72 @@ def search_results(request):
         search_term = request.GET.get("categoryName")
         searched_category = SpareParts.search_by_categoryname(search_term).all()
         
-        message = f'{search_term}'
+        # message = f'{search_term}'
         
-        return render(request,'search.html',{"message":message,"category":searched_category})
+        return render(request,'search.html',{"category":searched_category})
     
     else:
         message = "You haven't searched for any term"
         return render(request,'search.html',{"message":message,"category":searched_category})
+
+def login_view(request):
+    if request.method=="POST":
+        form=AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user=form.get_user()
+            login(request,user)
+            return redirect('homePage')
+    else:
+        form=AuthenticationForm()
+    return render(request, 'registration/login.html',{"form":form})
+
+def logout_view(request):
+    if request.method=="POST":
+        logout(request)
+    return redirect('login')
+
+
+def aboutus(request):
+    # categories=CarCategory.objects.all()
+    # spareParts=SpareParts.objects.all()
+    # context={
+    #     'categories':categories,
+    #     'spareParts':spareParts
+    # }
+    return render(request,'spare/aboutus.html')
+def contactus(request):
+    # categories=CarCategory.objects.all()
+    # spareParts=SpareParts.objects.all()
+    # context={
+    #     'categories':categories,
+    #     'spareParts':spareParts
+    # }
+    return render(request,'spare/contact.html')
+
+
+class MerchList(APIView):
+    def get(self, request, format=None):
+        all_merch = CarMerch.objects.all()
+        serializers = MerchSerializer(all_merch, many=True)
+        return Response(serializers.data)
+        
+    def post(self, request, format=None):
+        serializers = MerchSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    # permission_classes = (IsAdminOrReadOnly,)
+class SpareList(APIView):
+    def get(self, request, format=None):
+        all_spares =SpareParts.objects.all()
+        serializers =SpareSerializer(all_spares, many=True)
+        return Response(serializers.data)
+
+    def post(self, request, format=None):
+        serializers = SpareSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    

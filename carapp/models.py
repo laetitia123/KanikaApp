@@ -5,25 +5,25 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # Create your models here.
 
-
 class CarCategory(models.Model):
-    categoryName = (
-        ('Toyota', 'Toyota'),
-        ('Cross country', 'Cross country'),
-        ('Vox wagen', 'Vox wagen'),
-        ('Suzuki', 'Suzuki'),
-        ('Mahindra', 'Mahindra'),
-        ('Honda', 'Honda'),
-        ('Hyunda', 'Hyunda'),
-        ('Volvo', 'Volvo'),
-        ('Daihatsu', 'Daihatsu'),
-
+    categoryName=(
+        ('Toyota','Toyota'),
+        ('Cross country','Cross country'),
+        ('Vox wagen','Vox wagen'),
+        ('Suzuki','Suzuki'),
+        ('Mahindra','Mahindra'),
+        ('Honda','Honda'),
+        ('Hyunda','Hyunda'),
+        ('Volvo','Volvo'),
+        ('Daihatsu','Daihatsu'),
+        
     )
-    categoryPart = models.CharField(max_length=40, choices=categoryName)
-    categoryImage = models.ImageField(upload_to='category/')
+    categoryPart=models.CharField(max_length=40,choices=categoryName)
+    categoryImage=models.ImageField(upload_to='category/')
 
     def __str__(self):
         return self.categoryPart
+
 
     #  @classmethod
     # def filter_by_location(cls, id):
@@ -32,7 +32,8 @@ class CarCategory(models.Model):
 
 
 class SpareParts(models.Model):
-    nameChoose = (('Head lights', 'Head lights'),
+    nameChoose = (
+                  ('Head lights', 'Head lights'),
                   ('Brake lights', 'Brake lights'),
                   ('Tail lights', 'Tail lights'),
                   ('Tail gate', 'Tail gate'),
@@ -73,7 +74,7 @@ class SpareParts(models.Model):
     )
 
     categoryPart = models.CharField(max_length=40, choices=categoryName)
-    categoryImage = models.ImageField(upload_to='category/')
+    categoryImage = models.ImageField(upload_to='category/',blank=True)
     carCat = models.ManyToManyField(CarCategory)
     
 
