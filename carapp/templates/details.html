@@ -63,19 +63,22 @@
   <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
     <!-- First Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center">
-      {% for carCat in carCats %}
-      <div class="w3-quarter">
-        <img src="{{carCat.ImagePart.url}}" alt="Sandwich" style="width:100%">
-        <h3>Name:{{carCat.namePart}}</h3>
-        <p>Price:{{carCat.price}}</p>
-        <p>Location:{{carCat.locationPart}}</p>
-        <p>Contact:{{carCat.Phone}}</p>
-        <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
-            <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
-      </div>
-      {% endfor%}
-    </div>
+    <div class="row">
+
+    
+        {% for carCat in carCats %}
+        <div class="col-sm-4">
+            <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <br><br>
+            <p>{{carCat.namePart}}</p>
+            <p>Location:{{carCat.locationPart}}</p>
+            <p>Contact us:{{carCat.Phone}}</p>
+            <button class="btn btn-secondary">${{carCat.price}}</button>
+            <a href="{% url 'addToCart' carCat.id %}"><button class="btn btn-outline-warning">
+                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+        </div>
+        {% endfor%}
+    </div><br>
     
     <!-- Second Photo Grid-->
     <!-- <div class="w3-row-padding w3-padding-16 w3-center">

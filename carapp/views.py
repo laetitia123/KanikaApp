@@ -38,7 +38,7 @@ def homePage(request):
     return render(request,'spare/spare.html',context)
 
 
-def carDetails(request,b):
+def carDetails(request,carId):
 
     # category=CarCategory.objects.get(id=carId)
     # spareParts=SpareParts.objects.filter(carCat=category)
@@ -47,17 +47,12 @@ def carDetails(request,b):
     # }
     # return render(request,'details.html',context)
 
-    if 'categoryName' in request.GET and request.GET['categoryName']:
-        a= request.GET.get("categoryName")
-        b = SpareParts.search_by_categoryname(a).all()
-        
-        # message = f'{a}'
-        
-        return render(request,'details.html',{"category":b})
-    
-    else:
-        message = "You haven't searched for any term"
-        return render(request,'details.html',{"message":message,"category":b})
+    category=CarCategory.objects.get(id=carId)
+    spareParts=SpareParts.objects.filter(carCat=category)
+    context={
+        'carCats':spareParts
+    }
+    return render(request,'details.html',context)
 def cart(request):
     sparePart=Cart.objects.all()[0]
     context={

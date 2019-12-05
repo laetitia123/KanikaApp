@@ -56,7 +56,7 @@ class SpareParts(models.Model):
         ('Nyamirambo', 'Nyamirambo'),
         ('Remera', 'Remera'),
         ('Nyabugogo', 'Nyabugogo'),
-    )
+        )
     locationPart = models.CharField(max_length=40, choices=locationChoose)
     ImagePart = models.ImageField(upload_to='spareparts/')
     Phone = models.IntegerField()
