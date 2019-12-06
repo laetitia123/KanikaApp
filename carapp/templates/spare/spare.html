@@ -958,6 +958,7 @@
     <h2>FEATURED SPARE PARTS</h2>
     <div class="container">
     <div class="row">
+            
     {% for category in categories %}
     
     <div class="col-sm-2" >
@@ -972,13 +973,13 @@
     <div class="row">
         {% for sparePart in spareParts %}
         <div class="col-sm-4">
-            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <img src="{{sparePart.ImagePart.url}}"  class="img-thumbnail" style="width:280px;height:300px;">
             <br><br>
             <p>{{sparePart.namePart}}</p>
             <p>Location:{{sparePart.locationPart}}</p>
             <p>Contact us:{{sparePart.Phone}}</p>
             <button class="btn btn-secondary">${{sparePart.price}}</button>
-            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning">
+            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning" style="background-color: rgba(185, 71, 5, 0.7)">
                     <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
         </div>
         {% endfor%}

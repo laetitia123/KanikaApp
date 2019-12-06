@@ -135,24 +135,23 @@ def logout_view(request):
     return redirect('login')
 
 def carDetails(request,carId):
-
     # category=CarCategory.objects.get(id=carId)
     # spareParts=SpareParts.objects.filter(carCat=category)
     # context={
     #     'carCats':spareParts
     # }
     # return render(request,'details.html',context)
-
     category=CarCategory.objects.get(id=carId)
     spareParts=SpareParts.objects.filter(carCat=category)
     context={
         'carCats':spareParts
     }
     return render(request,'details.html',context)
+
 def cart(request):
-    sparePart=Cart.objects.all()[0]
-    context={
-        'sparePs':sparePart,
+    sparePart = Cart.objects.all()[0]
+    context = {
+        'spareParts': sparePart,
     }
     return render(request, 'order.html', context)
 
@@ -167,8 +166,8 @@ def addToCart(request, spareId):
     # return httpResponseRedirect(reverse("cart"))
     newTotal = 0
     for spareP in spareParts.sparePart.all():
-        newTotal+=spareP.price
-        spareParts.total=newTotal
+        newTotal += spareP.price
+        spareParts.total = newTotal
         spareParts.save()
     return redirect('cart')
 
@@ -192,7 +191,6 @@ def addToCart(request, spareId):
 #         spareParts.total=newTotal
 #         spareParts.save()
 #     return redirect('cart')
-
 
 def delete(request, cartId):
     cart = Cart.objects.get(sparePart__id=cartId)
@@ -351,7 +349,7 @@ def search_results(request):
         searched_category = SpareParts.search_by_categoryname(
             search_term).all()
 
-        # message = f'{search_term}'
+        message = f'{search_term}'
 
         return render(request, 'search.html', {"message": message, "category": searched_category})
 
