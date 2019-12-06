@@ -10,6 +10,7 @@ urlpatterns = [
  
     url(r'^about/$',views.aboutus,name='about'),
     url(r'^contact/$',views.contactus,name='contact'),
+    url(r'contact/',views.Contact, name='contact'),
    
     url(r'^$',views.homePage,name='homePage'),
     url(r'^search/', views.search_results, name='search_results'),

@@ -753,7 +753,7 @@
             <ul>
                 <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
 
-                <li><a href="#contact"><i class="fa fa-envelope"></i> info@themevessel.com</a></li>
+                <li><a href="#contact"><i class="fa fa-envelope"></i> info@kanikasystem.com</a></li>
                 <li></li> <i class="fa fa-phone"
                     style="font-size:15px;margin-left:430px;color:#949494;margin-top:20px;"></i>
                 <i class="fa fa-envelope" style="font-size:15px;margin-left:10px;color:#949494"></i>
@@ -1014,11 +1014,22 @@
             <div class="section-content">
   
                 <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"  style="color: rgba(185, 71, 5, 0.7)"> Touch with us</span></h1>
+                
+
+
                 <!-- <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3> -->
             </div>
+            <a href="{% url 'contact' %}">contact</a>
+
+            
+            <!-- <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <textarea name="message" placeholder="Message..."></textarea>
+                <input type="submit" />
+            </form> -->
             <div class="contact-section">
             <div class="container">
-                <form>
+                <form  action="mailto:uwizelaetitia@gmail.com" method="post" enctype="text/plain" >
                     <div class="row">
                     <div class="col-md-6 form-line">
                           <div class="form-group">
@@ -1050,6 +1061,7 @@
                   </form>
               </div>
 </section>
+
 
     &nbsp;&nbsp;&nbsp;
     <!-- footer -->

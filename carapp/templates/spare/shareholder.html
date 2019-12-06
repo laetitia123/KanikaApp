@@ -879,7 +879,7 @@ titleAnimation { 0% {
     <div class="container">
             
     
-        <h2>LIST OF SPARE PARTS</h2>
+        <!-- <h2>LIST OF SPARE PARTS</h2> -->
         <table id="cart" class="table table-hover table-condensed" style="margin-top:50px;">
             <thead>
                 <tr>
@@ -892,18 +892,22 @@ titleAnimation { 0% {
                 </tr>
             </thead>
             <div class="container-fluid" style="margin-top:-300px; font-family: 'Libre Baskerville', serif; ">
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                    <h1 class="slogan" style="  font-size: 300%; color: rgb(0, 0, 0);">Welcome to dashboard!</h1>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h1 class="slogan" style=" text-align:center; font-size: 300%; color: rgb(0, 0, 0);">Welcome to dashboard!</h1>
          
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                   
+                   
                     {% if shareholder %}
                     {% if shareholder.approved == False %}
                     <h2>{{message}}</h2>
                     <p>If you want to register go to that page</p>
-                    <a href="{% url 'username_present'%}"> Create a business account</a>
+                    <a href="{% url 'username_present'%}">Register as Shareholder</a>
                     {% else %}
+                    <h2>LIST OF SPARE PARTS</h2> 
                 </div>
+                
             {% for sparepart in spareParts %}
+            
             <tbody>
 
                 <tr>
@@ -930,12 +934,13 @@ titleAnimation { 0% {
            
             {% empty %}
         <!-- <div class="row"> -->
-            <h2 class="text-center">There are no events yet!</h2>
+            <h2 class="text-center">There no sparepart uploaded  yet!</h2>
            
         <!-- </div> -->
             {% endfor%}
-            <button> <a href="{% url 'upload' shareholder.id %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a></button>
+            <button style="margin-left:200px;"> <a href="{% url 'upload' shareholder.id %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a></button>
             
+           
                     
                  
                 <!-- </div> -->
@@ -946,9 +951,12 @@ titleAnimation { 0% {
                 <a href="{% url 'username_present'%}"> Create a business account</a>
                 {% endif %}
             <!-- </div> -->
+            
            
         </table>
+        
     </div>
+    
 
     <!-- footer -->
 

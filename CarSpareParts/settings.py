@@ -85,6 +85,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'CarSpareParts.wsgi.application'
 
 
+# email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ALLOWED_HOSTS = []
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'uwizelaetitia@gmail.com' 
+EMAIL_HOST_PASSWORD = 'takecare1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.zoho.com'
+
+
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
