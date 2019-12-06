@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rest_framework',
     'rest_framework.authtoken',
-    #  'crispy_forms',
+    # 'crispy-forms',
    
 ]
 REST_FRAMEWORK = {
@@ -83,6 +83,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'CarSpareParts.wsgi.application'
+
+
+# email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ALLOWED_HOSTS = []
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'uwizelaetitia@gmail.com' 
+EMAIL_HOST_PASSWORD = 'takecare1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.zoho.com'
+
 
 
 # Database

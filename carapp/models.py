@@ -5,34 +5,46 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # Create your models here.
 
-
 class CarCategory(models.Model):
-    categoryName = (
-        ('Toyota', 'Toyota'),
-        ('Cross country', 'Cross country'),
-        ('Vox wagen', 'Vox wagen'),
-        ('Suzuki', 'Suzuki'),
-        ('Mahindra', 'Mahindra'),
-        ('Honda', 'Honda'),
-        ('Hyunda', 'Hyunda'),
-        ('Volvo', 'Volvo'),
-        ('Daihatsu', 'Daihatsu'),
-
+    categoryName=(
+        ('Toyota','Toyota'),
+        ('Cross country','Cross country'),
+        ('Vox wagen','Vox wagen'),
+        ('Suzuki','Suzuki'),
+        ('Mahindra','Mahindra'),
+        ('Honda','Honda'),
+        ('Hyunda','Hyunda'),
+        ('Volvo','Volvo'),
+        ('Daihatsu','Daihatsu'),
+        
     )
-    categoryPart = models.CharField(max_length=40, choices=categoryName)
-    categoryImage = models.ImageField(upload_to='category/')
+    categoryPart=models.CharField(max_length=40,choices=categoryName)
+    categoryImage=models.ImageField(upload_to='category/')
 
     def __str__(self):
         return self.categoryPart
+
 
     #  @classmethod
     # def filter_by_location(cls, id):
     #    image= Image.objects.filter(location_id=id)
     #    return image
-
+class Partners(models.Model):
+    partner_name = models.CharField(max_length=60,null=True)
+    description= models.CharField(max_length=300,null=True)
+    user=models.OneToOneField(User,on_delete=models.CASCADE, blank=True,null=True)
+    email = models.CharField(max_length=60,null=True)
+    partner_image = models.ImageField(upload_to='partner/',null=True)
+    approved = models.BooleanField(default=False )
+    phone= models.CharField(max_length=60,null=True)
+    def __str__(self):
+        return str(self.partner_name)
+    def save_partner(self):
+        self.save()
 
 class SpareParts(models.Model):
-    nameChoose = (('Head lights', 'Head lights'),
+    nameChoose = (
+                  ('Head lights', 'Head lights'),
                   ('Brake lights', 'Brake lights'),
                   ('Tail lights', 'Tail lights'),
                   ('Tail gate', 'Tail gate'),
@@ -55,10 +67,11 @@ class SpareParts(models.Model):
         ('Nyamirambo', 'Nyamirambo'),
         ('Remera', 'Remera'),
         ('Nyabugogo', 'Nyabugogo'),
-    )
+        )
     locationPart = models.CharField(max_length=40, choices=locationChoose)
-    ImagePart = models.ImageField(upload_to='spareparts/')
+    ImagePart= models.ImageField(upload_to='spareparts/')
     Phone = models.IntegerField()
+    user=models.ForeignKey(User,on_delete= models.CASCADE,null=True)
     categoryName = (
         ('Toyota', 'Toyota'),
         ('Cross country', 'Cross country'),
@@ -73,8 +86,9 @@ class SpareParts(models.Model):
     )
 
     categoryPart = models.CharField(max_length=40, choices=categoryName)
-    categoryImage = models.ImageField(upload_to='category/')
+    categoryImage = models.ImageField(upload_to='category/',blank=True)
     carCat = models.ManyToManyField(CarCategory)
+    partner_name = models.ForeignKey(Partners,on_delete= models.CASCADE,blank=True,null=True)
     
 
     def __str__(self):
@@ -173,28 +187,32 @@ class CarMerch(AbstractBaseUser, models.Model):
         
 
 
-class partner(models.Model):
+# class partner(models.Model):
 
-    image =models.ImageField(upload_to='uploads/',blank=True,null=True)
-    sparePart=models.ManyToManyField(SpareParts,null=True,blank=True)
-    CarCategory=models.ManyToManyField(CarCategory,null=True,blank=True)
+#     image =models.ImageField(upload_to='uploads/',blank=True,null=True)
+#     sparePart=models.ManyToManyField(SpareParts,null=True,blank=True)
+#     CarCategory=models.ManyToManyField(CarCategory,null=True,blank=True)
+#     user=models.ForeignKey(User,on_delete= models.CASCADE,null=True)
+#     # approved = models.BooleanField(default=False )
 
-    @classmethod
-    def get_images(cls):
-        image=partner.objects.all()
-        return image
+#     @classmethod
+#     def get_images(cls):
+#         image=partner.objects.all()
+#         return image
 
-    @classmethod
-    def get_image_by_id(cls,id):
-        image=partner.objects.filter(id=partner.id)
-        return image
+#     @classmethod
+#     def get_image_by_id(cls,id):
+#         image=partner.objects.filter(id=partner.id)
+#         return image
 
-    @classmethod
-    def filter_By_category(cls, id):
-        locate = CarCategory.objects.filter(location_id=id)
-        return locate
+#     @classmethod
+#     def filter_By_category(cls, id):
+#         locate = CarCategory.objects.filter(location_id=id)
+#         return locate
 
 
 # class User(models.Model):
 #     pic=ImageField(upload_to="profiless")
     
+
+

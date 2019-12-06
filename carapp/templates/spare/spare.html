@@ -1,6 +1,6 @@
-<!-- {%extends 'base.html'%}
-{% load bootstrap4 %}
-{% block title %} Login Here {% endblock %} -->
+<!-- {%extends 'base.html'%} -->
+<!-- {% load bootstrap4 %} -->
+<!-- {% block title %} Login Here {% endblock %}  -->
 {% load crispy_forms_tags %}
 
 
@@ -16,12 +16,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel = "icon" href ="https://template63719.motopreview.com/mt-demo/63700/63719/mt-content/uploads/2017/06/mt-1019_header_logo-1.png" 
+        type = "image/x-icon"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
-    <title>SPARE PARTS</title>
+    <title>
+       
+        SPARE PARTS
+    </title>
 </head>
 <style>
     #one {
@@ -748,9 +753,9 @@
             <ul>
                 <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
 
-                <li><a href="#contact"><i class="fa fa-envelope"></i> info@themevessel.com</a></li>
+                <li><a href="#contact"><i class="fa fa-envelope"></i> info@kanikasystem.com</a></li>
                 <li></li> <i class="fa fa-phone"
-                    style="font-size:15px;margin-left:500px;color:#949494;margin-top:20px;"></i>
+                    style="font-size:15px;margin-left:430px;color:#949494;margin-top:20px;"></i>
                 <i class="fa fa-envelope" style="font-size:15px;margin-left:10px;color:#949494"></i>
                 <i class="fa fa-google" style="font-size:15px;margin-left:10px;color:#949494"></i>
                 <i class="fa fa-linkedin" style="font-size:15px;margin-left:10px;color:#949494"></i>
@@ -760,6 +765,7 @@
                 <li style="float:right"><a href="{% url 'login' %}"
                         style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">login</a>
                     </li>
+                    <li style="float:right"><a  href="/logout" style="text-transform: uppercase;font-family: 'Times New Roman', Times, serif;">Log out</a></li>
                  
                   
                  
@@ -806,10 +812,10 @@
                                     <a class="dropdown-item" href="/logout">Log out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'shareholder' %}">DASHBOARD</a>
+                        <a class="nav-link" href="{% url 'shareholder'  %}">SHAREHOLDER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">CONTACT US</a>
+                        <a class="nav-link" href="#contact">CONTACT US</a>
                     </li>
                     <li class="nav-item">
                         <!-- Search -->
@@ -891,20 +897,19 @@
 
                 </div>
                 
-<div class="row">
+<!-- <div class="row">
                 <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
                     <h2>FEATURED SPARE PARTS</h2><br></br>
                     <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
                             <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
-                            <div class="col-sm-2"><a href="/category/2/">Mahindra</a></div>
+                            <div class="col-sm-2"><a href="#">Mahindra</a></div>
                             <div class="col-sm-2"><a href="#">Volvo</a></div>
-                            <div class="col-sm-2"><a href="/cate">Suzuki</a></div>
+                            <div class="col-sm-2"><a href="">Suzuki</a></div>
                             <div class="col-sm-2"><a href="#">Hyundai</a></div>
                             <div class="col-sm-2"><a href="#">Honda</a></div>
                            
-                        </div>
                     <div class="row" style="margin-top:40px;padding-bottom:40px;" >
-                        {% for sparePart in spareparts %}
+                        {% for sparePart in spareParts %}
                         <div class="col-sm-3" style="margin-top:20px;">
                             <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px;">
                             <br><br>
@@ -921,15 +926,68 @@
                         </div>
                         {% endfor%}
 
+                    </div>
 
                     </div>
 
                 </div>
                 
                 
+</div> -->
+
+<div class="row">
+        <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+            <!-- <h2>FEATURED SPARE PARTS</h2><br></br> -->
+            <!-- <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                    <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
+                    <div class="col-sm-2"><a href="/category/2">Mahindra</a></div>
+                    <div class="col-sm-2"><a href="/category/3">Volvo</a></div>
+                    <div class="col-sm-2"><a href="/category/4">Suzuki</a></div>
+                    <div class="col-sm-2"><a href="/category/5">Hyundai</a></div>
+                    <div class="col-sm-2"><a href="/category/6/">Honda</a></div>
+                   
+            </div> -->
+            <!-- {% for category in categories %}
+    <div class="col-md-4" style="margin-bottom: 20px;">
+        <a class="thumbnail" href="{% url 'carDetails' category.id%}">
+            <p>{{category.categoryPart}}</p>
+        </a>
+    </div>
+    {% endfor%} -->
+   
+    <h2>FEATURED SPARE PARTS</h2>
+    <div class="container">
+    <div class="row">
+    {% for category in categories %}
+    
+    <div class="col-sm-2" >
+        <a class="thumbnail" href="{% url 'carDetails' category.id%}">
+            <p>{{category.categoryPart}}</p>
+        </a>
+    </div>
+        
+    {% endfor%}
 </div>
-
-
+    </div>
+    <div class="row">
+        {% for sparePart in spareParts %}
+        <div class="col-sm-4">
+            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <br><br>
+            <p>{{sparePart.namePart}}</p>
+            <p>Location:{{sparePart.locationPart}}</p>
+            <p>Contact us:{{sparePart.Phone}}</p>
+            <button class="btn btn-secondary">${{sparePart.price}}</button>
+            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning">
+                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+        </div>
+        {% endfor%}
+        
+    </div><br>
+    
+       
+        </div>
+</div>
 
             </div>
 
@@ -954,7 +1012,7 @@
         <h2 style="color: black;margin-bottom:50px;font-family: 'Baskervville', serif;">FEATURED CAR'S CATEGORIES</h2>
         <div class="container">
         <div class="row" id="category">
-            {% for sparePart in spareparts %}
+            {% for sparePart in spareParts %}
             
             <div class="col-md-4" id="shadow" style="margin-bottom: 20px;text-align:center;font-family: 'Baskervville', serif; color: rgba(110, 110, 101, 0.9);">
                 <img class="img-responsive" src="{{sparePart.categoryImage.url}}" alt="" height="300px" width="350px">
@@ -1008,12 +1066,23 @@
             <div class="section-content">
   
                 <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"  style="color: rgba(185, 71, 5, 0.7)"> Touch with us</span></h1>
+                
+
+
                 <!-- <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3> -->
             </div>
+            <a href="{% url 'contact' %}">contact</a>
+
+            
+            <!-- <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                <textarea name="message" placeholder="Message..."></textarea>
+                <input type="submit" />
+            </form> -->
             <div class="contact-section">
             <div class="container">
-                <form>
-                    <!-- <div class="row"> -->
+                <form  action="mailto:uwizelaetitia@gmail.com" method="post" enctype="text/plain" >
+                    <div class="row">
                     <div class="col-md-6 form-line">
                           <div class="form-group">
                               <label for="exampleInputUsername">Your name</label>
@@ -1040,9 +1109,11 @@
                             </div>
                             
                       </div>
+                    </div>
                   </form>
               </div>
 </section>
+
 
     &nbsp;&nbsp;&nbsp;
     <!-- footer -->

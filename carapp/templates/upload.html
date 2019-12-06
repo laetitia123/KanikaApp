@@ -796,19 +796,29 @@
 
     </nav>
 
-    <div class="container">
-      <div class="col-md-6" style="margin-top: 10px;margin-left: 300px;box-shadow: 5px 5px 5px 5px #888888;font-family: 'Philosopher', sans-serif;background-color: #D4CDCD;color: black">
-        <h3 style="text-align: center">UPLOAD SPAREPART</h3>
-        <form action="{%url 'upload' %}" method="post" enctype="multipart/form-data">
-          {%csrf_token%}
-
-          {% bootstrap_form form%}
-          <button type="submit" class="btn btn-secondary"
-                                style="border-radius: 50px;margin-left:180px;width:100px;background-color: rgba(0, 0, 0, 0.7);font-weight: bold;font-size: 18px">Add</button>
-        </form>
+    <div style="display: flex;flex-direction: row; padding-left: 100px">
+      <div
+          style="background-image: url(http://tnpersonalinjury.co/wp-content/uploads/2019/06/solid-textured-background-black-paper-black-solid-texture-background-solid-color-texture-background.jpg);margin-left: 200px;height: 668px; width:300px;color:blanchedalmond;font-family: 'Philosopher', sans-serif">
+          <div style="padding-top: 190px;text-align: center">
+              <img src="https://pbs.twimg.com/profile_images/284045874/sparepartslogo_400x400.jpg" height="150px">
+              <h3 style="font-weight: bold;padding-top: 15px">Hello Shareholder!</h3>
+              <p>Please Register Your spare parts  </br>for our clients to view them.</p>
+          </div>
       </div>
-    </div>
-
+      <div>
+        <div class="col-md-12" style="box-shadow: 5px 1px 5px 1px #888888;font-family: 'Philosopher', sans-serif">
+          <h3 style="text-align: center">UPLOAD SPAREPART</h3>
+          <form action="{%url 'upload' partner_id %}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+  
+            {% bootstrap_form form%}
+            <button type="submit" class="btn btn-secondary"
+                                  style="border-radius: 50px;margin-left:90px;width:100px;background-color: rgba(0, 0, 0, 0.7);font-weight: bold;font-size: 18px">Add</button>
+          </form>
+        </div>
+      </div>
+  </div>
+    
 
     &nbsp;&nbsp;&nbsp;
     <!-- footer -->

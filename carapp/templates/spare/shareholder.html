@@ -839,17 +839,19 @@ titleAnimation { 0% {
                         
                         <li class="nav-item">
                             <div class="container">
-                                <div class="dropdown">
+                                <div class="dropdown" style="margin-top:14px;">
                                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                         style="color:#706F6F">
                                         PAGES
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
-                                        <a class="dropdown-item" href="#">Log in</a>
-                                        <a class="dropdown-item" href="#">sign up</a>
-                                        <a class="dropdown-item" href="#">sign out</a>
+                                            <a class="dropdown-item" href="{% url 'about' %}">About Us</a>
+                                            <a class="dropdown-item" href="/login">Log in</a>
+                                            <a class="dropdown-item" href="/register">sign up</a>
+                                            <a class="dropdown-item" href="/logout">Log out</a>
+                                        </div>
+                                        </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'shareholder' %}"style="margin-left:-1000px;">DASHBOARD</a>
@@ -859,9 +861,9 @@ titleAnimation { 0% {
                         </li>
                         <li class="nav-item">
                             <!-- Search -->
-                            <div class="wrap">
+                            <!-- <div class="wrap">
                                 <input type="text" placeholder="Search...">
-                                <div class="search"></div>
+                                <div class="search"></div> -->
                             </div>
     
                         </li>
@@ -875,8 +877,9 @@ titleAnimation { 0% {
 
    
     <div class="container">
+            
     
-        <h2>LIST OF SPARE PARTS</h2>
+        <!-- <h2>LIST OF SPARE PARTS</h2> -->
         <table id="cart" class="table table-hover table-condensed" style="margin-top:50px;">
             <thead>
                 <tr>
@@ -888,7 +891,23 @@ titleAnimation { 0% {
                     <th style="width:20%">UPDATE</th>
                 </tr>
             </thead>
+            <div class="container-fluid" style="margin-top:-300px; font-family: 'Libre Baskerville', serif; ">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h1 class="slogan" style=" text-align:center; font-size: 300%; color: rgb(0, 0, 0);">Welcome to dashboard!</h1>
+         
+                   
+                   
+                    {% if shareholder %}
+                    {% if shareholder.approved == False %}
+                    <h2>{{message}}</h2>
+                    <p>If you want to register go to that page</p>
+                    <a href="{% url 'username_present'%}">Register as Shareholder</a>
+                    {% else %}
+                    <h2>LIST OF SPARE PARTS</h2> 
+                </div>
+                
             {% for sparepart in spareParts %}
+            
             <tbody>
 
                 <tr>
@@ -907,28 +926,37 @@ titleAnimation { 0% {
                     <td data-th="Category">{{sparepart.categoryPart}}</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                        <a href="{% url 'shareholder'   %}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                        <a href="{% url 'shareholder'%}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
                     </td>
                 </tr>
 
             </tbody>
+           
+            {% empty %}
+        <!-- <div class="row"> -->
+            <h2 class="text-center">There no sparepart uploaded  yet!</h2>
+           
+        <!-- </div> -->
             {% endfor%}
-            <tfoot>
-
-                <tr class="visible-xs">
-                    <td class="text-center"><strong>Total 1.99</strong></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <!-- <td class="hidden-xs text-center"><strong>Total:{{sparePart.total}}</strong></td> -->
-                    <td><a href="{% url 'upload' %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a>
-                    </td>
+            <button style="margin-left:200px;"> <a href="{% url 'upload' shareholder.id %}" class="btn btn-warning btn-block">Add New <i class="fa fa-angle-right"></i></a></button>
+            
+           
                     
-                </tr>
-            </tfoot>
+                 
+                <!-- </div> -->
+                {% endif %}
+                {% else %}
+                <h2>{{message}}</h2>
+                <p>If you want to register go to that page</p>
+                <a href="{% url 'username_present'%}"> Register </a>
+                {% endif %}
+            <!-- </div> -->
+            
+           
         </table>
+        
     </div>
+    
 
     <!-- footer -->
 

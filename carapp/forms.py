@@ -11,7 +11,7 @@ PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 26)]
 class CartAddProductForm(forms.Form):
     quantity = forms.TypedChoiceField(choices=PRODUCT_QUANTITY_CHOICES, coerce=int)
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
-from .models import Profile,SpareParts
+from .models import *
 
 class RegisterForm(UserCreationForm):
     # email=forms.EmailField()
@@ -39,3 +39,13 @@ class sparepartForm(forms.ModelForm):
         model=SpareParts
         
         fields=['namePart','price','locationPart','ImagePart','Phone','categoryPart','categoryImage']
+class UpdateParForm(forms.ModelForm):
+    class Meta:
+        model = Partners
+        exclude = ['email','user','approved']
+
+
+class ContactForm(forms.Form): 
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)

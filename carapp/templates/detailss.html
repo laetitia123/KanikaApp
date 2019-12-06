@@ -1,4 +1,4 @@
-{% extends 'shop/base.html' %}
+<!-- {% extends 'shop/base.html' %}
 {% load static %}
 {% block title %}
     {% if category %}{{ category.name }} {% else %} Products {% endif %}
@@ -21,7 +21,7 @@
                             <h3>{{ product.name }}</h3>
                             <h6><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h6>
                             <p class="text-muted">Kshs. {{ product.price }}</p>
-                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
                                 {% csrf_token %}
                                 {{ cart_product_form }}
                                 <input type="submit" value="add to cart" class="btn btn-primary">
@@ -33,12 +33,12 @@
               </div>
 
 
-          </div><!-- /.blog-post -->
+          </div><! /.blog-post -->
+<!-- 
+        </div>/.blog-main -->
+      <!-- </div>/.row -->
 
-        </div><!-- /.blog-main -->
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
-{% endblock %}
-
-From line 24 to 28, we have added a form to allow users to add products to the cart. Let’s test our code, make sure that your development server is runni
+    <!-- </div>/.container -->
+<!-- {% endblock %} -->
+<!-- 
+From line 24 to 28, we have added a form to allow users to add products to the cart. Let’s test our code, make sure that your development server is runni --> -->

@@ -1,4 +1,4 @@
-#!/home/media/Desktop/KanikaApp/virtual/bin/python2
+#!/home/fanny/Desktop/KanikaApp/virtual/bin/python
 from django.core import management
 
 if __name__ == "__main__":

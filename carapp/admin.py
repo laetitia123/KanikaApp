@@ -7,6 +7,11 @@ admin.site.register(SpareParts)
 admin.site.register(CarCategory)
 admin.site.register(Cart)
 admin.site.register(CarMerch)
+admin.site.register(Partners)
+# admin.site.register(Register)
+# Register
+
+
 
 # from django.contrib import admin
 

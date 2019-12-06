@@ -1,0 +1,17 @@
+
+{% for carCat in carCats%}
+                        <div class="col-sm-3" style="margin-top:20px ">
+                            <img src="{{carCat.ImagePart.url}}" class="img-thumbnail" style="width:280px;height:300px">
+                            <br><br>
+                            
+                           <p>Name:{{carCat.namePart}}</p>
+                            <p>Location:{{carCat.locationPart}}</p>
+                            <p> Posted By:{{user.username}}</p>
+                            <p>Contact us:{{carCat.Phone}}</p>
+                            <button class="btn btn-secondary">${{carCat.price}}</button>
+                           
+                                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+                                 
+                                       
+                        </div>
+                        {% endfor%}
