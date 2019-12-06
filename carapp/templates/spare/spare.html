@@ -23,10 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Philosopher&display=swap" rel="stylesheet">
-    <title>
-       
-        SPARE PARTS
-    </title>
+    <title>SPARE PARTS</title>
 </head>
 <style>
     #one {
@@ -957,7 +954,7 @@
    
     <h2>FEATURED SPARE PARTS</h2>
     <div class="container">
-    <div class="row">
+    <div class="row"style="margin-top:50px;">
             
     {% for category in categories %}
     
@@ -972,12 +969,14 @@
     </div>
     <div class="row">
         {% for sparePart in spareParts %}
-        <div class="col-sm-4">
+        <div class="col-sm-3" style="margin-top:20px;">
             <img src="{{sparePart.ImagePart.url}}"  class="img-thumbnail" style="width:280px;height:300px;">
             <br><br>
             <p>{{sparePart.namePart}}</p>
             <p>Location:{{sparePart.locationPart}}</p>
             <p>Contact us:{{sparePart.Phone}}</p>
+            <p> Posted By:{{user.username}}</p>
+
             <button class="btn btn-secondary">${{sparePart.price}}</button>
             <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning" style="background-color: rgba(185, 71, 5, 0.7)">
                     <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
@@ -1072,7 +1071,7 @@
 
                 <!-- <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3> -->
             </div>
-            <a href="{% url 'contact' %}">contact</a>
+            <!-- <a href="{% url 'contact' %}">contact</a> -->
 
             
             <!-- <form method="post" action="{% url 'contact' %}">
