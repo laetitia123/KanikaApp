@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rest_framework',
     'rest_framework.authtoken',
-    #  'crispy_forms',
+    # 'crispy-forms',
    
 ]
 REST_FRAMEWORK = {

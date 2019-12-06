@@ -897,7 +897,7 @@
 
                 </div>
                 
-<div class="row">
+<!-- <div class="row">
                 <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
                     <h2>FEATURED SPARE PARTS</h2><br></br>
                     <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
@@ -933,9 +933,61 @@
                 </div>
                 
                 
+</div> -->
+
+<div class="row">
+        <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+            <!-- <h2>FEATURED SPARE PARTS</h2><br></br> -->
+            <!-- <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
+                    <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
+                    <div class="col-sm-2"><a href="/category/2">Mahindra</a></div>
+                    <div class="col-sm-2"><a href="/category/3">Volvo</a></div>
+                    <div class="col-sm-2"><a href="/category/4">Suzuki</a></div>
+                    <div class="col-sm-2"><a href="/category/5">Hyundai</a></div>
+                    <div class="col-sm-2"><a href="/category/6/">Honda</a></div>
+                   
+            </div> -->
+            <!-- {% for category in categories %}
+    <div class="col-md-4" style="margin-bottom: 20px;">
+        <a class="thumbnail" href="{% url 'carDetails' category.id%}">
+            <p>{{category.categoryPart}}</p>
+        </a>
+    </div>
+    {% endfor%} -->
+   
+    <h2>FEATURED SPARE PARTS</h2>
+    <div class="container">
+    <div class="row">
+    {% for category in categories %}
+    
+    <div class="col-sm-2" >
+        <a class="thumbnail" href="{% url 'carDetails' category.id%}">
+            <p>{{category.categoryPart}}</p>
+        </a>
+    </div>
+        
+    {% endfor%}
 </div>
-
-
+    </div>
+    <div class="row">
+        {% for sparePart in spareParts %}
+        <div class="col-sm-4">
+            <img src="{{sparePart.ImagePart.url}}" class="img-thumbnail" style="width:250px;">
+            <br><br>
+            <p>{{sparePart.namePart}}</p>
+            <p>Location:{{sparePart.locationPart}}</p>
+            <p>Contact us:{{sparePart.Phone}}</p>
+            <button class="btn btn-secondary">${{sparePart.price}}</button>
+            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning">
+                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+        </div>
+        {% endfor%}
+        
+    </div><br>
+    
+       
+        </div>
+</div>
 
             </div>
 

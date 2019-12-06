@@ -1,3 +1,9 @@
+# from django.shortcuts import render,redirect
+# from .models import SpareParts,CarCategory,Cart
+
+# Create your views here.
+
+
 from __future__ import unicode_literals
 # from .forms import RegisterForm,ProfileForm,ShareholderForm
 from .forms import RegisterForm, ProfileForm, sparepartForm
@@ -128,20 +134,25 @@ def logout_view(request):
         logout(request)
     return redirect('login')
 
+def carDetails(request,carId):
 
-def carDetails(request, carId):
-    category = CarCategory.objects.get(id=carId)
-    spareParts = SpareParts.objects.filter(carCat=category)
-    context = {
-        'carCats': spareParts
+    # category=CarCategory.objects.get(id=carId)
+    # spareParts=SpareParts.objects.filter(carCat=category)
+    # context={
+    #     'carCats':spareParts
+    # }
+    # return render(request,'details.html',context)
+
+    category=CarCategory.objects.get(id=carId)
+    spareParts=SpareParts.objects.filter(carCat=category)
+    context={
+        'carCats':spareParts
     }
-    return render(request, 'details.html', context)
-
-
+    return render(request,'details.html',context)
 def cart(request):
-    sparePart = Cart.objects.all()[0]
-    context = {
-        'spareParts': sparePart,
+    sparePart=Cart.objects.all()[0]
+    context={
+        'sparePs':sparePart,
     }
     return render(request, 'order.html', context)
 
@@ -156,8 +167,8 @@ def addToCart(request, spareId):
     # return httpResponseRedirect(reverse("cart"))
     newTotal = 0
     for spareP in spareParts.sparePart.all():
-        newTotal += spareP.price
-        spareParts.total = newTotal
+        newTotal+=spareP.price
+        spareParts.total=newTotal
         spareParts.save()
     return redirect('cart')
 
@@ -188,6 +199,15 @@ def delete(request, cartId):
     cart.delete()
     return redirect('homePage')
 
+def register(response):
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('login')
+    else:
+        form = RegisterForm()
+    return render(response, "registration/register.html", {"form":form})
 
 def profile_view(request, user_id):
    current_user = request.user.username
@@ -262,6 +282,8 @@ def filter_By_category(request, category_id):
 #     return render (request,"homepage.html", {"categories":category})
 
 
+    
+
 # --------------------------map function-----------
 def default_map(request):
     # TODO: move this token to Django settings from an environment variable
@@ -329,7 +351,7 @@ def search_results(request):
         searched_category = SpareParts.search_by_categoryname(
             search_term).all()
 
-        message = f'{search_term}'
+        # message = f'{search_term}'
 
         return render(request, 'search.html', {"message": message, "category": searched_category})
 
