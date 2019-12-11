@@ -133,16 +133,35 @@ def logout_view(request):
     if request.method == "POST":
         logout(request)
     return redirect('login')
+@login_required(login_url='/accounts/login/') 
+def page(request,id):
+   
+    own_page=SpareParts.objects.filter(id=id)
+    
+    # if request.method == 'POST':
+    #     form = VotesForm(request.POST)
+    #     if form.is_valid():
+    #         rate = form.save(commit=False)
+    #         rate.user = request.user
+    #         rate.project =id
+    #         rate.save()
+    # return redirect('own_page',id)
+        
+    
+   
 
-def carDetails(request,carId):
+    return render(request, 'details.html', {"own_page": own_page})
+
+
+def carDetails(request):
     # category=CarCategory.objects.get(id=carId)
     # spareParts=SpareParts.objects.filter(carCat=category)
     # context={
     #     'carCats':spareParts
     # }
     # return render(request,'details.html',context)
-    category=CarCategory.objects.get(id=carId)
-    spareParts=SpareParts.objects.filter(carCat=category)
+    # category=CarCategory.objects.all()
+    spareParts=SpareParts.objects.all()
     context={
         'carCats':spareParts
     }

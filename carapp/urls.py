@@ -6,7 +6,8 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     url(r'^$',views.homePage,name='homePage'),
-    url(r'^carDetails/(\d+)$',views.carDetails,name='carDetails'),
+    url(r'^carDetails/(\d+)/$',views.carDetails,name='carDetails'),
+    url(r'own_page/(\d+)', views.page, name='own_page'),
     url(r'^cart/$',views.cart,name='cart'),
     url(r'^addToCart/(\d+)/$', views.addToCart, name="addToCart"),
     url(r'^about/$',views.aboutus,name='about'),

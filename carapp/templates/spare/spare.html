@@ -1,5 +1,5 @@
 <!-- {%extends 'base.html'%} -->
-<!-- {% load bootstrap4 %} -->
+{% load bootstrap4 %}
 <!-- {% block title %} Login Here {% endblock %}  -->
 {% load crispy_forms_tags %}
 
@@ -742,10 +742,137 @@
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     }
+
+    .hover02 figure img {
+	/* width: 300px; */
+	/* height: auto; */
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+body {
+	color: #333;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+h1,
+h1+p {
+	margin: 30px 15px 0;
+	font-weight: 300;
+}
+h1+p a {
+	color: #333;
+}
+h1+p a:hover {
+	text-decoration: none;
+}
+h2 {
+	margin: 60px 15px 0;
+	padding: 0;
+	font-weight: 300;
+}
+h2 span {
+	margin-left: 1em;
+	color: #aaa;
+	font-size: 85%;
+}
+.column {
+	margin: 15px 15px 0;
+	padding: 0;
+}
+.column:last-child {
+	padding-bottom: 60px;
+}
+.column::after {
+	content: '';
+	clear: both;
+	display: block;
+}
+.column div {
+	position: relative;
+	float: left;
+	width: 300px;
+	height: 200px;
+	margin: 0 0 0 25px;
+	padding: 0;
+}
+.column div:first-child {
+	margin-left: 0;
+}
+.column div span {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	z-index: -1;
+	display: block;
+	width: 300px;
+	margin: 0;
+	padding: 0;
+	color: #444;
+	font-size: 18px;
+	text-decoration: none;
+	text-align: center;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	opacity: 0;
+}
+figure {
+	/* width: 300px; */
+	/* height: 200px; */
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
+}
+figure:hover+span {
+	bottom: -36px;
+	opacity: 1;
+}
+
+
+
+/* Zoom In #1 */
+.hover01 figure img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover01 figure:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+/* Zoom In #2 */
+.hover02 figure img {
+	/* width: 300px; */
+	height: auto;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.hover02 figure:hover img {
+	width: 350px;
+}
+
+/* Zoom Out #1 */
+.hover03 figure img {
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+
+    
 </style>
 
 <body>
-    <div class="container-fluide">
+        
+        
+        
+        
+       
+        
+         
         <div class="contact">
             <ul>
                 <li><a class="active" href="#home"><i class="fa fa-phone">need support?078234567</i></a></li>
@@ -934,23 +1061,7 @@
 
 <div class="row">
         <div class="col-md-12" style="margin-top:-80px;font-weight:bold;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
-            <!-- <h2>FEATURED SPARE PARTS</h2><br></br> -->
-            <!-- <div class="row"  style="margin-top:-30px;font-family: 'Baskervville', serif; color: rgba(110, 104, 101, 0.7)">
-                    <div class="col-sm-2"><a href="/category/1">Toyota</a></div>
-                    <div class="col-sm-2"><a href="/category/2">Mahindra</a></div>
-                    <div class="col-sm-2"><a href="/category/3">Volvo</a></div>
-                    <div class="col-sm-2"><a href="/category/4">Suzuki</a></div>
-                    <div class="col-sm-2"><a href="/category/5">Hyundai</a></div>
-                    <div class="col-sm-2"><a href="/category/6/">Honda</a></div>
-                   
-            </div> -->
-            <!-- {% for category in categories %}
-    <div class="col-md-4" style="margin-bottom: 20px;">
-        <a class="thumbnail" href="{% url 'carDetails' category.id%}">
-            <p>{{category.categoryPart}}</p>
-        </a>
-    </div>
-    {% endfor%} -->
+            
    
     <h2>FEATURED SPARE PARTS</h2>
     <div class="container">
@@ -968,20 +1079,30 @@
 </div>
     </div>
     <div class="row">
+        
         {% for sparePart in spareParts %}
-        <div class="col-sm-3" style="margin-top:20px;">
-            <img src="{{sparePart.ImagePart.url}}"  class="img-thumbnail" style="width:280px;height:300px;">
+        <!-- <h2 id="demo01">1. Zoom In #1</h2> -->
+       
+                <div class="col-sm-3" style="margin-top:20px;" >
+                        <div class="hover01 column">
+                       <a href="{% url 'own_page' sparePart.id %}"><figure><img src="{{sparePart.ImagePart.url}}"   class="img-thumbnail"  style="width:300px;height:250px;"></figure></a> 
+          <!-- <span>hover</span> -->
+        </div>
+        
             <br><br>
             <p>{{sparePart.namePart}}</p>
-            <p>Location:{{sparePart.locationPart}}</p>
-            <p>Contact us:{{sparePart.Phone}}</p>
-            <p> Posted By:{{user.username}}</p>
+            <!-- <p>Location:{{sparePart.locationPart}}</p> -->
+            <!-- <p>Contact us:{{sparePart.Phone}}</p> -->
+            <!-- <p> Posted By:{{user.username}}</p> -->
 
-            <button class="btn btn-secondary">${{sparePart.price}}</button>
-            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning" style="background-color: rgba(185, 71, 5, 0.7)">
-                    <i class="fa fa-shopping-cart "></i>Add to Cart</button></a>
+            <button class="btn btn-secondary">Rwf{{sparePart.price}}</button>
+            <a href="{% url 'addToCart' sparePart.id %}"><button class="btn btn-outline-warning" class="p1" style="background-color: rgba(185, 71, 5, 0.7)">
+                    Add to Cart<i class="fa fa-shopping-cart " ></i></button></a>
+                    
         </div>
         {% endfor%}
+       
+
         
     </div><br>
     
@@ -1230,6 +1351,28 @@
         </div>
       
     </footer>
+    <center> 
+        <div onclick="showme('widget');" 
+             id="geeks"> 
+             <!-- <button class="btn btn-warning"></button>  -->
+            <!-- <h1 style="color:green"> 
+              GeeksforGeeks  
+            </h1>  -->
+            <i class="fa fa-shopping-cart"></i> 
+            
+        </div> 
+        <button class="btn btn-warning" id="widget" style="display:none;"></button> 
+        
+             
+            <!-- <h3> 
+              GeeksforGeeks:  
+              A Online Computer Science Portal for Geeks 
+            </h3>  -->
+        </div> 
+    </center> 
+    
+     
+    
 
     </div>
 
@@ -1244,7 +1387,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
 </body>
 
+<script> 
+    function showme(id) { 
+        var gfg = document.getElementById(id); 
+        var GFG = document.getElementById("geeks"); 
+        if (gfg.style.display == 'block') { 
+            gfg.style.display = 'none'; 
+            GFG.innerHTML = 
+                '<button class="btn-btn-warning"></button> <i class="fa fa-shopping-cart "></i>'; 
+        } else { 
+            gfg.style.display = 'block'; 
+            GFG.innerHTML = 
+                ' <i class="fa fa-shopping-cart "></i>'; 
+        } 
+    } 
+</script> 
+
 </html>
-<!-- {% endblock %} -->
+// {% endblock %}
